@@ -1,0 +1,19 @@
+{
+  "name": "calculatrice",
+  "version": "1.0.0",
+  "description": "un calculatrice copie de le calculatrice windows",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fcordier7921/calculatrice_windows.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fcordier7921/calculatrice_windows/issues"
+  },
+  "homepage": "https://github.com/Fcordier7921/calculatrice_windows#readme"
+}
