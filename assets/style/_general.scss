@@ -16,7 +16,7 @@
         .container {
             @include positionCenter();
             @include marginPadingNull();
-            width: 960px;
+            width: 980px;
             background-color: rgba($CouleurMain, 0.95);
             border-radius: 4px;
             box-shadow: 0 0 20px rgba($CouleurText, 0.5);
@@ -27,20 +27,28 @@
         #titre {
             height: 30px;
             display: flex;
-            background-color: royalblue;
+            justify-content: space-between;
             p {
+                font-size: 12px;
                 margin: 0;
+                padding-top: 9px;
+                padding-left: 10px;
                 height: 100%;
-                justify-content: flex-start;
             }
             .fenetre {
                 margin: 0;
                 height: 100%;
                 display: flex;
                 .iconeFenetre {
-                    justify-content: flex-end;
+                    margin: 4.5px 15px;
                     img {
                         height: 70%;
+                    }
+                    .iconeG {
+                        display: none;
+                    }
+                    .fenetreActive {
+                        display: block;
                     }
                 }
             }
