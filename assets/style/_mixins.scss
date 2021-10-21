@@ -1,0 +1,18 @@
+@mixin positionCenter($positionX:50%, $positionY:50%) {
+    position: absolute;
+    top: $positionY;
+    left: $positionX;
+    transform: translate(-$positionX, -$positionY);
+}
+
+@mixin marginPadingNull() {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin backgrondImageResponsive($url, $size:cover, $position:center, $repeat:no-repeat) {
+    background-image: url($url);
+    background-size: $size;
+    background-position: $position;
+    background-repeat: $repeat;
+}

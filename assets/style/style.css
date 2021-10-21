@@ -1,0 +1,61 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+  color: #000000;
+  background-image: url("https://source.unsplash.com/random");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  width: 960px;
+  background-color: rgba(230, 230, 230, 0.95);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#titre {
+  height: 30px;
+  display: flex;
+  background-color: royalblue;
+}
+#titre p {
+  margin: 0;
+  height: 100%;
+  justify-content: flex-start;
+}
+#titre .fenetre {
+  margin: 0;
+  height: 100%;
+  display: flex;
+}
+#titre .fenetre .iconeFenetre {
+  justify-content: flex-end;
+}
+#titre .fenetre .iconeFenetre img {
+  height: 70%;
+}
+
+nav {
+  width: 26.5%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

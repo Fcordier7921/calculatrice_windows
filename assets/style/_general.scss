@@ -1,0 +1,54 @@
+        *,
+         ::after,
+         ::before {
+            box-sizing: border-box;
+        }
+        
+        body {
+            @include marginPadingNull();
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.5;
+            color: $CouleurText;
+            @include backgrondImageResponsive('https://source.unsplash.com/random');
+        }
+        
+        .container {
+            @include positionCenter();
+            @include marginPadingNull();
+            width: 960px;
+            background-color: rgba($CouleurMain, 0.95);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba($CouleurText, 0.5);
+            border: 1px solid rgba($CouleurText, 0.3);
+        }
+        
+        //titre est élément de modification de la fenétre
+        #titre {
+            height: 30px;
+            display: flex;
+            background-color: royalblue;
+            p {
+                margin: 0;
+                height: 100%;
+                justify-content: flex-start;
+            }
+            .fenetre {
+                margin: 0;
+                height: 100%;
+                display: flex;
+                .iconeFenetre {
+                    justify-content: flex-end;
+                    img {
+                        height: 70%;
+                    }
+                }
+            }
+        }
+        
+        //contenaire du corp de la calculatrice
+        nav {
+            width: 26.5%;
+            height: 100%;
+            // background-color: royalblue;
+        }
