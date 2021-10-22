@@ -23,6 +23,29 @@
             border: 1px solid rgba($CouleurText, 0.3);
         }
         
+        //icone clicable de la calculatrice
+        .iconCalculatrice {
+            // background-color: aqua;
+            width: 84px;
+            height: 83px;
+            margin: 10px 20px;
+            img {
+                margin: 2px 10px 0 17px;
+            }
+            p {
+                font-size: 13px;
+                margin: auto 7px;
+                color: white;
+                -webkit-text-stroke: 0.1px $CouleurText;
+                text-shadow: 1px 1px 2px $CouleurText;
+            }
+            &:hover {
+                background-color: rgba($CouleurMain, 0.7);
+                border: 1px solid rgba($CouleurMain, 0.7);
+                border-radius: 1px;
+            }
+        }
+        
         //titre est élément de modification de la fenétre
         #titre {
             height: 30px;
@@ -40,8 +63,9 @@
                 height: 100%;
                 display: flex;
                 .iconeFenetre {
-                    margin: 4.5px 15px;
+                    width: 40px;
                     img {
+                        padding: 5px 0 0 10px;
                         height: 70%;
                     }
                     .iconeG {
@@ -49,6 +73,21 @@
                     }
                     .fenetreActive {
                         display: block;
+                    }
+                    &:hover {
+                        background-color: $CouleurOpérateur;
+                    }
+                }
+                .close {
+                    &:hover {
+                        background-color: rgba(255, 0, 0, 0.7);
+                        background-image: url(/assets/img/closeWhite.png);
+                        background-size: 40%;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        img {
+                            display: none;
+                        }
                     }
                 }
             }

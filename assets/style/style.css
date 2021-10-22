@@ -31,6 +31,27 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
+.iconCalculatrice {
+  width: 84px;
+  height: 83px;
+  margin: 10px 20px;
+}
+.iconCalculatrice img {
+  margin: 2px 10px 0 17px;
+}
+.iconCalculatrice p {
+  font-size: 13px;
+  margin: auto 7px;
+  color: white;
+  -webkit-text-stroke: 0.1px #000000;
+  text-shadow: 1px 1px 2px #000000;
+}
+.iconCalculatrice:hover {
+  background-color: rgba(230, 230, 230, 0.7);
+  border: 1px solid rgba(230, 230, 230, 0.7);
+  border-radius: 1px;
+}
+
 #titre {
   height: 30px;
   display: flex;
@@ -49,9 +70,10 @@ body {
   display: flex;
 }
 #titre .fenetre .iconeFenetre {
-  margin: 4.5px 15px;
+  width: 40px;
 }
 #titre .fenetre .iconeFenetre img {
+  padding: 5px 0 0 10px;
   height: 70%;
 }
 #titre .fenetre .iconeFenetre .iconeG {
@@ -59,6 +81,19 @@ body {
 }
 #titre .fenetre .iconeFenetre .fenetreActive {
   display: block;
+}
+#titre .fenetre .iconeFenetre:hover {
+  background-color: #ccc;
+}
+#titre .fenetre .close:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  background-image: url(/assets/img/closeWhite.png);
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#titre .fenetre .close:hover img {
+  display: none;
 }
 
 nav {
