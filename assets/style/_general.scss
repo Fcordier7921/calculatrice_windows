@@ -65,7 +65,7 @@
                 .iconeFenetre {
                     width: 40px;
                     img {
-                        padding: 5px 0 0 10px;
+                        padding: 4px 0 0 12px;
                         height: 70%;
                     }
                     .iconeG {
@@ -82,8 +82,8 @@
                     &:hover {
                         background-color: rgba(255, 0, 0, 0.7);
                         background-image: url(/assets/img/closeWhite.png);
-                        background-size: 40%;
-                        background-position: center;
+                        background-size: 42%;
+                        background-position: 53% 40%;
                         background-repeat: no-repeat;
                         img {
                             display: none;
