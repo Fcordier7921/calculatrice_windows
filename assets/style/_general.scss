@@ -21,6 +21,7 @@
             border-radius: 4px;
             box-shadow: 0 0 20px rgba($CouleurText, 0.5);
             border: 1px solid rgba($CouleurText, 0.3);
+            transition: opacity 1.1s ease-in-out;
         }
         
         //icone clicable de la calculatrice
@@ -44,6 +45,41 @@
                 border: 1px solid rgba($CouleurMain, 0.7);
                 border-radius: 1px;
             }
+        }
+        
+        .containerCache {
+            opacity: 0;
+        }
+        
+        .containerReduit {
+            animation: reduit 10s forwards;
+        }
+        
+        @keyframes reduit {
+            0% {
+                overflow: hidden;
+            }
+            50% {
+                width: 50%;
+                overflow: hidden;
+                @include positionCenter(40%, 0);
+            }
+            100% {
+                width: 15%;
+                height: 5%;
+                overflow: hidden;
+                @include positionCenter(0, 100%);
+            }
+        }
+        
+        .iconCalculatriceActive {
+            opacity: 0;
+        }
+        
+        .containerAgrandis {
+            width: 100%;
+            height: 100%;
+            background-color: $CouleurMain;
         }
         
         //titre est élément de modification de la fenétre
@@ -81,7 +117,7 @@
                 .close {
                     &:hover {
                         background-color: rgba(255, 0, 0, 0.7);
-                        background-image: url(/assets/img/closeWhite.png);
+                        background-image: url(/assets/img/fenetre/closeWhite.png);
                         background-size: 42%;
                         background-position: 53% 40%;
                         background-repeat: no-repeat;
