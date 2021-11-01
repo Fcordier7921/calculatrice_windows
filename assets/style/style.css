@@ -25,6 +25,7 @@ body {
   margin: 0;
   padding: 0;
   width: 980px;
+  height: 66%;
   background-color: rgba(230, 230, 230, 0.95);
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -161,9 +162,77 @@ body {
   display: none;
 }
 
+#corps {
+  width: 100%;
+  height: 94%;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+}
+
+.contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 15px;
+  padding: 20px;
+}
+
+.lignes {
+  width: 100%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+
+.lignes:nth-child(1) {
+  top: 0px;
+}
+
+.lignes:nth-child(2) {
+  top: 5px;
+}
+
+.lignes:nth-child(3) {
+  top: 10px;
+}
+
+/* Animation 1 */
+.btn1.active .lignes:nth-child(1) {
+  top: 18px;
+  transform: rotate(135deg);
+}
+
+.btn1.active .lignes:nth-child(2) {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+.btn1.active .lignes:nth-child(3) {
+  top: 18px;
+  transform: rotate(-135deg);
+}
+
 nav {
   width: 26.5%;
   height: 100%;
+  background-color: royalblue;
+  display: none;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

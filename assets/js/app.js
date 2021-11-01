@@ -15,7 +15,7 @@ function CacheContainer() {
 }
 
 
-iconCalculatrice.addEventListener('click', () => {
+iconCalculatrice.addEventListener('dblclick', () => {
     CacheContainer();
 })
 iconRedutionFenetre.addEventListener('click', () => {
@@ -43,4 +43,12 @@ iconAgrandirFenetre.addEventListener('click', () => {
 })
 iconFermerFenetre.addEventListener('click', () => {
     CacheContainer();
+})
+
+//menu burger
+const allBtn = document.querySelector('.contLigne');
+
+btn.addEventListener('click', () => {
+
+    btn.classList.toggle('active');
 })
