@@ -103,7 +103,7 @@
             background-color: $CouleurMain;
         }
         
-        //titre est élément de modification de la fenétre
+        //titre est élément de modification de la fenétre de la calculatrice 
         #titre {
             height: 30px;
             display: flex;
@@ -158,65 +158,81 @@
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             grid-template-rows: repeat(9, 1fr);
-        }
-        
-        .contLigne {
-            width: 40px;
-            height: 5px;
-            cursor: pointer;
-            position: relative;
-            top: 15px;
-            padding: 20px;
-        }
-        
-        .lignes {
-            width: 100%;
-            height: 1px;
-            border-radius: 25px;
-            background: #000;
-            position: absolute;
-            transition: all .5s ease-in-out;
-        }
-        
-        .lignes:nth-child(1) {
-            top: 0px;
-        }
-        
-        .lignes:nth-child(2) {
-            top: 5px;
-        }
-        
-        .lignes:nth-child(3) {
-            top: 10px;
-        }
-        /* Animation 1 */
-        
-        .btn1.active .lignes:nth-child(1) {
-            top: 18px;
-            transform: rotate(135deg);
-        }
-        
-        .btn1.active .lignes:nth-child(2) {
-            transform: translateX(-20px);
-            opacity: 0;
-        }
-        
-        .btn1.active .lignes:nth-child(3) {
-            top: 18px;
-            transform: rotate(-135deg);
-        }
-        
-        nav {
-            width: 26.5%;
-            height: 100%;
-            background-color: royalblue;
-            display: none;
-        }
-        
-        nav ul {
-            @include marginPadingNull();
-        }
-        
-        h4 {
-            @include marginPadingNull();
+            overflow: hidden;
+            .box {
+                .contLigne {
+                    width: 40px;
+                    height: 5px;
+                    cursor: pointer;
+                    position: relative;
+                    top: 20px;
+                    padding: 20px;
+                    z-index: 50;
+                    &:hover {
+                        background: $CouleurMain;
+                    }
+                    .lignes {
+                        width: 50%;
+                        height: 1px;
+                        border-radius: 25px;
+                        background: #000;
+                        @include positionCenter();
+                        transition: all .5s ease-in-out;
+                        &:nth-child(1) {
+                            top: 0px;
+                        }
+                        &:nth-child(2) {
+                            top: 5px;
+                        }
+                        &:nth-child(3) {
+                            top: 10px;
+                        }
+                    }
+                }
+                .navBar {
+                    width: 26.5%;
+                    height: 95%;
+                    background-color: $CouleurNav;
+                    display: none;
+                    position: absolute;
+                    top: 30px;
+                    z-index: 5;
+                    .navHedaer {
+                        height: 10%;
+                    }
+                    .navCahce {
+                        height: 81%;
+                        overflow: scroll;
+                        // overflow-x: hidden;
+                        ul {
+                            @include marginPadingNull();
+                            h4 {
+                                @include marginPadingNull();
+                                margin-top: 8px;
+                                font-size: 0.8rem;
+                            }
+                            li {
+                                margin: 20px 0 20px 10px;
+                            }
+                        }
+                        &::-webkit-scrollbar {
+                            width: 12px;
+                        }
+                        &::-webkit-scrollbar-track {
+                            background: $CouleurNav;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            background-color: $CouleurOpérateur;
+                            border-radius: 20px;
+                            border: 3px solid $CouleurNav;
+                        }
+                    }
+                    .apropos {
+                        background-color: $CouleurNav;
+                    }
+                }
+                .active-nav {
+                    display: block;
+                }
+            }
         }

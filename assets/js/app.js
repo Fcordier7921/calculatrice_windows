@@ -46,9 +46,10 @@ iconFermerFenetre.addEventListener('click', () => {
 })
 
 //menu burger
-const allBtn = document.querySelector('.contLigne');
+const allBtn = document.querySelector('.box');
+const corpNav = document.querySelector('.navBar');
 
-btn.addEventListener('click', () => {
+allBtn.addEventListener('click', () => {
 
-    btn.classList.toggle('active');
+    corpNav.classList.toggle('active-nav');
 })
