@@ -1,5 +1,5 @@
-@mixin positionCenter($positionX:50%, $positionY:50%) {
-    position: absolute;
+@mixin positionCenter($positionX:50%, $positionY:50%, $position:absolute) {
+    position: $position;
     top: $positionY;
     left: $positionX;
     transform: translate(-$positionX, -$positionY);

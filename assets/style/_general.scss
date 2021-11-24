@@ -10,14 +10,17 @@
             font-family: 'Open Sans', sans-serif;
             line-height: 1.5;
             color: $CouleurText;
+            overflow: hidden;
             @include backgrondImageResponsive('https://source.unsplash.com/random');
         }
         
         .container {
-            @include positionCenter();
+            @include positionCenter(50%, 3%, relative);
             @include marginPadingNull();
-            width: 980px;
-            height: 66%;
+            width: 870px;
+            max-width: 100%;
+            min-width: 258px;
+            height: 500px;
             background-color: rgba($CouleurMain, 0.95);
             border-radius: 4px;
             box-shadow: 0 0 20px rgba($CouleurText, 0.5);
@@ -34,13 +37,13 @@
                 @include positionCenter(0, 100%);
             }
             50% {
-                width: 980px;
+                width: 870px;
                 height: 5%;
                 overflow: hidden;
                 @include positionCenter();
             }
             100% {
-                width: 980px;
+                width: 870px;
                 height: 65%;
                 overflow: hidden;
             }
@@ -79,12 +82,12 @@
         
         @keyframes reduit {
             0% {
-                width: 980px;
+                width: 870px;
                 height: 65%;
                 overflow: hidden;
             }
             50% {
-                width: 980px;
+                width: 870px;
                 height: 5%;
                 overflow: hidden;
                 @include positionCenter();
@@ -98,9 +101,9 @@
         }
         
         .containerAgrandis {
-            width: 100%;
-            height: 100%;
-            background-color: $CouleurMain;
+            width: 99%;
+            height: 99%;
+            @include positionCenter(0, 19%);
         }
         
         //titre est élément de modification de la fenétre de la calculatrice 
@@ -119,11 +122,14 @@
                 margin: 0;
                 height: 100%;
                 display: flex;
+                .Agrendir {
+                    margin-top: 2px;
+                }
                 .iconeFenetre {
-                    width: 40px;
+                    width: 36px;
                     img {
                         padding: 4px 0 0 12px;
-                        height: 70%;
+                        height: 50%;
                     }
                     .iconeG {
                         display: none;
@@ -153,49 +159,55 @@
         //contenaire du corp de la calculatrice
         #corps {
             width: 100%;
-            height: 94%;
+            height: 467px;
             @include marginPadingNull();
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             grid-template-rows: repeat(9, 1fr);
+            position: relative;
             overflow: hidden;
             .box {
-                .contLigne {
-                    width: 40px;
-                    height: 5px;
-                    cursor: pointer;
-                    position: relative;
-                    top: 20px;
-                    padding: 20px;
-                    z-index: 50;
-                    &:hover {
-                        background: $CouleurMain;
-                    }
-                    .lignes {
-                        width: 50%;
-                        height: 1px;
-                        border-radius: 25px;
-                        background: #000;
-                        @include positionCenter();
-                        transition: all .5s ease-in-out;
-                        &:nth-child(1) {
-                            top: 0px;
+                grid-row: 1/2;
+                grid-column: 1/5;
+                .headMenu {
+                    display: flex;
+                    .contLigne {
+                        width: 40px;
+                        height: 5px;
+                        cursor: pointer;
+                        position: relative;
+                        top: 0;
+                        padding: 20px;
+                        z-index: 50;
+                        &:hover {
+                            background: $CouleurMain;
                         }
-                        &:nth-child(2) {
-                            top: 5px;
-                        }
-                        &:nth-child(3) {
-                            top: 10px;
+                        .lignes {
+                            width: 50%;
+                            height: 1px;
+                            border-radius: 25px;
+                            background: #000;
+                            @include positionCenter();
+                            transition: all .5s ease-in-out;
+                            &:nth-child(1) {
+                                top: 15px;
+                            }
+                            &:nth-child(2) {
+                                top: 20px;
+                            }
+                            &:nth-child(3) {
+                                top: 25px;
+                            }
                         }
                     }
                 }
                 .navBar {
-                    width: 26.5%;
-                    height: 95%;
+                    width: 29%;
+                    height: 100%;
                     background-color: $CouleurNav;
                     display: none;
                     position: absolute;
-                    top: 30px;
+                    top: 0;
                     z-index: 5;
                     .navHedaer {
                         height: 10%;
@@ -229,6 +241,7 @@
                     }
                     .apropos {
                         background-color: $CouleurNav;
+                        display: flex;
                     }
                 }
                 .active-nav {
