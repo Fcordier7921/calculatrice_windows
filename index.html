@@ -16,7 +16,7 @@
         <p>Calculatrice</p>
     </div>
     <div class="container">
-        <div id="titre">
+        <div id="titreGeneral">
             <p>Calculatrice</p>
             <div class="fenetre">
                 <div class="iconeFenetre moin">
@@ -34,7 +34,7 @@
 
 
         </div>
-        <div id="corps">
+        <div id="corpsStandard">
             <div class="box">
                 <div class="headMenu">
                     <div class="contLigne ">
@@ -42,8 +42,9 @@
                         <div class="lignes"></div>
                         <div class="lignes"></div>
                     </div>
-                    <div class="titre">
-                        <!-- <h1>Standard</h1> -->
+                    <h1>Standard</h1>
+                    <div class="petiteTaille">
+                        <img src="/assets/img/page/iconenav.png" alt="iconne  calculette en taille réduite">
                     </div>
                 </div>
 
@@ -53,23 +54,135 @@
                         <nav>
                             <ul>
                                 <h4>Calculatrice</h4>
-                                <li class="items "><img src="/assets/img/page/navBar/standard.png" alt="Calculatrice Standard"> Standard</li>
-                                <li class="items "><img src="/assets/img/page/navBar/scientifique.png" alt="Calculatrice scientifique">Scientifique</li>
-                                <li class="items "><img src="/assets/img/page/navBar/date.png" alt="calculer des date">Calcul de la date</li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/standard.png" alt="Calculatrice Standard">
+                                        <p>
+                                            Standard
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/scientifique.png" alt="Calculatrice scientifique">
+                                        <p>
+                                            Scientifique
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/date.png" alt="calculer des date">
+                                        <p>
+                                            Calcul de la date
+                                        </p>
+                                    </div>
+                                </li>
                                 <h4>Convertisseur</h4>
-                                <li class="items "><img src="/assets/img/page/navBar/devise.png" alt="Convertire des devis ">Devis</li>
-                                <li class="items "><img src="/assets/img/page/navBar/volume.png" alt="calcule de volume">Volume</li>
-                                <li class="items "><img src="/assets/img/page/navBar/longueur.png" alt="calcule de lomgeur">Longeur</li>
-                                <li class="items "><img src="/assets/img/page/navBar/poids.png" alt="Calcule de masse">Poids et masse</li>
-                                <li class="items "><img src="/assets/img/page/navBar/temperature.png" alt="convertire des unité de musere en d'autre unité, pour la rempératures">température</li>
-                                <li class="items "><img src="/assets/img/page/navBar/energie.png" alt="convertire des unité de musere en d'autre unité, pour l'énergie">Energie</li>
-                                <li class="items "><img src="/assets/img/page/navBar/surface.png" alt="convertire des unité de musere en d'autre unité, pour la surface">Surface</li>
-                                <li class="items "><img src="/assets/img/page/navBar/vitesse.png" alt="convertire des unité de musere en d'autre unité, pour la vitesse">Vitesse</li>
-                                <li class="items "><img src="/assets/img/page/navBar/heure.png" alt="convertire des unité de musere en d'autre unité, pour lae temps">heure</li>
-                                <li class="items "><img src="/assets/img/page/navBar/puissance.png" alt="convertire des unité de musere en d'autre unité, pour la puissance">Puissance</li>
-                                <li class="items "><img src="/assets/img/page/navBar/donnees.png" alt="convertire des unité de musere en d'autre unité, pour les unité de stocage informatique">Données</li>
-                                <li class="items "><img src="/assets/img/page/navBar/pression.png" alt="convertire des unité de musere en d'autre unité, pour les unités de pressions">Pression</li>
-                                <li class="items "><img src="/assets/img/page/navBar/angle.png" alt="convertire des unité de musere en d'autre unité, pour la es unité d'angles">Angle</li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/devise.png" alt="Convertire des devis ">
+                                        <p>
+                                            Devis
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/volume.png" alt="calcule de volume">
+                                        <p>
+                                            Volume
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/longueur.png" alt="calcule de lomgeur">
+                                        <p>
+                                            Longeur
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/poids.png" alt="Calcule de masse">
+                                        <p>
+                                            Poids et masse
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/temperature.png" alt="convertire des unité de musere en d'autre unité, pour la rempératures">
+                                        <p>
+                                            température
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/energie.png" alt="convertire des unité de musere en d'autre unité, pour l'énergie">
+                                        <p>
+                                            Energie
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/surface.png" alt="convertire des unité de musere en d'autre unité, pour la surface">
+                                        <p>
+                                            Surface
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/vitesse.png" alt="convertire des unité de musere en d'autre unité, pour la vitesse">
+                                        <p>
+                                            Vitesse
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/heure.png" alt="convertire des unité de musere en d'autre unité, pour lae temps">
+                                        <p>
+                                            heure
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/puissance.png" alt="convertire des unité de musere en d'autre unité, pour la puissance">
+                                        <p>
+                                            Puissance
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/donnees.png" alt="convertire des unité de musere en d'autre unité, pour les unité de stocage informatique">
+                                        <p>
+                                            Données
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/pression.png" alt="convertire des unité de musere en d'autre unité, pour les unités de pressions">
+                                        <p>
+                                            Pression
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="items ">
+                                    <div class="divLi">
+                                        <img src="/assets/img/page/navBar/angle.png" alt="convertire des unité de musere en d'autre unité, pour la es unité d'angles">
+                                        <p>
+                                            Angle
+                                        </p>
+                                    </div>
+                                </li>
 
                             </ul>
                         </nav>
@@ -83,6 +196,114 @@
                 </div>
 
 
+            </div>
+            <div class="histoMemo">
+                <div class="histo">
+                    <h2>Historique</h2>
+                </div>
+                <div class="Memo">
+                    <h2>Mémoire</h2>
+                </div>
+                <div class="resultHistoMemo"></div>
+            </div>
+            <div class="resulCalcule">
+                <div class="memoire">
+                    <div class="MC memo">
+                        <p>MC</p>
+                    </div>
+                    <div class="MR memo">
+                        <p>MR</p>
+                    </div>
+                    <div class="MP memo">
+                        <p>M+</p>
+                    </div>
+                    <div class="MM memo">
+                        <p>M-</p>
+                    </div>
+                    <div class="MS memo">
+                        <p>MS</p>
+                    </div>
+                </div>
+                <div class="result">
+                    <div class="calculeresult">
+                        <p>45 x 10 =</p>
+                    </div>
+                    <div class="chiffreresult">
+                        <p>450</p>
+                    </div>
+                </div>
+            </div>
+            <div class="opperateur pourcentage">
+                <p>%</p>
+            </div>
+            <div class="opperateur CE">
+                <p>CE</p>
+            </div>
+            <div class="opperateur C">
+                <p>C</p>
+            </div>
+            <div class="opperateur suppChiffre">
+                <img src="/assets/img/page/supr.png" alt="suprimer un chiffre">
+            </div>
+            <div class="opperateur undemi">
+                <img src="/assets/img/page/unsurx-1.png" alt="un sur x">
+            </div>
+            <div class="opperateur carrer">
+                <img src="/assets/img/page/carrer.png" alt="au carrer">
+            </div>
+            <div class="opperateur RasinCarrer">
+                <img src="/assets/img/page/rasinecarredeux.png" alt="rasinne carrer">
+            </div>
+            <div class="opperateur division">
+                <img src="/assets/img/page/diviser.png" alt="diviser">
+            </div>
+            <div class="chiffre sept">
+                <p>7</p>
+            </div>
+            <div class="chiffre huit">
+                <p>8</p>
+            </div>
+            <div class="chiffre neuf">
+                <p>9</p>
+            </div>
+            <div class="opperateur multiplier">
+                <img src="/assets/img/page/multiplier.png" alt="multiplier">
+            </div>
+            <div class="chiffre quatre">
+                <p>4</p>
+            </div>
+            <div class="chiffre cinq">
+                <p>5</p>
+            </div>
+            <div class="chiffre six">
+                <p>6</p>
+            </div>
+            <div class="opperateur moin">
+                <img src="/assets/img/page/moin.png" alt="moin">
+            </div>
+            <div class="chiffre un">
+                <p>1</p>
+            </div>
+            <div class="chiffre deux">
+                <p>2</p>
+            </div>
+            <div class="chiffre trois">
+                <p>3</p>
+            </div>
+            <div class="opperateur plus">
+                <img src="/assets/img/page/plus.png" alt="plus">
+            </div>
+            <div class="opperateur PosNega">
+                <img src="/assets/img/page/plusmoin.png" alt="positof ou negatif">
+            </div>
+            <div class="chiffre zero">
+                <p>0</p>
+            </div>
+            <div class="chiffre visgule">
+                <p>,</p>
+            </div>
+            <div class="opperateur egal">
+                <img src="/assets/img/page/egaul.png" alt="resultat">
             </div>
         </div>
 
