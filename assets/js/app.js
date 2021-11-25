@@ -46,7 +46,7 @@ iconFermerFenetre.addEventListener('click', () => {
 })
 
 //menu burger
-const allBtn = document.querySelector('.box');
+const allBtn = document.querySelector('.contLigne');
 const corpNav = document.querySelector('.navBar');
 
 allBtn.addEventListener('click', () => {
