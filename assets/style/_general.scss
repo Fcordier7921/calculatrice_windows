@@ -216,15 +216,19 @@
                         width: 30px;
                         height: 30px;
                         margin-top: 9px;
+                        &:hover {
+                            border: 1px solid gray;
+                            background-color: rgb(218, 218, 218);
+                        }
                     }
                 }
                 .navBar {
                     width: 29%;
-                    height: 100%;
+                    height: 94%;
                     background-color: $CouleurNav;
                     display: none;
                     position: absolute;
-                    top: 0;
+                    top: 30px;
                     z-index: 5;
                     .navHedaer {
                         height: 10%;
@@ -232,17 +236,20 @@
                     .navCahce {
                         height: 81%;
                         overflow: scroll;
-                        // overflow-x: hidden;
+                        overflow-x: hidden;
                         ul {
                             @include marginPadingNull();
                             h4 {
                                 @include marginPadingNull();
                                 margin: 12px;
                                 font-size: 0.8rem;
+                                cursor: default;
                             }
                             li {
+                                width: 100%;
                                 height: 39px;
-                                margin: 0 10px;
+                                padding: 0 10px;
+                                cursor: default;
                                 .divLi {
                                     display: flex;
                                     img {
@@ -254,6 +261,9 @@
                                         margin: 10px 5px;
                                     }
                                 }
+                                &:hover {
+                                    background-color: rgb(218, 218, 218);
+                                }
                             }
                         }
                         &::-webkit-scrollbar {
@@ -263,7 +273,7 @@
                             background: $CouleurNav;
                         }
                         &::-webkit-scrollbar-thumb {
-                            background-color: $CouleurOpérateur;
+                            background-color: gray;
                             border-radius: 20px;
                             border: 3px solid $CouleurNav;
                         }
@@ -295,12 +305,14 @@
                     margin: 5px 20px;
                     h2 {
                         font-size: 15px;
+                        cursor: default;
                     }
                 }
                 .memoiregeneral {
                     margin: 5px 20px;
                     h2 {
                         font-size: 15px;
+                        cursor: default;
                     }
                 }
             }
@@ -328,6 +340,7 @@
                     .MR {
                         color: gray;
                         &:hover {
+                            cursor: default;
                             opacity: 0.5;
                             box-shadow: 0 0.5px 1px gray;
                         }
@@ -335,6 +348,7 @@
                     .MP,
                     .MS,
                     .MM {
+                        cursor: default;
                         &:hover {
                             border: 1px solid gray;
                             background-color: rgb(214, 214, 214);
@@ -368,6 +382,7 @@
                 text-align: center;
                 background-color: rgb(242, 242, 242);
                 opacity: 0.7;
+                cursor: default;
                 p,
                 img {
                     font-size: 15px;
@@ -386,6 +401,7 @@
                 height: 98%;
                 text-align: center;
                 background-color: $CouleurChiffre;
+                cursor: default;
                 p,
                 img {
                     font-size: 20px;

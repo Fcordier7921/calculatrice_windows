@@ -238,13 +238,17 @@ body {
   height: 30px;
   margin-top: 9px;
 }
+#corpsStandard .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
 #corpsStandard .box .navBar {
   width: 29%;
-  height: 100%;
+  height: 94%;
   background-color: #f1f1f1;
   display: none;
   position: absolute;
-  top: 0;
+  top: 30px;
   z-index: 5;
 }
 #corpsStandard .box .navBar .navHedaer {
@@ -253,6 +257,7 @@ body {
 #corpsStandard .box .navBar .navCahce {
   height: 81%;
   overflow: scroll;
+  overflow-x: hidden;
 }
 #corpsStandard .box .navBar .navCahce ul {
   margin: 0;
@@ -263,10 +268,13 @@ body {
   padding: 0;
   margin: 12px;
   font-size: 0.8rem;
+  cursor: default;
 }
 #corpsStandard .box .navBar .navCahce ul li {
+  width: 100%;
   height: 39px;
-  margin: 0 10px;
+  padding: 0 10px;
+  cursor: default;
 }
 #corpsStandard .box .navBar .navCahce ul li .divLi {
   display: flex;
@@ -279,6 +287,9 @@ body {
   font-size: 13.5px;
   margin: 10px 5px;
 }
+#corpsStandard .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
 #corpsStandard .box .navBar .navCahce::-webkit-scrollbar {
   width: 12px;
 }
@@ -286,7 +297,7 @@ body {
   background: #f1f1f1;
 }
 #corpsStandard .box .navBar .navCahce::-webkit-scrollbar-thumb {
-  background-color: #f4f4f4;
+  background-color: gray;
   border-radius: 20px;
   border: 3px solid #f1f1f1;
 }
@@ -317,12 +328,14 @@ body {
 }
 #corpsStandard .histoMemo .histo h2 {
   font-size: 15px;
+  cursor: default;
 }
 #corpsStandard .histoMemo .memoiregeneral {
   margin: 5px 20px;
 }
 #corpsStandard .histoMemo .memoiregeneral h2 {
   font-size: 15px;
+  cursor: default;
 }
 #corpsStandard .resulCalcule {
   grid-row: 2/4;
@@ -351,8 +364,14 @@ body {
 }
 #corpsStandard .resulCalcule .memoireResult .MC:hover,
 #corpsStandard .resulCalcule .memoireResult .MR:hover {
+  cursor: default;
   opacity: 0.5;
   box-shadow: 0 0.5px 1px gray;
+}
+#corpsStandard .resulCalcule .memoireResult .MP,
+#corpsStandard .resulCalcule .memoireResult .MS,
+#corpsStandard .resulCalcule .memoireResult .MM {
+  cursor: default;
 }
 #corpsStandard .resulCalcule .memoireResult .MP:hover,
 #corpsStandard .resulCalcule .memoireResult .MS:hover,
@@ -388,6 +407,7 @@ body {
   text-align: center;
   background-color: #f2f2f2;
   opacity: 0.7;
+  cursor: default;
 }
 #corpsStandard .opperateur p,
 #corpsStandard .opperateur img {
@@ -405,7 +425,8 @@ body {
   width: 98%;
   height: 98%;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #fffefe;
+  cursor: default;
 }
 #corpsStandard .chiffre p,
 #corpsStandard .chiffre img {

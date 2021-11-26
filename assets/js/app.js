@@ -51,5 +51,14 @@ const corpNav = document.querySelector('.navBar');
 
 allBtn.addEventListener('click', () => {
 
-    corpNav.classList.toggle('active-nav');
-})
+        corpNav.classList.toggle('active-nav');
+    })
+    //styliser le menu navigation bordure animé 
+const divLi = document.querySelectorAll('.divLi');
+divLi.forEach(element => {
+    element.addEventListener('mousemove', (e) => {
+        let x = e.clientX;
+
+
+    })
+});
