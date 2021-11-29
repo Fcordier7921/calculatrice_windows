@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 ::after,
 ::before {
@@ -16,6 +17,11 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 .container {
@@ -249,17 +255,20 @@ body {
   display: none;
   position: absolute;
   top: 30px;
-  z-index: 5;
+  z-index: 50;
 }
 #corpsStandard .box .navBar .navHedaer {
   height: 10%;
+  z-index: 20;
 }
 #corpsStandard .box .navBar .navCahce {
   height: 81%;
   overflow: scroll;
   overflow-x: hidden;
+  z-index: 20;
 }
 #corpsStandard .box .navBar .navCahce ul {
+  position: relative;
   margin: 0;
   padding: 0;
 }
@@ -276,6 +285,9 @@ body {
   padding: 0 10px;
   cursor: default;
 }
+#corpsStandard .box .navBar .navCahce ul li a {
+  position: relative;
+}
 #corpsStandard .box .navBar .navCahce ul li .divLi {
   display: flex;
 }
@@ -286,6 +298,15 @@ body {
 #corpsStandard .box .navBar .navCahce ul li .divLi p {
   font-size: 13.5px;
   margin: 10px 5px;
+}
+#corpsStandard .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #90c7df;
 }
 #corpsStandard .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -315,6 +336,7 @@ body {
 }
 #corpsStandard .box .active-nav {
   display: block;
+  z-index: 5;
 }
 #corpsStandard .histoMemo {
   grid-row: 1/10;
@@ -322,20 +344,53 @@ body {
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-template-rows: repeat(9, 1fr);
+  background-color: transparent;
 }
 #corpsStandard .histoMemo .histo {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  width: 80px;
   margin: 5px 20px;
+  position: relative;
 }
 #corpsStandard .histoMemo .histo h2 {
   font-size: 15px;
   cursor: default;
 }
 #corpsStandard .histoMemo .memoiregeneral {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  width: 70px;
   margin: 5px 20px;
+  position: relative;
 }
 #corpsStandard .histoMemo .memoiregeneral h2 {
   font-size: 15px;
   cursor: default;
+}
+#corpsStandard .histoMemo .active_histoMemo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #90c7df;
+}
+#corpsStandard .histoMemo .resultHistoMemo {
+  grid-row: 2/10;
+  grid-column: 1/3;
+  width: 100%;
+  height: 100%;
+}
+#corpsStandard .histoMemo .resultHistoMemo .hitodéfaut,
+#corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
+  display: none;
 }
 #corpsStandard .resulCalcule {
   grid-row: 2/4;
@@ -447,6 +502,667 @@ body {
 #corpsStandard .egal:hover {
   background-color: #009db9;
   border: 1px solid #009db9;
+}
+
+#corpsScientifique {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) 321px;
+  grid-template-rows: repeat(11, 1fr);
+}
+#corpsScientifique .box {
+  grid-row: 1/2;
+  grid-column: 1/6;
+}
+#corpsScientifique .box .headMenu {
+  display: flex;
+}
+#corpsScientifique .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsScientifique .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsScientifique .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsScientifique .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsScientifique .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsScientifique .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsScientifique .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsScientifique .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsScientifique .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsScientifique .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsScientifique .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsScientifique .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsScientifique .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsScientifique .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsScientifique .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsScientifique .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsScientifique .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsScientifique .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsScientifique .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsScientifique .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #90c7df;
+}
+#corpsScientifique .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsScientifique .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsScientifique .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsScientifique .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsScientifique .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsScientifique .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsScientifique .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsScientifique .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsScientifique .histoMemo {
+  grid-row: 1/12;
+  grid-column: 6/7;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  background-color: transparent;
+}
+#corpsScientifique .histoMemo .histo {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  width: 80px;
+  margin: 5px 20px;
+  position: relative;
+}
+#corpsScientifique .histoMemo .histo h2 {
+  font-size: 15px;
+  cursor: default;
+}
+#corpsScientifique .histoMemo .memoiregeneral {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  width: 70px;
+  margin: 5px 20px;
+  position: relative;
+}
+#corpsScientifique .histoMemo .memoiregeneral h2 {
+  font-size: 15px;
+  cursor: default;
+}
+#corpsScientifique .histoMemo .active_histoMemo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #90c7df;
+}
+#corpsScientifique .histoMemo .resultHistoMemo {
+  grid-row: 2/10;
+  grid-column: 1/3;
+  width: 100%;
+  height: 100%;
+}
+#corpsScientifique .histoMemo .resultHistoMemo .hitodéfaut,
+#corpsScientifique .histoMemo .resultHistoMemo .memodéfaut {
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+#corpsScientifique .histoMemo .resultHistoMemo .memodéfaut {
+  display: none;
+}
+#corpsScientifique .resulCalcule {
+  grid-row: 2/6;
+  grid-column: 1/6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#corpsScientifique .resulCalcule .memoireResult {
+  align-self: flex-end;
+  display: flex;
+}
+#corpsScientifique .resulCalcule .memoireResult .memo {
+  width: 80px;
+  height: 30px;
+}
+#corpsScientifique .resulCalcule .memoireResult .memo p {
+  margin: 0;
+  margin-top: 7px;
+  font-size: 12px;
+  text-align: center;
+}
+#corpsScientifique .resulCalcule .memoireResult .MC,
+#corpsScientifique .resulCalcule .memoireResult .MR {
+  color: gray;
+}
+#corpsScientifique .resulCalcule .memoireResult .MC:hover,
+#corpsScientifique .resulCalcule .memoireResult .MR:hover {
+  cursor: default;
+  opacity: 0.5;
+  box-shadow: 0 0.5px 1px gray;
+}
+#corpsScientifique .resulCalcule .memoireResult .MP,
+#corpsScientifique .resulCalcule .memoireResult .MS,
+#corpsScientifique .resulCalcule .memoireResult .MM {
+  cursor: default;
+}
+#corpsScientifique .resulCalcule .memoireResult .MP:hover,
+#corpsScientifique .resulCalcule .memoireResult .MS:hover,
+#corpsScientifique .resulCalcule .memoireResult .MM:hover {
+  border: 1px solid gray;
+  background-color: #d6d6d6;
+}
+#corpsScientifique .resulCalcule .result {
+  margin-bottom: 10px;
+  margin-right: 15px;
+  font-weight: 500;
+  align-self: center;
+}
+#corpsScientifique .resulCalcule .result .calculeresult {
+  margin-left: 5px;
+  font-size: 13px;
+  color: gray;
+}
+#corpsScientifique .resulCalcule .result .calculeresult p {
+  margin: 0;
+  padding: 0;
+}
+#corpsScientifique .resulCalcule .result .chiffreresult {
+  font-size: 40px;
+}
+#corpsScientifique .resulCalcule .result .chiffreresult p {
+  margin: 0;
+  padding: 0;
+}
+#corpsScientifique .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsScientifique .opperateur p,
+#corpsScientifique .opperateur img {
+  font-size: 15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsScientifique .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsScientifique .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #fffefe;
+  cursor: default;
+}
+#corpsScientifique .chiffre p,
+#corpsScientifique .chiffre img {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsScientifique .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+#corpsScientifique .egal {
+  background-color: #90c7df;
+}
+#corpsScientifique .egal:hover {
+  background-color: #009db9;
+  border: 1px solid #009db9;
+}
+
+#corpsStandard {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: repeat(9, 1fr);
+}
+#corpsStandard .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsStandard .box .headMenu {
+  display: flex;
+}
+#corpsStandard .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsStandard .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsStandard .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsStandard .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsStandard .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsStandard .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsStandard .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsStandard .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsStandard .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsStandard .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsStandard .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsStandard .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsStandard .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsStandard .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsStandard .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsStandard .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsStandard .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsStandard .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsStandard .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsStandard .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #90c7df;
+}
+#corpsStandard .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsStandard .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsStandard .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsStandard .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsStandard .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsStandard .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsStandard .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsStandard .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsStandard .histoMemo {
+  grid-row: 1/10;
+  grid-column: 5/7;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  background-color: transparent;
+}
+#corpsStandard .histoMemo .histo {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  width: 80px;
+  margin: 5px 20px;
+  position: relative;
+}
+#corpsStandard .histoMemo .histo h2 {
+  font-size: 15px;
+  cursor: default;
+}
+#corpsStandard .histoMemo .memoiregeneral {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  width: 70px;
+  margin: 5px 20px;
+  position: relative;
+}
+#corpsStandard .histoMemo .memoiregeneral h2 {
+  font-size: 15px;
+  cursor: default;
+}
+#corpsStandard .histoMemo .active_histoMemo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #90c7df;
+}
+#corpsStandard .histoMemo .resultHistoMemo {
+  grid-row: 2/10;
+  grid-column: 1/3;
+  width: 100%;
+  height: 100%;
+}
+#corpsStandard .histoMemo .resultHistoMemo .hitodéfaut,
+#corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
+  display: none;
+}
+#corpsStandard .resulCalcule {
+  grid-row: 2/4;
+  grid-column: 1/5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+#corpsStandard .resulCalcule .memoireResult {
+  align-self: flex-end;
+  display: flex;
+}
+#corpsStandard .resulCalcule .memoireResult .memo {
+  width: 80px;
+  height: 30px;
+}
+#corpsStandard .resulCalcule .memoireResult .memo p {
+  margin: 0;
+  margin-top: 7px;
+  font-size: 12px;
+  text-align: center;
+}
+#corpsStandard .resulCalcule .memoireResult .MC,
+#corpsStandard .resulCalcule .memoireResult .MR {
+  color: gray;
+}
+#corpsStandard .resulCalcule .memoireResult .MC:hover,
+#corpsStandard .resulCalcule .memoireResult .MR:hover {
+  cursor: default;
+  opacity: 0.5;
+  box-shadow: 0 0.5px 1px gray;
+}
+#corpsStandard .resulCalcule .memoireResult .MP,
+#corpsStandard .resulCalcule .memoireResult .MS,
+#corpsStandard .resulCalcule .memoireResult .MM {
+  cursor: default;
+}
+#corpsStandard .resulCalcule .memoireResult .MP:hover,
+#corpsStandard .resulCalcule .memoireResult .MS:hover,
+#corpsStandard .resulCalcule .memoireResult .MM:hover {
+  border: 1px solid gray;
+  background-color: #d6d6d6;
+}
+#corpsStandard .resulCalcule .result {
+  margin-bottom: 10px;
+  margin-right: 15px;
+  font-weight: 500;
+  align-self: center;
+}
+#corpsStandard .resulCalcule .result .calculeresult {
+  margin-left: 5px;
+  font-size: 13px;
+  color: gray;
+}
+#corpsStandard .resulCalcule .result .calculeresult p {
+  margin: 0;
+  padding: 0;
+}
+#corpsStandard .resulCalcule .result .chiffreresult {
+  font-size: 40px;
+}
+#corpsStandard .resulCalcule .result .chiffreresult p {
+  margin: 0;
+  padding: 0;
+}
+#corpsStandard .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsStandard .opperateur p,
+#corpsStandard .opperateur img {
+  font-size: 15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsStandard .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsStandard .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #fffefe;
+  cursor: default;
+}
+#corpsStandard .chiffre p,
+#corpsStandard .chiffre img {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsStandard .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+#corpsStandard .egal {
+  background-color: #90c7df;
+}
+#corpsStandard .egal:hover {
+  background-color: #009db9;
+  border: 1px solid #009db9;
+}
+
+.overlay {
+  display: none;
+}
+
+.activeOverlay {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
