@@ -1,13 +1,18 @@
-const containerCalculatrice = document.querySelector('.container'); //gestion de la fenetre
-const iconCalculatrice = document.querySelector('.iconCalculatrice'); //gestion de la fenetre
-const iconRedutionFenetre = document.querySelector('.moin'); //gestion de la fenetre
-const iconAgrandirFenetre = document.querySelector('.Agrendir'); //gestion de la fenetre
-const iconFermerFenetre = document.querySelector('.close'); //gestion de la fenetre
-const allBtn = document.querySelector('.contLigne'); //menu burger
-const corpNav = document.querySelector('.navBar'); //menu burger
-const overlay = document.querySelector('.overlay'); //menu burger
+const containerCalculatrice = document.querySelector('.container'); //general--gestion de la fenetre  contenaire général
+const iconCalculatrice = document.querySelector('.iconCalculatrice'); //general--gestion de la fenetre icone du bureau
+const iconRedutionFenetre = document.querySelector('.moin'); //general--gestion de la fenetre pour réduire la fenétre
+const iconAgrandirFenetre = document.querySelector('.Agrendir'); //general--gestion de la fenetre 
+const iconFermerFenetre = document.querySelector('.close'); //general--gestion de la fenetre
+const allBtn = document.querySelector('.contLigne'); //general--menu burger
+const corpNav = document.querySelector('.navBar'); //general--menu burger
+const overlay = document.querySelector('.overlay'); //general--menu burger
+const scientTrigoClick = document.querySelector('.generalTrigo') //scientifique--afficher les information trigo
+const scientTrigoAffiche = document.querySelector('.itemsGeneralTrigo') //scientifique--afficher les information trigo
+const scientFuncClick = document.querySelector('.generalfonc') //scientifique--afficher les information fonction
+const scientFuncAffiche = document.querySelector('.itemsGeneralFonc') //scientifique--afficher les information fonction
 
 
+//------------------------------ code général--------------------------------------
 
 //gestion de la fenetre
 function CacheContainer() {
@@ -60,7 +65,23 @@ allBtn.addEventListener('click', () => {
 
 })
 overlay.addEventListener('click', () => {
-    overlay.classList.remove('activeOverlay');
-    corpNav.classList.remove('active-nav');
+        overlay.classList.remove('activeOverlay');
+        corpNav.classList.remove('active-nav');
 
+    })
+    //-------------------------calculette standard-----------------------------------------------
+
+
+
+
+//------------------------ calculette scientifique-------------------------------------------
+
+//afficher le menu trigonométrie
+scientTrigoClick.addEventListener('click', () => {
+
+    scientTrigoAffiche.classList.toggle('itemsGeneralTrigoActive');
+})
+scientFuncClick.addEventListener('click', () => {
+
+    scientFuncAffiche.classList.toggle('itemsGeneralFoncActive');
 })

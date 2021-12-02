@@ -514,7 +514,7 @@ a {
   grid-column: 1/8;
   display: grid;
   grid-template-columns: repeat(5, 1fr) 321px;
-  grid-template-rows: repeat(11, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 }
 #corpsScientifique .box {
   grid-row: 1/2;
@@ -809,25 +809,30 @@ a {
   grid-row: 3/4;
   grid-column: 1/6;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  width: 545px;
+  grid-template-columns: repeat(25, 1fr);
   grid-template-rows: 1fr;
+  background-color: rgba(242, 242, 242, 0.2);
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo {
   grid-row: 1/2;
-  grid-column: 1/3;
+  grid-column: 1/7;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .generalTrigo {
+  width: 100%;
+  height: 100%;
   display: flex;
   cursor: default;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .generalTrigo img {
-  width: 30px;
-  height: 30px;
-  margin: 7px 0 0 1px;
+  width: 16px;
+  height: 16px;
+  margin: 12px 5px 0 5px;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .generalTrigo p {
-  font-size: 12px;
-  margin-top: 14px;
+  font-size: 11.5px;
+  margin: 12px 1px 0 0;
+  padding: 0;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .generalTrigo:hover {
   border: 1px solid gray;
@@ -836,14 +841,46 @@ a {
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .generalTrigo .flecheTricoFunc {
   width: 20px;
   height: 20px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .itemsGeneralTrigo {
   display: none;
 }
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .itemsGeneralTrigoActive {
+  display: block;
+  width: 275px;
+  height: 100px;
+  text-align: center;
+  background-color: #d8d8d8;
+  cursor: default;
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: peat(2, 1fr);
+  z-index: 100;
+  cursor: default;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .itemsGeneralTrigoActive .itemsTrigo {
+  width: 66px;
+  height: 47px;
+  margin: 0.5px;
+  background-color: #f2f2f2;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .itemsGeneralTrigoActive .itemsTrigo p,
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .itemsGeneralTrigoActive .itemsTrigo img {
+  font-size: 15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .trigo .itemsGeneralTrigoActive .itemsTrigo:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction {
   grid-row: 1/2;
-  grid-column: 3/5;
+  grid-column: 7/12;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .generalfonc {
   display: flex;
@@ -852,11 +889,11 @@ a {
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .generalfonc img {
   width: 30px;
   height: 30px;
-  margin: 7px 0 0 1px;
+  margin: 5px 0 0 1px;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .generalfonc p {
   font-size: 12px;
-  margin-top: 14px;
+  margin-top: 12px;
 }
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .generalfonc:hover {
   border: 1px solid gray;
@@ -865,10 +902,41 @@ a {
 #corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .generalfonc .flecheTricoFunc {
   width: 20px;
   height: 20px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
-#corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .itemsGeneralTrigo {
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .itemsGeneralFonc {
   display: none;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .itemsGeneralFoncActive {
+  display: block;
+  width: 200px;
+  height: 95px;
+  text-align: center;
+  background-color: #d8d8d8;
+  cursor: default;
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: peat(2, 1fr);
+  z-index: 100;
+  cursor: default;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .itemsGeneralFoncActive .itemsFonc {
+  width: 66px;
+  height: 47px;
+  margin: 1px;
+  background-color: #f2f2f2;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .itemsGeneralFoncActive .itemsFonc img {
+  font-size: 15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsScientifique .resulCalcule .memoireResult .trigoFonction .fonction .itemsGeneralFoncActive .itemsFonc:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
 }
 #corpsScientifique .resulCalcule .result {
   grid-row: 1/2;

@@ -9,7 +9,7 @@
     grid-column: 1/8;
     display: grid;
     grid-template-columns: repeat(5, 1fr) 321px;
-    grid-template-rows: repeat(11, 1fr);
+    grid-template-rows: repeat(12, 1fr);
     .box {
         grid-row: 1/2;
         grid-column: 1/6;
@@ -299,21 +299,26 @@
                 grid-row: 3/4;
                 grid-column: 1/6;
                 display: grid;
-                grid-template-columns: repeat(6, 1fr);
+                width: 545px;
+                grid-template-columns: repeat(25, 1fr);
                 grid-template-rows: 1fr;
+                background-color: rgba(242, 242, 242, 0.2);
                 .trigo {
                     grid-row: 1/2;
-                    grid-column: 1/3;
+                    grid-column: 1/7;
                     .generalTrigo {
+                        width: 100%;
+                        height: 100%;
                         display: flex;
                         img {
-                            width: 30px;
-                            height: 30px;
-                            margin: 7px 0 0 1px;
+                            width: 16px;
+                            height: 16px;
+                            margin: 12px 5px 0 5px;
                         }
                         p {
-                            font-size: 12px;
-                            margin-top: 14px;
+                            font-size: 11.5px;
+                            margin: 12px 1px 0 0;
+                            padding: 0;
                         }
                         cursor: default;
                         &:hover {
@@ -323,26 +328,58 @@
                         .flecheTricoFunc {
                             width: 20px;
                             height: 20px;
-                            margin-top: 12px;
+                            margin-top: 10px;
                         }
                     }
                     .itemsGeneralTrigo {
                         display: none;
                     }
+                    .itemsGeneralTrigoActive {
+                        display: block;
+                        width: 275px;
+                        height: 100px;
+                        text-align: center;
+                        background-color: rgb(216, 216, 216);
+                        cursor: default;
+                        position: absolute;
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        grid-template-rows: peat(2, 1fr);
+                        z-index: 100;
+                        cursor: default;
+                        .itemsTrigo {
+                            width: 66px;
+                            height: 47px;
+                            margin: 0.5px;
+                            background-color: rgb(242, 242, 242);
+                            p,
+                            img {
+                                font-size: 15px;
+                                position: relative;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                margin: 0;
+                            }
+                            &:hover {
+                                background-color: rgb(218, 218, 218);
+                                border: 1px solid rgb(204, 204, 204);
+                            }
+                        }
+                    }
                 }
                 .fonction {
                     grid-row: 1/2;
-                    grid-column: 3/5;
+                    grid-column: 7/12;
                     .generalfonc {
                         display: flex;
                         img {
                             width: 30px;
                             height: 30px;
-                            margin: 7px 0 0 1px;
+                            margin: 5px 0 0 1px;
                         }
                         p {
                             font-size: 12px;
-                            margin-top: 14px;
+                            margin-top: 12px;
                         }
                         cursor: default;
                         &:hover {
@@ -352,11 +389,42 @@
                         .flecheTricoFunc {
                             width: 20px;
                             height: 20px;
-                            margin-top: 12px;
+                            margin-top: 10px;
                         }
                     }
-                    .itemsGeneralTrigo {
+                    .itemsGeneralFonc {
                         display: none;
+                    }
+                    .itemsGeneralFoncActive {
+                        display: block;
+                        width: 200px;
+                        height: 95px;
+                        text-align: center;
+                        background-color: rgb(216, 216, 216);
+                        cursor: default;
+                        position: absolute;
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-template-rows: peat(2, 1fr);
+                        z-index: 100;
+                        cursor: default;
+                        .itemsFonc {
+                            width: 66px;
+                            height: 47px;
+                            margin: 1px;
+                            background-color: rgb(242, 242, 242);
+                            img {
+                                font-size: 15px;
+                                position: relative;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                margin: 0;
+                            }
+                            &:hover {
+                                background-color: rgb(218, 218, 218);
+                                border: 1px solid rgb(204, 204, 204);
+                            }
+                        }
                     }
                 }
             }
