@@ -1,5 +1,5 @@
 //stylisation de la calculatrice standard
-#corpsStandard {
+#corpsDate {
     width: 100%;
     height: 100%;
     @include marginPadingNull();
@@ -150,166 +150,16 @@
             z-index: 5;
         }
     }
-    .histoMemo {
-        grid-row: 1/10;
-        grid-column: 5/7;
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        grid-template-rows: repeat(9, 1fr);
-        background-color: transparent;
-        .histo {
-            grid-row: 1/2;
-            grid-column: 1/2;
-            width: 80px;
-            margin: 5px 20px;
-            position: relative;
-            h2 {
-                font-size: 15px;
-                cursor: default;
-            }
-        }
-        .memoiregeneral {
-            grid-row: 1/2;
-            grid-column: 2/3;
-            width: 70px;
-            margin: 5px 20px;
-            position: relative;
-            h2 {
-                font-size: 15px;
-                cursor: default;
-            }
-        }
-        .active_histoMemo {
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background-color: $CouleurEgale;
-            }
-        }
-        .resultHistoMemo {
-            grid-row: 2/10;
-            grid-column: 1/3;
-            width: 100%;
-            height: 100%;
-            .hitodéfaut,
-            .memodéfaut {
-                font-size: 13px;
-                white-space: nowrap;
-                margin-left: 20px;
-            }
-            .memodéfaut {
-                display: none;
-            }
-        }
+    .choixDate {
+        display: none;
     }
-    .resulCalcule {
-        grid-row: 2/4;
-        grid-column: 1/5;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        .memoireResult {
-            align-self: flex-end;
-            display: flex;
-            .memo {
-                width: 80px;
-                height: 30px;
-                p {
-                    margin: 0;
-                    margin-top: 7px;
-                    font-size: 12px;
-                    text-align: center;
-                }
-            }
-            .MC,
-            .MR {
-                color: gray;
-                &:hover {
-                    cursor: default;
-                    opacity: 0.5;
-                    box-shadow: 0 0.5px 1px gray;
-                }
-            }
-            .MP,
-            .MS,
-            .MM {
-                cursor: default;
-                &:hover {
-                    border: 1px solid gray;
-                    background-color: rgb(214, 214, 214);
-                }
-            }
-        }
-        .result {
-            margin-bottom: 10px;
-            margin-right: 15px;
-            font-weight: 500;
-            align-self: center;
-            .calculeresult {
-                p {
-                    @include marginPadingNull();
-                }
-                margin-left: 5px;
-                font-size: 13px;
-                color: gray;
-            }
-            .chiffreresult {
-                p {
-                    @include marginPadingNull();
-                }
-                font-size: 40px;
-            }
-        }
+    .diffDat {
+        display: none;
+        grid-row: 2/10;
+        grid-column: 1/6;
     }
-    .opperateur {
-        width: 98%;
-        height: 98%;
-        text-align: center;
-        background-color: rgb(242, 242, 242);
-        opacity: 0.7;
-        cursor: default;
-        p,
-        img {
-            font-size: 15px;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            margin: 0;
-        }
-        &:hover {
-            background-color: rgb(218, 218, 218);
-            border: 1px solid rgb(204, 204, 204);
-        }
-    }
-    .chiffre {
-        width: 98%;
-        height: 98%;
-        text-align: center;
-        background-color: $CouleurChiffre;
-        cursor: default;
-        p,
-        img {
-            font-size: 20px;
-            font-weight: bold;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            margin: 0;
-        }
-        &:hover {
-            background-color: rgb(218, 218, 218);
-            border: 1px solid rgb(165, 165, 165);
-        }
-    }
-    .egal {
-        background-color: $CouleurEgale;
-        &:hover {
-            background-color: rgb(0, 157, 185);
-            border: 1px solid rgb(0, 157, 185);
-        }
+    .ajoutDate {
+        grid-row: 2/10;
+        grid-column: 1/6;
     }
 }

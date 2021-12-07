@@ -79,9 +79,15 @@ overlay.addEventListener('click', () => {
 //afficher le menu trigonométrie
 scientTrigoClick.addEventListener('click', () => {
 
+
+    scientFuncAffiche.classList.remove('itemsGeneralFoncActive');
+
     scientTrigoAffiche.classList.toggle('itemsGeneralTrigoActive');
+
 })
 scientFuncClick.addEventListener('click', () => {
+
+    scientTrigoAffiche.classList.remove('itemsGeneralTrigoActive');
 
     scientFuncAffiche.classList.toggle('itemsGeneralFoncActive');
 })
