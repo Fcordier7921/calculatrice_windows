@@ -91,3 +91,11 @@ scientFuncClick.addEventListener('click', () => {
 
     scientFuncAffiche.classList.toggle('itemsGeneralFoncActive');
 })
+
+
+
+
+//------------------------ calculette date-------------------------------------------
+
+
+const datepicker = document.querySelectorAll('.datepicker')

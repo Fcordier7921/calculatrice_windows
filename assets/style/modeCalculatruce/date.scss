@@ -9,7 +9,7 @@
     grid-column: 1/8;
     display: grid;
     grid-template-columns: repeat(4, 1fr) 321px;
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: 40px repeat(8, 1fr);
     .box {
         grid-row: 1/2;
         grid-column: 1/5;
@@ -154,11 +154,42 @@
         display: none;
     }
     .diffDat {
-        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
+        .choix {
+            display: flex;
+            height: 40px;
+            p {
+                font-size: 13.5px;
+                font-weight: bold;
+                margin: 0 0 0 9px;
+                padding: 13.25px 0;
+            }
+            img {
+                width: 23px;
+                height: 23px;
+                margin-top: 10px;
+            }
+        }
+        p {
+            font-size: 13.5px;
+            margin: 10px 0 0 9px;
+        }
+        .datepicker {
+            background-color: rgba($CouleurMain, 0);
+            padding: 5px;
+            font-size: 15px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+         ::-webkit-calendar-picker-indicator {
+            padding: 5px;
+            cursor: pointer;
+        }
     }
     .ajoutDate {
+        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
     }
