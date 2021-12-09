@@ -243,12 +243,12 @@
                     <img src="/assets/img/page/flecheBas.png" alt="afficher les choix: différence entre date">
                 </div>
                 <p>De</p>
-                <input type="text" class="datepicker" value="8 decembre 2021">
+                <input type="date" class="datepicker" value="2021-12-08">
 
                 <p>A</p>
 
-                <input type="text" class="datepicker" value="8 decembre 2021">
-                <p>Differencce</p>
+                <input type="date" class="datepicker" value="2021-12-08">
+                <p class="différenceDate">Differencce</p>
                 <h2 class="resultDate">Dates indentique</h2>
                 <p class="nbJourDiff"> 23 jours</p>
 
@@ -259,10 +259,19 @@
                     <img src="/assets/img/page/flecheBas.png" alt="afficher les choix: différence entre date">
                 </div>
                 <p>De</p>
-                <input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30">
+                <input type="date" class="datepicker" value="2021-12-08">
                 <br>
-                <input type="checkbox" name="ajouter" id="ajouter"><label for="ajouter">Ajouter</label>
-                <input type="checkbox" name="soustraire" id="soustraire"><label for="soustraire">Soustraire</label>
+                <div class="choixChecked">
+
+                    <div class="choixCheckedOne">
+                        <input type="checkbox" name="ajouter" id="ajouter" class="ajouter" checked><label for="ajouter"></label>
+                        <p>Ajouter</p>
+                    </div>
+                    <div class="choixCheckedTow">
+                        <input type="checkbox" name="soustraire" id="soustraire" class="soustraire"><label for="soustraire"></label>
+                        <p>soustraire</p>
+                    </div>
+                </div>
                 <br>
                 <div class="tempsAjouter">
 

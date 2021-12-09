@@ -306,7 +306,7 @@ a {
   left: -5px;
   width: 2px;
   height: 25px;
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsStandard .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -375,7 +375,7 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsStandard .histoMemo .resultHistoMemo {
   grid-row: 2/10;
@@ -497,7 +497,7 @@ a {
   border: 1px solid #a5a5a5;
 }
 #corpsStandard .egal {
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsStandard .egal:hover {
   background-color: #009db9;
@@ -628,7 +628,7 @@ a {
   left: -5px;
   width: 2px;
   height: 25px;
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsScientifique .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -697,7 +697,7 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsScientifique .histoMemo .resultHistoMemo {
   grid-row: 2/10;
@@ -1005,7 +1005,7 @@ a {
   border: 1px solid #a5a5a5;
 }
 #corpsScientifique .egal {
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsScientifique .egal:hover {
   background-color: #009db9;
@@ -1136,7 +1136,7 @@ a {
   left: -5px;
   width: 2px;
   height: 25px;
-  background-color: #90c7df;
+  background-color: #0e97d1;
 }
 #corpsDate .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -1172,6 +1172,7 @@ a {
   display: none;
 }
 #corpsDate .diffDat {
+  display: none;
   grid-row: 2/10;
   grid-column: 1/6;
 }
@@ -1196,20 +1197,156 @@ a {
 }
 #corpsDate .diffDat .datepicker {
   background-color: rgba(230, 230, 230, 0);
-  padding: 5px;
+  padding: 8px;
   font-size: 15px;
   border: none;
   outline: none;
   cursor: pointer;
 }
-#corpsDate .diffDat ::-webkit-calendar-picker-indicator {
+#corpsDate .diffDat .datepicker::-webkit-calendar-picker-indicator {
   padding: 5px;
   cursor: pointer;
 }
+#corpsDate .diffDat .différenceDate {
+  margin-top: 20px;
+  font-size: 13px;
+}
+#corpsDate .diffDat .resultDate {
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+}
+#corpsDate .diffDat .nbJourDiff {
+  margin: 0;
+  padding: 0;
+  margin-left: 12px;
+  font-weight: bold;
+  opacity: 0.6;
+}
 #corpsDate .ajoutDate {
-  display: none;
   grid-row: 2/10;
   grid-column: 1/6;
+}
+#corpsDate .ajoutDate .choix {
+  display: flex;
+  height: 40px;
+}
+#corpsDate .ajoutDate .choix p {
+  font-size: 13.5px;
+  font-weight: bold;
+  margin: 0 0 0 9px;
+  padding: 13.25px 0;
+}
+#corpsDate .ajoutDate .choix img {
+  width: 23px;
+  height: 23px;
+  margin-top: 10px;
+}
+#corpsDate .ajoutDate p {
+  font-size: 13.5px;
+  margin: 10px 0 0 9px;
+}
+#corpsDate .ajoutDate .datepicker {
+  background-color: rgba(230, 230, 230, 0);
+  padding: 8px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#corpsDate .ajoutDate .datepicker::-webkit-calendar-picker-indicator {
+  padding: 5px;
+  cursor: pointer;
+}
+#corpsDate .ajoutDate .choixChecked {
+  height: 50px;
+  position: relative;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedOne label {
+  background-color: #fff;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 20px;
+  left: 7px;
+  width: 20px;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedOne label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 6px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedOne input[type=checkbox] {
+  visibility: hidden;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedOne input[type=checkbox]:checked + label {
+  background-color: whit;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border: 6px solid #0e97d1;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedOne input[type=checkbox]:checked + label:after {
+  opacity: 0;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedOne p {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedTow label {
+  background-color: #fff;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 20px;
+  left: 110px;
+  width: 20px;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedTow label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 6px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedTow input[type=checkbox] {
+  visibility: hidden;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedTow input[type=checkbox]:checked + label {
+  background-color: whit;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border: 6px solid #0e97d1;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedTow input[type=checkbox]:checked + label:after {
+  opacity: 0;
+}
+#corpsDate .ajoutDate .choixChecked .choixCheckedTow p {
+  position: absolute;
+  top: 10px;
+  left: 130px;
 }
 
 .overlay {

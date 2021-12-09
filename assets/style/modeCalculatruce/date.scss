@@ -154,6 +154,7 @@
         display: none;
     }
     .diffDat {
+        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
         .choix {
@@ -177,20 +178,158 @@
         }
         .datepicker {
             background-color: rgba($CouleurMain, 0);
-            padding: 5px;
+            padding: 8px;
             font-size: 15px;
             border: none;
             outline: none;
             cursor: pointer;
+            &::-webkit-calendar-picker-indicator {
+                padding: 5px;
+                cursor: pointer;
+            }
         }
-         ::-webkit-calendar-picker-indicator {
-            padding: 5px;
-            cursor: pointer;
+        .différenceDate {
+            margin-top: 20px;
+            font-size: 13px;
+        }
+        .resultDate {
+            @include marginPadingNull();
+            margin-left: 10px;
+        }
+        .nbJourDiff {
+            @include marginPadingNull();
+            margin-left: 12px;
+            font-weight: bold;
+            opacity: 0.6;
         }
     }
     .ajoutDate {
-        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
+        .choix {
+            display: flex;
+            height: 40px;
+            p {
+                font-size: 13.5px;
+                font-weight: bold;
+                margin: 0 0 0 9px;
+                padding: 13.25px 0;
+            }
+            img {
+                width: 23px;
+                height: 23px;
+                margin-top: 10px;
+            }
+        }
+        p {
+            font-size: 13.5px;
+            margin: 10px 0 0 9px;
+        }
+        .datepicker {
+            background-color: rgba($CouleurMain, 0);
+            padding: 8px;
+            font-size: 15px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            &::-webkit-calendar-picker-indicator {
+                padding: 5px;
+                cursor: pointer;
+            }
+        }
+        .choixChecked {
+            height: 50px;
+            position: relative;
+            .choixCheckedOne {
+                label {
+                    background-color: #fff;
+                    border: 3px solid #ccc;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    height: 20px;
+                    left: 0;
+                    position: absolute;
+                    top: 20px;
+                    left: 7px;
+                    width: 20px;
+                    &:after {
+                        border: 2px solid #fff;
+                        border-top: none;
+                        border-right: none;
+                        content: "";
+                        height: 6px;
+                        left: 6px;
+                        opacity: 0;
+                        position: absolute;
+                        top: 8px;
+                        transform: rotate(-45deg);
+                        width: 12px;
+                    }
+                }
+                input[type="checkbox"] {
+                    visibility: hidden;
+                }
+                input[type="checkbox"]:checked+label {
+                    background-color: whit;
+                    padding: 0;
+                    width: 20px;
+                    height: 20px;
+                    border: 6px solid $CouleurEgale;
+                }
+                input[type="checkbox"]:checked+label:after {
+                    opacity: 0;
+                }
+                p {
+                    position: absolute;
+                    top: 10px;
+                    left: 25px;
+                }
+            }
+            .choixCheckedTow {
+                label {
+                    background-color: #fff;
+                    border: 3px solid #ccc;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    height: 20px;
+                    left: 0;
+                    position: absolute;
+                    top: 20px;
+                    left: 110px;
+                    width: 20px;
+                    &:after {
+                        border: 2px solid #fff;
+                        border-top: none;
+                        border-right: none;
+                        content: "";
+                        height: 6px;
+                        left: 6px;
+                        opacity: 0;
+                        position: absolute;
+                        top: 8px;
+                        transform: rotate(-45deg);
+                        width: 12px;
+                    }
+                }
+                input[type="checkbox"] {
+                    visibility: hidden;
+                }
+                input[type="checkbox"]:checked+label {
+                    background-color: whit;
+                    padding: 0;
+                    width: 20px;
+                    height: 20px;
+                    border: 6px solid $CouleurEgale;
+                }
+                input[type="checkbox"]:checked+label:after {
+                    opacity: 0;
+                }
+                p {
+                    position: absolute;
+                    top: 10px;
+                    left: 130px;
+                }
+            }
+        }
     }
 }
