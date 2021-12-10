@@ -1348,6 +1348,9 @@ a {
   top: 10px;
   left: 130px;
 }
+#corpsDate .ajoutDate .tempsAjouter {
+  display: flex;
+}
 
 .overlay {
   display: none;
