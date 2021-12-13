@@ -98,4 +98,4 @@ scientFuncClick.addEventListener('click', () => {
 //------------------------ calculette date-------------------------------------------
 
 
-const datepicker = document.querySelectorAll('.datepicker')
+const choixCalcul = document.querySelectorAll('.choix');

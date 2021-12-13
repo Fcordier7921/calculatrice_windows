@@ -151,10 +151,39 @@
         }
     }
     .choixDate {
-        display: none;
+        width: 280px;
+        height: 68px;
+        margin-left: 10px;
+        position: absolute;
+        top: 70px;
+        background-color: $CouleurMain;
+        box-shadow: 1px 1px 30px rgb(93, 93, 93);
+        .choixDateDiff {
+            height: 26px;
+            width: 272px;
+            margin-left: 4px;
+            p {
+                font-size: 14px;
+                margin: 5px 7px;
+            }
+            &:hover {
+                background-color: #f1f1f1;
+            }
+        }
+        .choixDateAjout {
+            height: 26px;
+            width: 272px;
+            margin-left: 4px;
+            p {
+                margin: 5px 7px;
+                font-size: 14px;
+            }
+            &:hover {
+                background-color: #f1f1f1;
+            }
+        }
     }
     .diffDat {
-        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
         .choix {
@@ -204,6 +233,7 @@
         }
     }
     .ajoutDate {
+        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
         .choix {
@@ -333,6 +363,45 @@
         }
         .tempsAjouter {
             display: flex;
+            .anne,
+            .mois,
+            .jours {
+                margin-left: 10px;
+                p {
+                    margin: 0;
+                    color: rgba($CouleurText, 0.6);
+                    font-size: 0.9rem;
+                }
+                .inputTag {
+                    height: 35px;
+                    width: 87px;
+                    margin-top: 3px;
+                    border: 1px solid $CouleurText;
+                    background-color: $CouleurChiffre;
+                    position: relative;
+                    p {
+                        margin: 7px 9px;
+                    }
+                    img {
+                        width: 25px;
+                        height: 25px;
+                        position: absolute;
+                        top: 3px;
+                        right: 4px;
+                    }
+                }
+            }
+        }
+        .resulterAjourSous {
+            margin-top: 30px;
+            p {
+                color: rgba($CouleurText, 0.6);
+                margin: 0 9px;
+            }
+            h2 {
+                margin: 2px 9px;
+                font-size: 20px;
+            }
         }
     }
 }

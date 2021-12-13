@@ -1169,10 +1169,39 @@ a {
   z-index: 5;
 }
 #corpsDate .choixDate {
-  display: none;
+  width: 280px;
+  height: 68px;
+  margin-left: 10px;
+  position: absolute;
+  top: 70px;
+  background-color: #e6e6e6;
+  box-shadow: 1px 1px 30px #5d5d5d;
+}
+#corpsDate .choixDate .choixDateDiff {
+  height: 26px;
+  width: 272px;
+  margin-left: 4px;
+}
+#corpsDate .choixDate .choixDateDiff p {
+  font-size: 14px;
+  margin: 5px 7px;
+}
+#corpsDate .choixDate .choixDateDiff:hover {
+  background-color: #f1f1f1;
+}
+#corpsDate .choixDate .choixDateAjout {
+  height: 26px;
+  width: 272px;
+  margin-left: 4px;
+}
+#corpsDate .choixDate .choixDateAjout p {
+  margin: 5px 7px;
+  font-size: 14px;
+}
+#corpsDate .choixDate .choixDateAjout:hover {
+  background-color: #f1f1f1;
 }
 #corpsDate .diffDat {
-  display: none;
   grid-row: 2/10;
   grid-column: 1/6;
 }
@@ -1224,6 +1253,7 @@ a {
   opacity: 0.6;
 }
 #corpsDate .ajoutDate {
+  display: none;
   grid-row: 2/10;
   grid-column: 1/6;
 }
@@ -1350,6 +1380,53 @@ a {
 }
 #corpsDate .ajoutDate .tempsAjouter {
   display: flex;
+}
+#corpsDate .ajoutDate .tempsAjouter .anne,
+#corpsDate .ajoutDate .tempsAjouter .mois,
+#corpsDate .ajoutDate .tempsAjouter .jours {
+  margin-left: 10px;
+}
+#corpsDate .ajoutDate .tempsAjouter .anne p,
+#corpsDate .ajoutDate .tempsAjouter .mois p,
+#corpsDate .ajoutDate .tempsAjouter .jours p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+}
+#corpsDate .ajoutDate .tempsAjouter .anne .inputTag,
+#corpsDate .ajoutDate .tempsAjouter .mois .inputTag,
+#corpsDate .ajoutDate .tempsAjouter .jours .inputTag {
+  height: 35px;
+  width: 87px;
+  margin-top: 3px;
+  border: 1px solid #000000;
+  background-color: #fffefe;
+  position: relative;
+}
+#corpsDate .ajoutDate .tempsAjouter .anne .inputTag p,
+#corpsDate .ajoutDate .tempsAjouter .mois .inputTag p,
+#corpsDate .ajoutDate .tempsAjouter .jours .inputTag p {
+  margin: 7px 9px;
+}
+#corpsDate .ajoutDate .tempsAjouter .anne .inputTag img,
+#corpsDate .ajoutDate .tempsAjouter .mois .inputTag img,
+#corpsDate .ajoutDate .tempsAjouter .jours .inputTag img {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+}
+#corpsDate .ajoutDate .resulterAjourSous {
+  margin-top: 30px;
+}
+#corpsDate .ajoutDate .resulterAjourSous p {
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 9px;
+}
+#corpsDate .ajoutDate .resulterAjourSous h2 {
+  margin: 2px 9px;
+  font-size: 20px;
 }
 
 .overlay {
