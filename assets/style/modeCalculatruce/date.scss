@@ -151,54 +151,73 @@
         }
     }
     .choixDate {
+        display: none;
         width: 280px;
         height: 68px;
         margin-left: 10px;
         position: absolute;
-        top: 70px;
         background-color: $CouleurMain;
         box-shadow: 1px 1px 30px rgb(93, 93, 93);
+        z-index: 100;
         .choixDateDiff {
             height: 26px;
             width: 272px;
-            margin-left: 4px;
+            margin: 4px 6px;
+            cursor: default;
             p {
+                width: 272px;
+                height: 26px;
                 font-size: 14px;
-                margin: 5px 7px;
+                margin: 0;
+                padding: 5px 7px;
             }
-            &:hover {
+            &:hover,
+            &:focus {
+                width: 272px;
+                height: 26px;
                 background-color: #f1f1f1;
             }
         }
         .choixDateAjout {
             height: 26px;
             width: 272px;
-            margin-left: 4px;
+            margin: 4px 6px;
+            cursor: default;
             p {
-                margin: 5px 7px;
+                width: 272px;
+                height: 26px;
+                margin: 0;
+                padding: 5px 7px;
                 font-size: 14px;
             }
-            &:hover {
+            &:hover,
+            &:focus {
+                width: 272px;
+                height: 26px;
                 background-color: #f1f1f1;
             }
         }
     }
     .diffDat {
+        display: none;
         grid-row: 2/10;
         grid-column: 1/6;
         .choix {
             display: flex;
             height: 40px;
+            cursor: default;
             p {
                 font-size: 13.5px;
                 font-weight: bold;
                 margin: 0 0 0 9px;
                 padding: 13.25px 0;
+                pointer-events: none;
             }
             img {
                 width: 23px;
                 height: 23px;
                 margin-top: 10px;
+                pointer-events: none;
             }
         }
         p {
@@ -239,16 +258,21 @@
         .choix {
             display: flex;
             height: 40px;
+            pointer-events: visible;
+            cursor: default;
+            z-index: 2;
             p {
                 font-size: 13.5px;
                 font-weight: bold;
                 margin: 0 0 0 9px;
                 padding: 13.25px 0;
+                pointer-events: none;
             }
             img {
                 width: 23px;
                 height: 23px;
                 margin-top: 10px;
+                pointer-events: none;
             }
         }
         p {
@@ -402,6 +426,16 @@
                 margin: 2px 9px;
                 font-size: 20px;
             }
+        }
+    }
+    .ActivDate {
+        display: block;
+    }
+    .ActivChoixDate {
+        display: block;
+        background-color: $CouleurEgale;
+        &:hover {
+            background: $CouleurEgale!important;
         }
     }
 }

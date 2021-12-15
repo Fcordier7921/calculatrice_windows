@@ -1,3 +1,5 @@
+//------------------------------ code général--------------------------------------
+
 const containerCalculatrice = document.querySelector('.container'); //general--gestion de la fenetre  contenaire général
 const iconCalculatrice = document.querySelector('.iconCalculatrice'); //general--gestion de la fenetre icone du bureau
 const iconRedutionFenetre = document.querySelector('.moin'); //general--gestion de la fenetre pour réduire la fenétre
@@ -6,13 +8,7 @@ const iconFermerFenetre = document.querySelector('.close'); //general--gestion d
 const allBtn = document.querySelector('.contLigne'); //general--menu burger
 const corpNav = document.querySelector('.navBar'); //general--menu burger
 const overlay = document.querySelector('.overlay'); //general--menu burger
-const scientTrigoClick = document.querySelector('.generalTrigo') //scientifique--afficher les information trigo
-const scientTrigoAffiche = document.querySelector('.itemsGeneralTrigo') //scientifique--afficher les information trigo
-const scientFuncClick = document.querySelector('.generalfonc') //scientifique--afficher les information fonction
-const scientFuncAffiche = document.querySelector('.itemsGeneralFonc') //scientifique--afficher les information fonction
 
-
-//------------------------------ code général--------------------------------------
 
 //gestion de la fenetre
 function CacheContainer() {
@@ -76,21 +72,30 @@ overlay.addEventListener('click', () => {
 
 //------------------------ calculette scientifique-------------------------------------------
 
-//afficher le menu trigonométrie
-scientTrigoClick.addEventListener('click', () => {
+const scientTrigoClick = document.querySelector('.generalTrigo') //scientifique--afficher les information trigo
+const scientTrigoAffiche = document.querySelector('.itemsGeneralTrigo') //scientifique--afficher les information trigo
+const scientFuncClick = document.querySelector('.generalfonc') //scientifique--afficher les information fonction
+const scientFuncAffiche = document.querySelector('.itemsGeneralFonc') //scientifique--afficher les information fonction
 
 
-    scientFuncAffiche.classList.remove('itemsGeneralFoncActive');
+if (window.location.href === 'http://127.0.0.1:5500/modeCalculetteHTML/scientifique.html') {
 
-    scientTrigoAffiche.classList.toggle('itemsGeneralTrigoActive');
+    //afficher le menu trigonométrie
+    scientTrigoClick.addEventListener('click', () => {
 
-})
-scientFuncClick.addEventListener('click', () => {
 
-    scientTrigoAffiche.classList.remove('itemsGeneralTrigoActive');
+        scientFuncAffiche.classList.remove('itemsGeneralFoncActive');
 
-    scientFuncAffiche.classList.toggle('itemsGeneralFoncActive');
-})
+        scientTrigoAffiche.classList.toggle('itemsGeneralTrigoActive');
+
+    })
+    scientFuncClick.addEventListener('click', () => {
+
+        scientTrigoAffiche.classList.remove('itemsGeneralTrigoActive');
+
+        scientFuncAffiche.classList.toggle('itemsGeneralFoncActive');
+    })
+}
 
 
 
@@ -98,4 +103,73 @@ scientFuncClick.addEventListener('click', () => {
 //------------------------ calculette date-------------------------------------------
 
 
-const choixCalcul = document.querySelectorAll('.choix');
+const choixTypeDate = document.querySelectorAll('.choix');
+const choixCalcul = document.querySelector('.choixDate');
+const dateDiff = document.querySelector('.choixDateDiff');
+const dateAjout = document.querySelector('.choixDateAjout');
+const diffDate = document.querySelector('.diffDat');
+const ajoutDate = document.querySelector('.ajoutDate');
+const choixCheckedOne = document.querySelector('#ajouter')
+const choixCheckedTow = document.querySelector('#soustraire')
+
+
+
+//afficher la modale de choix de calcule des dates
+choixTypeDate.forEach(element => {
+
+    element.addEventListener('click', () => {
+
+
+        choixCalcul.classList.toggle('ActivDate');
+        if (dateAjout.classList.contains('ActivChoixDate')) {
+            choixCalcul.style.top = "40px";
+        } else {
+            choixCalcul.style.top = "80px";
+
+        }
+
+    })
+});
+
+//affichage de la caculette différence entre deux date
+dateDiff.addEventListener('click', () => {
+
+    if (dateAjout.classList.contains("ActivChoixDate")) {
+
+        dateAjout.classList.remove('ActivChoixDate');
+
+        dateDiff.classList.toggle('ActivChoixDate');
+        ajoutDate.classList.remove('ActivDate');
+
+        diffDate.classList.toggle('ActivDate');
+        choixCalcul.classList.remove('ActivDate');
+
+    }
+
+});
+
+//affichage de la caculette ajouter ou soustraire des dates
+dateAjout.addEventListener('click', () => {
+
+    if (dateDiff.classList.contains("ActivChoixDate")) {
+
+        dateDiff.classList.remove('ActivChoixDate');
+
+        dateAjout.classList.toggle('ActivChoixDate');
+        diffDate.classList.remove('ActivDate');
+
+        ajoutDate.classList.toggle('ActivDate');
+        choixCalcul.classList.remove('ActivDate');
+    }
+
+
+});
+
+//traitemant de la différence entre date
+
+
+
+
+//traitement d'ajouter suprimer des date
+
+console.log(choixCheckedOne);

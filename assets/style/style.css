@@ -306,7 +306,7 @@ a {
   left: -5px;
   width: 2px;
   height: 25px;
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsStandard .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -375,7 +375,7 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsStandard .histoMemo .resultHistoMemo {
   grid-row: 2/10;
@@ -497,7 +497,7 @@ a {
   border: 1px solid #a5a5a5;
 }
 #corpsStandard .egal {
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsStandard .egal:hover {
   background-color: #009db9;
@@ -628,7 +628,7 @@ a {
   left: -5px;
   width: 2px;
   height: 25px;
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsScientifique .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -697,7 +697,7 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsScientifique .histoMemo .resultHistoMemo {
   grid-row: 2/10;
@@ -1005,7 +1005,7 @@ a {
   border: 1px solid #a5a5a5;
 }
 #corpsScientifique .egal {
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsScientifique .egal:hover {
   background-color: #009db9;
@@ -1136,7 +1136,7 @@ a {
   left: -5px;
   width: 2px;
   height: 25px;
-  background-color: #0e97d1;
+  background-color: #53b4ddd0;
 }
 #corpsDate .box .navBar .navCahce ul li:hover {
   background-color: #dadada;
@@ -1169,56 +1169,73 @@ a {
   z-index: 5;
 }
 #corpsDate .choixDate {
+  display: none;
   width: 280px;
   height: 68px;
   margin-left: 10px;
   position: absolute;
-  top: 70px;
   background-color: #e6e6e6;
   box-shadow: 1px 1px 30px #5d5d5d;
+  z-index: 100;
 }
 #corpsDate .choixDate .choixDateDiff {
   height: 26px;
   width: 272px;
-  margin-left: 4px;
+  margin: 4px 6px;
+  cursor: default;
 }
 #corpsDate .choixDate .choixDateDiff p {
+  width: 272px;
+  height: 26px;
   font-size: 14px;
-  margin: 5px 7px;
+  margin: 0;
+  padding: 5px 7px;
 }
-#corpsDate .choixDate .choixDateDiff:hover {
+#corpsDate .choixDate .choixDateDiff:hover, #corpsDate .choixDate .choixDateDiff:focus {
+  width: 272px;
+  height: 26px;
   background-color: #f1f1f1;
 }
 #corpsDate .choixDate .choixDateAjout {
   height: 26px;
   width: 272px;
-  margin-left: 4px;
+  margin: 4px 6px;
+  cursor: default;
 }
 #corpsDate .choixDate .choixDateAjout p {
-  margin: 5px 7px;
+  width: 272px;
+  height: 26px;
+  margin: 0;
+  padding: 5px 7px;
   font-size: 14px;
 }
-#corpsDate .choixDate .choixDateAjout:hover {
+#corpsDate .choixDate .choixDateAjout:hover, #corpsDate .choixDate .choixDateAjout:focus {
+  width: 272px;
+  height: 26px;
   background-color: #f1f1f1;
 }
 #corpsDate .diffDat {
+  display: none;
   grid-row: 2/10;
   grid-column: 1/6;
 }
 #corpsDate .diffDat .choix {
   display: flex;
   height: 40px;
+  cursor: default;
 }
 #corpsDate .diffDat .choix p {
   font-size: 13.5px;
   font-weight: bold;
   margin: 0 0 0 9px;
   padding: 13.25px 0;
+  pointer-events: none;
 }
 #corpsDate .diffDat .choix img {
   width: 23px;
   height: 23px;
   margin-top: 10px;
+  pointer-events: none;
 }
 #corpsDate .diffDat p {
   font-size: 13.5px;
@@ -1260,17 +1277,22 @@ a {
 #corpsDate .ajoutDate .choix {
   display: flex;
   height: 40px;
+  pointer-events: visible;
+  cursor: default;
+  z-index: 2;
 }
 #corpsDate .ajoutDate .choix p {
   font-size: 13.5px;
   font-weight: bold;
   margin: 0 0 0 9px;
   padding: 13.25px 0;
+  pointer-events: none;
 }
 #corpsDate .ajoutDate .choix img {
   width: 23px;
   height: 23px;
   margin-top: 10px;
+  pointer-events: none;
 }
 #corpsDate .ajoutDate p {
   font-size: 13.5px;
@@ -1325,7 +1347,7 @@ a {
   padding: 0;
   width: 20px;
   height: 20px;
-  border: 6px solid #0e97d1;
+  border: 6px solid #53b4ddd0;
 }
 #corpsDate .ajoutDate .choixChecked .choixCheckedOne input[type=checkbox]:checked + label:after {
   opacity: 0;
@@ -1368,7 +1390,7 @@ a {
   padding: 0;
   width: 20px;
   height: 20px;
-  border: 6px solid #0e97d1;
+  border: 6px solid #53b4ddd0;
 }
 #corpsDate .ajoutDate .choixChecked .choixCheckedTow input[type=checkbox]:checked + label:after {
   opacity: 0;
@@ -1427,6 +1449,16 @@ a {
 #corpsDate .ajoutDate .resulterAjourSous h2 {
   margin: 2px 9px;
   font-size: 20px;
+}
+#corpsDate .ActivDate {
+  display: block;
+}
+#corpsDate .ActivChoixDate {
+  display: block;
+  background-color: #53b4ddd0;
+}
+#corpsDate .ActivChoixDate:hover {
+  background: #53b4ddd0 !important;
 }
 
 .overlay {
