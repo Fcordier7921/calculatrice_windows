@@ -167,8 +167,9 @@
         }
         
         @import 'modeCalculatruce/_standard.scss'; //import du style de la calculatrice standard
-        @import 'modeCalculatruce/_scientifique.scss'; //import du style de la calculatrice standard
-        @import 'modeCalculatruce/date.scss'; //import du style de la calculatrice standard
+        @import 'modeCalculatruce/_scientifique.scss'; //import du style de la calculatrice scientifique
+        @import 'modeCalculatruce/date.scss'; //import du style de la calculatrice de date
+        @import 'modeCalculatruce/devise.scss'; //import du style convertire les devise
         .overlay {
             display: none;
         }

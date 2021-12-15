@@ -172,4 +172,10 @@ dateAjout.addEventListener('click', () => {
 
 //traitement d'ajouter suprimer des date
 
-console.log(choixCheckedOne);
+
+choixCheckedOne.addEventListener('click', () => {
+    choixCheckedTow.checked = false
+})
+choixCheckedTow.addEventListener('click', () => {
+    choixCheckedOne.checked = false
+})

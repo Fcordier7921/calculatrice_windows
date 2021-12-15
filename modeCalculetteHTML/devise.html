@@ -34,7 +34,7 @@
 
 
         </div>
-        <div id="corpsDate">
+        <div id="corpsDevise">
             <div class="box">
                 <div class="headMenu">
                     <div class="contLigne ">
@@ -42,7 +42,7 @@
                         <div class="lignes"></div>
                         <div class="lignes"></div>
                     </div>
-                    <h1>Calcul de la date</h1>
+                    <h1>Devise</h1>
 
                 </div>
 
@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#corpsDate">
+                                    <a href="date.html">
                                         <div class="divLi active-items">
                                             <img src="/assets/img/page/navBar/date.png" alt="calculer des date">
                                             <p>
@@ -85,7 +85,7 @@
                                 </li>
                                 <h4>Convertisseur</h4>
                                 <li>
-                                    <a href="devise.html">
+                                    <a href="#corpsDevise">
                                         <div class="divLi">
                                             <img src="/assets/img/page/navBar/devise.png" alt="Convertire des devis ">
                                             <p>
@@ -229,85 +229,82 @@
                     </a>
                 </div>
             </div>
-            <div class="choixDate">
-                <div class="choixDateDiff ActivChoixDate">
-                    <p>Différence entre les dates </p>
-                </div>
-                <div class="choixDateAjout ">
-                    <p>Ajouter ou soustraire des jours </p>
-                </div>
-            </div>
-            <div class="diffDat ActivDate">
-                <div class="choix">
-                    <p>Différence entre les dates </p>
-                    <img src="/assets/img/page/flecheBas.png" alt="afficher les choix: différence entre date">
-                </div>
-                <p>De</p>
-                <input type="date" class="datepicker" value="2021-12-08">
+            <div class="convertisseurResultat">
+                <div class="choixConvertir">
+                    <h2 class="convertir"> 0 E</h2>
+                    <div class="convertirListe">
+                        <h4 class="choixDeConvertionResult">Europe- Euro </h4>
+                        <div class="choixDeConvertion">
 
-                <p>A</p>
-
-                <input type="date" class="datepicker" value="2021-12-08">
-                <p class="différenceDate">Differencce</p>
-                <h2 class="resultDate">Dates identique</h2>
-                <p class="nbJourDiff"> </p>
-
-            </div>
-            <div class="ajoutDate">
-                <div class="choix">
-                    <p>Ajouter ou soustraire des jours </p>
-                    <img src="/assets/img/page/flecheBas.png" alt="afficher les choix: différence entre date">
-                </div>
-                <p>De</p>
-                <input type="date" class="datepicker" value="2021-12-08">
-                <br>
-                <div class="choixChecked">
-
-                    <div class="choixCheckedOne">
-                        <input type="checkbox" name="ajouter" id="ajouter" class="ajouter" checked><label for="ajouter"></label>
-                        <p>Ajouter</p>
-                    </div>
-                    <div class="choixCheckedTow">
-                        <input type="checkbox" name="soustraire" id="soustraire" class="soustraire"><label for="soustraire"></label>
-                        <p>soustraire</p>
-                    </div>
-                </div>
-                <br>
-                <div class="tempsAjouter">
-
-                    <div class="anne">
-
-                        <p>Années</p>
-
-                        <div class="inputTag">
-                            <p class="anne">0</p>
-                            <img src="../assets/img/page/flecheBas.png" alt="">
-                        </div>
-                    </div>
-                    <div class="mois">
-                        <p>Mois</p>
-
-                        <div class="inputTag">
-                            <p class="mois">0</p>
-                            <img src="../assets/img/page/flecheBas.png" alt="">
-                        </div>
-                    </div>
-                    <div class="jours">
-                        <p>Jours</p>
-
-                        <div class="inputTag">
-                            <p class="jour">0</p>
-                            <img src="../assets/img/page/flecheBas.png" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="resulterAjourSous">
-                    <p>Date</p>
-                    <h2 class="resultDate">Dates indentique</h2>
+                <div class="choixConvertir">
+                    <h2 class="convertir"> 0 $</h2>
+                    <div class="convertir">
+                        <h4 class="choixDeConvertionResult">Canada- Dollar </h4>
+                        <div class="choixDeConvertion">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="choixConvertir">
+                    <p class="tauxDevise"> 1 EUR = 1.45 CAD</p>
+                    <p class="miseAJourTauxDevise"> Mise à jour le 15/12/2021 à 14:04</p>
+                    <p class="miseAjourTaux">Mettre à jour les taux</p>
+                </div>
+            </div>
+            <div class="convertisseurChiffre">
+                <div>
+
+                </div>
+                <div class="opperateur ce">
+                    <p>CE</p>
+                </div>
+                <div class="opperateur suprimer">
+                    <img src="/assets/img/page/supr.png" alt="suprimer">
+                </div>
+                <div class="chiffre sept">
+                    <p>7</p>
+                </div>
+                <div class="chiffre huit">
+                    <p>8</p>
+                </div>
+                <div class="chiffre neuf">
+                    <p>9</p>
                 </div>
 
+                <div class="chiffre quatre">
+                    <p>4</p>
+                </div>
+                <div class="chiffre cinq">
+                    <p>5</p>
+                </div>
+                <div class="chiffre six">
+                    <p>6</p>
+                </div>
+                <div class="chiffre un">
+                    <p>1</p>
+                </div>
+                <div class="chiffre deux">
+                    <p>2</p>
+                </div>
+                <div class="chiffre trois">
+                    <p>3</p>
+                </div>
+                <div>
 
+                </div>
+
+                <div class="chiffre zero">
+                    <p>0</p>
+                </div>
+                <div class="chiffre visgule">
+                    <p>,</p>
+                </div>
             </div>
+
+
 
         </div>
         <div class="overlay"></div>
