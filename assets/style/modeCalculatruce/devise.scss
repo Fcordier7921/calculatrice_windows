@@ -150,9 +150,38 @@
             z-index: 5;
         }
     }
-    .convertisseurResultat {
+    .convertisseur {
         grid-row: 2/10;
         grid-column: 1/4;
+        display: grid;
+        grid-template-columns: 55px 1fr;
+        grid-template-rows: 170px 170px 1fr;
+        .choixConvertir {
+            grid-row: 1/2;
+            grid-column: 2/-1;
+        }
+        .choixConvertirResult {
+            grid-row: 2/3;
+            grid-column: 2/-1;
+        }
+        .choixConvertirDevis {
+            grid-row: 3/4;
+            grid-column: 2/-1;
+            p {
+                font-size: 12px;
+                @include marginPadingNull();
+            }
+            p:nth-child(1) {
+                margin-top: 24px;
+            }
+            p:nth-child(2) {
+                font-size: 11px;
+            }
+            p:nth-child(3) {
+                text-decoration: underline;
+                margin-top: 8px;
+            }
+        }
     }
     .convertisseurChiffre {
         grid-row: 2/10;

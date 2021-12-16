@@ -1617,9 +1617,39 @@ a {
   display: block;
   z-index: 5;
 }
-#corpsDevise .convertisseurResultat {
+#corpsDevise .convertisseur {
   grid-row: 2/10;
   grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 170px 170px 1fr;
+}
+#corpsDevise .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsDevise .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsDevise .convertisseur .choixConvertirDevis {
+  grid-row: 3/4;
+  grid-column: 2/-1;
+}
+#corpsDevise .convertisseur .choixConvertirDevis p {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+#corpsDevise .convertisseur .choixConvertirDevis p:nth-child(1) {
+  margin-top: 24px;
+}
+#corpsDevise .convertisseur .choixConvertirDevis p:nth-child(2) {
+  font-size: 11px;
+}
+#corpsDevise .convertisseur .choixConvertirDevis p:nth-child(3) {
+  text-decoration: underline;
+  margin-top: 8px;
 }
 #corpsDevise .convertisseurChiffre {
   grid-row: 2/10;
