@@ -1628,9 +1628,55 @@ a {
   grid-row: 1/2;
   grid-column: 2/-1;
 }
+#corpsDevise .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 40px;
+  font-size: 50px;
+  font-weight: 500;
+}
+#corpsDevise .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 30px;
+  font-weight: inherit;
+}
+#corpsDevise .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsDevise .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsDevise .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
 #corpsDevise .convertisseur .choixConvertirResult {
   grid-row: 2/3;
   grid-column: 2/-1;
+}
+#corpsDevise .convertisseur .choixConvertirResult p {
+  margin: 0;
+  margin-top: 60px;
+  font-size: 50px;
+  font-weight: unset;
+}
+#corpsDevise .convertisseur .choixConvertirResult p span {
+  font-size: 30px;
+  font-weight: inherit;
+  vertical-align: middle;
+  margin-top: 20px;
+}
+#corpsDevise .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+  margin-top: 10px;
+}
+#corpsDevise .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsDevise .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
 }
 #corpsDevise .convertisseur .choixConvertirDevis {
   grid-row: 3/4;

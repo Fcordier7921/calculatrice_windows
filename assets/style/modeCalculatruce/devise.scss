@@ -159,10 +159,57 @@
         .choixConvertir {
             grid-row: 1/2;
             grid-column: 2/-1;
+            h2 {
+                margin: 0;
+                margin-top: 40px;
+                font-size: 50px;
+                font-weight: 500;
+                .UniteChoix {
+                    font-size: 30px;
+                    font-weight: inherit;
+                }
+            }
+            .convertirListe {
+                display: flex;
+                margin-top: 5px;
+                h4 {
+                    font-size: 13px;
+                }
+                img {
+                    height: 23px;
+                    width: 23px;
+                    margin-top: 15px;
+                }
+            }
         }
         .choixConvertirResult {
             grid-row: 2/3;
             grid-column: 2/-1;
+            p {
+                margin: 0;
+                margin-top: 60px;
+                font-size: 50px;
+                font-weight: unset;
+                span {
+                    font-size: 30px;
+                    font-weight: inherit;
+                    vertical-align: middle;
+                    margin-top: 20px;
+                }
+            }
+            .convertir {
+                display: flex;
+                margin-top: 10px;
+                h4 {
+                    font-size: 13px;
+                    margin: 0;
+                }
+                img {
+                    height: 23px;
+                    width: 23px;
+                    // margin-top: 15px;
+                }
+            }
         }
         .choixConvertirDevis {
             grid-row: 3/4;
