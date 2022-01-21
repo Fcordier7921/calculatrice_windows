@@ -1,5 +1,5 @@
 //stylisation de la calculatrice standard
-#corpsDevise {
+#corpsLongueur {
     width: 100%;
     height: 100%;
     @include marginPadingNull();
@@ -190,12 +190,6 @@
                 margin-top: 60px;
                 font-size: 50px;
                 font-weight: unset;
-                span {
-                    font-size: 30px;
-                    font-weight: inherit;
-                    vertical-align: middle;
-                    margin-top: 20px;
-                }
             }
             .convertir {
                 display: flex;
@@ -209,26 +203,6 @@
                     width: 23px;
                     // margin-top: 15px;
                 }
-            }
-        }
-        .choixConvertirDevis {
-            grid-row: 3/4;
-            grid-column: 2/-1;
-            p {
-                font-size: 12px;
-                @include marginPadingNull();
-            }
-            p:nth-child(1) {
-                margin-top: 24px;
-            }
-            p:nth-child(2) {
-                font-size: 11px;
-            }
-            a {
-                text-decoration: underline;
-                font-size: 0.8em;
-                margin-top: 8px;
-                cursor: pointer;
             }
         }
     }

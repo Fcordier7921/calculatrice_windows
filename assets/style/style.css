@@ -480,7 +480,7 @@ a {
   width: 98%;
   height: 98%;
   text-align: center;
-  background-color: #fffefe;
+  background-color: #ffffff;
   cursor: default;
 }
 #corpsStandard .chiffre p,
@@ -988,7 +988,7 @@ a {
   width: 98%;
   height: 98%;
   text-align: center;
-  background-color: #fffefe;
+  background-color: #ffffff;
   cursor: default;
 }
 #corpsScientifique .chiffre p,
@@ -1422,7 +1422,7 @@ a {
   width: 87px;
   margin-top: 3px;
   border: 1px solid #000000;
-  background-color: #fffefe;
+  background-color: #ffffff;
   position: relative;
 }
 #corpsDate .ajoutDate .tempsAjouter .anne .inputTag p,
@@ -1693,9 +1693,11 @@ a {
 #corpsDevise .convertisseur .choixConvertirDevis p:nth-child(2) {
   font-size: 11px;
 }
-#corpsDevise .convertisseur .choixConvertirDevis p:nth-child(3) {
+#corpsDevise .convertisseur .choixConvertirDevis a {
   text-decoration: underline;
+  font-size: 0.8em;
   margin-top: 8px;
+  cursor: pointer;
 }
 #corpsDevise .convertisseurChiffre {
   grid-row: 2/10;
@@ -1732,7 +1734,7 @@ a {
   width: 98%;
   height: 98%;
   text-align: center;
-  background-color: #fffefe;
+  background-color: #ffffff;
   cursor: default;
 }
 #corpsDevise .convertisseurChiffre .chiffre p,
@@ -1745,6 +1747,532 @@ a {
   margin: 0;
 }
 #corpsDevise .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsVolume {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsVolume .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsVolume .box .headMenu {
+  display: flex;
+}
+#corpsVolume .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsVolume .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsVolume .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsVolume .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsVolume .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsVolume .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsVolume .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsVolume .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsVolume .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsVolume .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsVolume .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsVolume .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsVolume .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsVolume .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsVolume .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsVolume .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsVolume .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsVolume .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsVolume .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsVolume .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsVolume .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsVolume .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsVolume .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsVolume .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsVolume .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsVolume .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsVolume .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsVolume .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsVolume .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 170px 170px 1fr;
+}
+#corpsVolume .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsVolume .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 40px;
+  font-size: 50px;
+  font-weight: 500;
+}
+#corpsVolume .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 30px;
+  font-weight: inherit;
+}
+#corpsVolume .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsVolume .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsVolume .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsVolume .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsVolume .convertisseur .choixConvertirResult p {
+  margin: 0;
+  margin-top: 60px;
+  font-size: 50px;
+  font-weight: unset;
+}
+#corpsVolume .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+  margin-top: 10px;
+}
+#corpsVolume .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsVolume .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+}
+#corpsVolume .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsVolume .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsVolume .convertisseurChiffre .opperateur p,
+#corpsVolume .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsVolume .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsVolume .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsVolume .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsVolume .convertisseurChiffre .chiffre p,
+#corpsVolume .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsVolume .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsLongueur {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsLongueur .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsLongueur .box .headMenu {
+  display: flex;
+}
+#corpsLongueur .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsLongueur .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsLongueur .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsLongueur .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsLongueur .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsLongueur .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsLongueur .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsLongueur .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsLongueur .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsLongueur .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsLongueur .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsLongueur .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsLongueur .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsLongueur .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsLongueur .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsLongueur .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsLongueur .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsLongueur .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsLongueur .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsLongueur .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsLongueur .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsLongueur .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsLongueur .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsLongueur .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsLongueur .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsLongueur .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsLongueur .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsLongueur .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsLongueur .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 170px 170px 1fr;
+}
+#corpsLongueur .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsLongueur .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 40px;
+  font-size: 50px;
+  font-weight: 500;
+}
+#corpsLongueur .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 30px;
+  font-weight: inherit;
+}
+#corpsLongueur .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsLongueur .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsLongueur .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsLongueur .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsLongueur .convertisseur .choixConvertirResult p {
+  margin: 0;
+  margin-top: 60px;
+  font-size: 50px;
+  font-weight: unset;
+}
+#corpsLongueur .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+  margin-top: 10px;
+}
+#corpsLongueur .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsLongueur .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+}
+#corpsLongueur .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsLongueur .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsLongueur .convertisseurChiffre .opperateur p,
+#corpsLongueur .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsLongueur .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsLongueur .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsLongueur .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsLongueur .convertisseurChiffre .chiffre p,
+#corpsLongueur .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsLongueur .convertisseurChiffre .chiffre:hover {
   background-color: #dadada;
   border: 1px solid #a5a5a5;
 }

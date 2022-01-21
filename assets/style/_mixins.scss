@@ -16,3 +16,57 @@
     background-position: $position;
     background-repeat: $repeat;
 }
+
+@mixin styleChiffreConvertisseur() {
+    .convertisseurChiffre {
+        grid-row: 2/10;
+        grid-column: 4/6;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        .opperateur {
+            width: 98%;
+            height: 98%;
+            text-align: center;
+            background-color: rgb(242, 242, 242);
+            opacity: 0.7;
+            cursor: default;
+            p,
+            img {
+                font-size: 20px;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+            }
+            img {
+                width: 30%;
+                height: 50%;
+            }
+            &:hover {
+                background-color: rgb(218, 218, 218);
+                border: 1px solid rgb(204, 204, 204);
+            }
+        }
+        .chiffre {
+            width: 98%;
+            height: 98%;
+            text-align: center;
+            background-color: $CouleurChiffre;
+            cursor: default;
+            p,
+            img {
+                font-size: 30px;
+                font-weight: bold;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+            }
+            &:hover {
+                background-color: rgb(218, 218, 218);
+                border: 1px solid rgb(165, 165, 165);
+            }
+        }
+    }
+}

@@ -170,6 +170,8 @@
         @import 'modeCalculatruce/_scientifique.scss'; //import du style de la calculatrice scientifique
         @import 'modeCalculatruce/date.scss'; //import du style de la calculatrice de date
         @import 'modeCalculatruce/devise.scss'; //import du style convertire les devise
+        @import 'modeCalculatruce/volume.scss'; //import du style convertire les volumes
+        @import 'modeCalculatruce/longueur.scss'; //import du style convertire les longueurs
         .overlay {
             display: none;
         }
