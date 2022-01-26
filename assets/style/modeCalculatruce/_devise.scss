@@ -1,0 +1,43 @@
+//stylisation de la calculatrice standard
+#corpsDevise {
+    width: 100%;
+    height: 100%;
+    @include marginPadingNull();
+    // position: relative;
+    overflow: hidden;
+    grid-row: 2/10;
+    grid-column: 1/8;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 321px;
+    grid-template-rows: 40px repeat(8, 1fr);
+    @include headerNavBar();
+    .convertisseur {
+        grid-row: 2/10;
+        grid-column: 1/4;
+        display: grid;
+        grid-template-columns: 55px 1fr;
+        grid-template-rows: 1.5fr 1fr 0.5fr;
+        @include affichageComvertisseur();
+        .choixConvertirDevis {
+            grid-row: 3/4;
+            grid-column: 2/-1;
+            p {
+                font-size: 12px;
+                @include marginPadingNull();
+            }
+            p:nth-child(1) {
+                margin-top: 7px;
+            }
+            p:nth-child(2) {
+                font-size: 11px;
+            }
+            a {
+                text-decoration: underline;
+                font-size: 0.8em;
+                margin-top: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+    @include styleChiffreConvertisseur();
+}

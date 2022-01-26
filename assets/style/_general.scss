@@ -168,10 +168,15 @@
         
         @import 'modeCalculatruce/_standard.scss'; //import du style de la calculatrice standard
         @import 'modeCalculatruce/_scientifique.scss'; //import du style de la calculatrice scientifique
-        @import 'modeCalculatruce/date.scss'; //import du style de la calculatrice de date
-        @import 'modeCalculatruce/devise.scss'; //import du style convertire les devise
-        @import 'modeCalculatruce/volume.scss'; //import du style convertire les volumes
-        @import 'modeCalculatruce/longueur.scss'; //import du style convertire les longueurs
+        @import 'modeCalculatruce/_date.scss'; //import du style de la calculatrice de date
+        @import 'modeCalculatruce/_devise.scss'; //import du style convertire les devise
+        @import 'modeCalculatruce/_volume.scss'; //import du style convertire les volumes
+        @import 'modeCalculatruce/_longueur.scss'; //import du style convertire les longueurs
+        @import 'modeCalculatruce/_poids.scss'; //import du style convertire les poids et masse
+        @import 'modeCalculatruce/_temp.scss'; //import du style convertire les température
+        @import 'modeCalculatruce/_energie.scss'; //import du style convertire valeur d'énergie
+        @import 'modeCalculatruce/_surface.scss'; //import du style convertire surface
+        @import 'modeCalculatruce/_vitesse.scss'; //import du style convertire les vitesse
         .overlay {
             display: none;
         }
