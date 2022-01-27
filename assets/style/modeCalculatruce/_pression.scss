@@ -1,8 +1,9 @@
 //stylisation de la calculatrice standard
-#corpsTemp {
+#corpsPression {
     width: 100%;
     height: 100%;
     @include marginPadingNull();
+    // position: relative;
     overflow: hidden;
     grid-row: 2/10;
     grid-column: 1/8;
@@ -17,24 +18,6 @@
         grid-template-columns: 55px 1fr;
         grid-template-rows: 1.5fr 1fr 0.5fr;
         @include affichageComvertisseur();
-        .troisiémeValeur {
-            grid-row: 3/4;
-            grid-column: 2/-1;
-            p {
-                @include marginPadingNull();
-                font-size: 12px;
-                &:nth-child(1) {
-                    margin-top: 10px;
-                }
-                &:nth-child(2) {
-                    font-size: 13px;
-                }
-                span {
-                    font-weight: bolder;
-                    margin-right: 5px;
-                }
-            }
-        }
     }
     @include styleChiffreConvertisseur();
 }

@@ -177,6 +177,11 @@
         @import 'modeCalculatruce/_energie.scss'; //import du style convertire valeur d'énergie
         @import 'modeCalculatruce/_surface.scss'; //import du style convertire surface
         @import 'modeCalculatruce/_vitesse.scss'; //import du style convertire les vitesse
+        @import 'modeCalculatruce/_heure.scss'; //import du style convertire de temps
+        @import 'modeCalculatruce/_puissance.scss'; //import du style convertire de puissance
+        @import 'modeCalculatruce/_donne.scss'; //import du style convertire de donne
+        @import 'modeCalculatruce/_pression.scss'; //import du style convertire de pression
+        @import 'modeCalculatruce/_Angle.scss'; //import du style convertire d'Angle
         .overlay {
             display: none;
         }

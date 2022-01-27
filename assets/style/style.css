@@ -660,6 +660,10 @@ a {
   display: block;
   z-index: 5;
 }
+#corpsScientifique .box {
+  grid-row: 1/2;
+  grid-column: 1/6;
+}
 #corpsScientifique .histoMemo {
   grid-row: 1/12;
   grid-column: 6/7;
@@ -2777,6 +2781,13 @@ a {
 #corpsTemp .convertisseur .troisiémeValeur p:nth-child(1) {
   margin-top: 10px;
 }
+#corpsTemp .convertisseur .troisiémeValeur p:nth-child(2) {
+  font-size: 13px;
+}
+#corpsTemp .convertisseur .troisiémeValeur p span {
+  font-weight: bolder;
+  margin-right: 5px;
+}
 #corpsTemp .convertisseurChiffre {
   grid-row: 2/10;
   grid-column: 4/6;
@@ -3626,6 +3637,1382 @@ a {
   margin: 0;
 }
 #corpsVitesse .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsHeure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsHeure .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsHeure .box .headMenu {
+  display: flex;
+}
+#corpsHeure .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsHeure .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsHeure .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsHeure .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsHeure .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsHeure .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsHeure .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsHeure .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsHeure .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsHeure .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsHeure .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsHeure .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsHeure .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsHeure .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsHeure .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsHeure .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsHeure .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsHeure .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsHeure .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsHeure .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsHeure .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsHeure .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsHeure .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsHeure .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsHeure .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsHeure .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsHeure .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsHeure .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsHeure .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 1.5fr 1fr 0.5fr;
+}
+#corpsHeure .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsHeure .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 45px;
+  font-size: 45px;
+  font-weight: 600;
+}
+#corpsHeure .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsHeure .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsHeure .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsHeure .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsHeure .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsHeure .convertisseur .choixConvertirResult p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 100;
+}
+#corpsHeure .convertisseur .choixConvertirResult p .UniteChoixResult {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsHeure .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+}
+#corpsHeure .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsHeure .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+  margin-top: -2px;
+}
+#corpsHeure .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsHeure .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsHeure .convertisseurChiffre .opperateur p,
+#corpsHeure .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsHeure .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsHeure .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsHeure .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsHeure .convertisseurChiffre .chiffre p,
+#corpsHeure .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsHeure .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsPuissance {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsPuissance .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsPuissance .box .headMenu {
+  display: flex;
+}
+#corpsPuissance .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsPuissance .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsPuissance .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsPuissance .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsPuissance .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsPuissance .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsPuissance .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsPuissance .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsPuissance .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsPuissance .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsPuissance .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsPuissance .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsPuissance .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsPuissance .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsPuissance .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsPuissance .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsPuissance .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsPuissance .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsPuissance .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsPuissance .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsPuissance .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsPuissance .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsPuissance .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsPuissance .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsPuissance .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsPuissance .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsPuissance .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsPuissance .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsPuissance .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 1.5fr 1fr 0.5fr;
+}
+#corpsPuissance .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsPuissance .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 45px;
+  font-size: 45px;
+  font-weight: 600;
+}
+#corpsPuissance .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsPuissance .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsPuissance .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsPuissance .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsPuissance .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsPuissance .convertisseur .choixConvertirResult p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 100;
+}
+#corpsPuissance .convertisseur .choixConvertirResult p .UniteChoixResult {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsPuissance .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+}
+#corpsPuissance .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsPuissance .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+  margin-top: -2px;
+}
+#corpsPuissance .convertisseur .troisiémeValeur {
+  grid-row: 3/4;
+  grid-column: 2/-1;
+}
+#corpsPuissance .convertisseur .troisiémeValeur p {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  margin-top: 10px;
+}
+#corpsPuissance .convertisseur .troisiémeValeur div {
+  display: flex;
+}
+#corpsPuissance .convertisseur .troisiémeValeur div p {
+  font-size: 13px;
+  margin: 0;
+  margin-right: 20px;
+}
+#corpsPuissance .convertisseur .troisiémeValeur div span {
+  font-weight: bolder;
+  margin-right: 5px;
+}
+#corpsPuissance .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsPuissance .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsPuissance .convertisseurChiffre .opperateur p,
+#corpsPuissance .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsPuissance .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsPuissance .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsPuissance .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsPuissance .convertisseurChiffre .chiffre p,
+#corpsPuissance .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsPuissance .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsDonne {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsDonne .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsDonne .box .headMenu {
+  display: flex;
+}
+#corpsDonne .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsDonne .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsDonne .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsDonne .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsDonne .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsDonne .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsDonne .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsDonne .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsDonne .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsDonne .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsDonne .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsDonne .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsDonne .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsDonne .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsDonne .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsDonne .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsDonne .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsDonne .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsDonne .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsDonne .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsDonne .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsDonne .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsDonne .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsDonne .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsDonne .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsDonne .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsDonne .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsDonne .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsDonne .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 1.5fr 1fr 0.5fr;
+}
+#corpsDonne .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsDonne .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 45px;
+  font-size: 45px;
+  font-weight: 600;
+}
+#corpsDonne .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsDonne .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsDonne .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsDonne .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsDonne .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsDonne .convertisseur .choixConvertirResult p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 100;
+}
+#corpsDonne .convertisseur .choixConvertirResult p .UniteChoixResult {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsDonne .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+}
+#corpsDonne .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsDonne .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+  margin-top: -2px;
+}
+#corpsDonne .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsDonne .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsDonne .convertisseurChiffre .opperateur p,
+#corpsDonne .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsDonne .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsDonne .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsDonne .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsDonne .convertisseurChiffre .chiffre p,
+#corpsDonne .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsDonne .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsPression {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsPression .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsPression .box .headMenu {
+  display: flex;
+}
+#corpsPression .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsPression .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsPression .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsPression .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsPression .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsPression .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsPression .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsPression .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsPression .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsPression .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsPression .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsPression .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsPression .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsPression .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsPression .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsPression .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsPression .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsPression .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsPression .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsPression .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsPression .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsPression .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsPression .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsPression .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsPression .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsPression .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsPression .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsPression .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsPression .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 1.5fr 1fr 0.5fr;
+}
+#corpsPression .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsPression .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 45px;
+  font-size: 45px;
+  font-weight: 600;
+}
+#corpsPression .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsPression .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsPression .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsPression .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsPression .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsPression .convertisseur .choixConvertirResult p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 100;
+}
+#corpsPression .convertisseur .choixConvertirResult p .UniteChoixResult {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsPression .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+}
+#corpsPression .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsPression .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+  margin-top: -2px;
+}
+#corpsPression .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsPression .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsPression .convertisseurChiffre .opperateur p,
+#corpsPression .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsPression .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsPression .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsPression .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsPression .convertisseurChiffre .chiffre p,
+#corpsPression .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsPression .convertisseurChiffre .chiffre:hover {
+  background-color: #dadada;
+  border: 1px solid #a5a5a5;
+}
+
+#corpsAngle {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  grid-row: 2/10;
+  grid-column: 1/8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 321px;
+  grid-template-rows: 40px repeat(8, 1fr);
+}
+#corpsAngle .box {
+  grid-row: 1/2;
+  grid-column: 1/5;
+}
+#corpsAngle .box .headMenu {
+  display: flex;
+}
+#corpsAngle .box .headMenu .contLigne {
+  width: 40px;
+  height: 5px;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  padding: 20px;
+  z-index: 50;
+}
+#corpsAngle .box .headMenu .contLigne:hover {
+  background: #e6e6e6;
+}
+#corpsAngle .box .headMenu .contLigne .lignes {
+  width: 50%;
+  height: 1px;
+  border-radius: 25px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+#corpsAngle .box .headMenu .contLigne .lignes:nth-child(1) {
+  top: 15px;
+}
+#corpsAngle .box .headMenu .contLigne .lignes:nth-child(2) {
+  top: 20px;
+}
+#corpsAngle .box .headMenu .contLigne .lignes:nth-child(3) {
+  top: 25px;
+}
+#corpsAngle .box .headMenu h1 {
+  margin: 0;
+  padding: 0;
+  margin: 6px 5px 0 10px;
+  font-size: 20px;
+}
+#corpsAngle .box .headMenu .petiteTaille {
+  width: 30px;
+  height: 30px;
+  margin-top: 9px;
+}
+#corpsAngle .box .headMenu .petiteTaille:hover {
+  border: 1px solid gray;
+  background-color: #dadada;
+}
+#corpsAngle .box .navBar {
+  width: 29%;
+  height: 94%;
+  background-color: #f1f1f1;
+  display: none;
+  position: absolute;
+  top: 30px;
+  z-index: 50;
+}
+#corpsAngle .box .navBar .navHedaer {
+  height: 10%;
+  z-index: 20;
+}
+#corpsAngle .box .navBar .navCahce {
+  height: 81%;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 20;
+}
+#corpsAngle .box .navBar .navCahce ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+#corpsAngle .box .navBar .navCahce ul h4 {
+  margin: 0;
+  padding: 0;
+  margin: 12px;
+  font-size: 0.8rem;
+  cursor: default;
+}
+#corpsAngle .box .navBar .navCahce ul li {
+  width: 100%;
+  height: 39px;
+  padding: 0 10px;
+  cursor: default;
+}
+#corpsAngle .box .navBar .navCahce ul li a {
+  position: relative;
+}
+#corpsAngle .box .navBar .navCahce ul li .divLi {
+  display: flex;
+}
+#corpsAngle .box .navBar .navCahce ul li .divLi img {
+  height: 30px;
+  margin-top: 5px;
+}
+#corpsAngle .box .navBar .navCahce ul li .divLi p {
+  font-size: 13.5px;
+  margin: 10px 5px;
+}
+#corpsAngle .box .navBar .navCahce ul li .active-items::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: 2px;
+  height: 25px;
+  background-color: #53b4ddd0;
+}
+#corpsAngle .box .navBar .navCahce ul li:hover {
+  background-color: #dadada;
+}
+#corpsAngle .box .navBar .navCahce::-webkit-scrollbar {
+  width: 12px;
+}
+#corpsAngle .box .navBar .navCahce::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+#corpsAngle .box .navBar .navCahce::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
+}
+#corpsAngle .box .navBar .apropos {
+  background-color: #f1f1f1;
+  display: flex;
+}
+#corpsAngle .box .navBar .apropos img {
+  width: 35px;
+  height: 35px;
+}
+#corpsAngle .box .navBar .apropos p {
+  margin: 7px 0;
+  font-size: 13.5px;
+}
+#corpsAngle .box .active-nav {
+  display: block;
+  z-index: 5;
+}
+#corpsAngle .convertisseur {
+  grid-row: 2/10;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  grid-template-rows: 1.5fr 1fr 0.5fr;
+}
+#corpsAngle .convertisseur .choixConvertir {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+#corpsAngle .convertisseur .choixConvertir h2 {
+  margin: 0;
+  margin-top: 45px;
+  font-size: 45px;
+  font-weight: 600;
+}
+#corpsAngle .convertisseur .choixConvertir h2 .UniteChoix {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsAngle .convertisseur .choixConvertir .convertirListe {
+  display: flex;
+  margin-top: 5px;
+}
+#corpsAngle .convertisseur .choixConvertir .convertirListe h4 {
+  font-size: 13px;
+}
+#corpsAngle .convertisseur .choixConvertir .convertirListe img {
+  height: 23px;
+  width: 23px;
+  margin-top: 15px;
+}
+#corpsAngle .convertisseur .choixConvertirResult {
+  grid-row: 2/3;
+  grid-column: 2/-1;
+}
+#corpsAngle .convertisseur .choixConvertirResult p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 100;
+}
+#corpsAngle .convertisseur .choixConvertirResult p .UniteChoixResult {
+  font-size: 25px;
+  font-weight: 100;
+}
+#corpsAngle .convertisseur .choixConvertirResult .convertir {
+  display: flex;
+}
+#corpsAngle .convertisseur .choixConvertirResult .convertir h4 {
+  font-size: 13px;
+  margin: 0;
+}
+#corpsAngle .convertisseur .choixConvertirResult .convertir img {
+  height: 23px;
+  width: 23px;
+  margin-top: -2px;
+}
+#corpsAngle .convertisseur .troisiémeValeur {
+  grid-row: 3/4;
+  grid-column: 2/-1;
+}
+#corpsAngle .convertisseur .troisiémeValeur p {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+#corpsAngle .convertisseur .troisiémeValeur p:nth-child(1) {
+  margin-top: 10px;
+}
+#corpsAngle .convertisseur .troisiémeValeur p:nth-child(2) {
+  font-size: 13px;
+}
+#corpsAngle .convertisseur .troisiémeValeur p span {
+  font-weight: bolder;
+  margin-right: 5px;
+}
+#corpsAngle .convertisseurChiffre {
+  grid-row: 2/10;
+  grid-column: 4/6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+#corpsAngle .convertisseurChiffre .opperateur {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+  cursor: default;
+}
+#corpsAngle .convertisseurChiffre .opperateur p,
+#corpsAngle .convertisseurChiffre .opperateur img {
+  font-size: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsAngle .convertisseurChiffre .opperateur img {
+  width: 30%;
+  height: 50%;
+}
+#corpsAngle .convertisseurChiffre .opperateur:hover {
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+}
+#corpsAngle .convertisseurChiffre .chiffre {
+  width: 98%;
+  height: 98%;
+  text-align: center;
+  background-color: #ffffff;
+  cursor: default;
+}
+#corpsAngle .convertisseurChiffre .chiffre p,
+#corpsAngle .convertisseurChiffre .chiffre img {
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+#corpsAngle .convertisseurChiffre .chiffre:hover {
   background-color: #dadada;
   border: 1px solid #a5a5a5;
 }
