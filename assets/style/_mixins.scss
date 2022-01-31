@@ -26,7 +26,7 @@
             .contLigne {
                 width: 40px;
                 height: 5px;
-                cursor: pointer;
+                cursor: default;
                 position: relative;
                 top: 0;
                 padding: 20px;
@@ -97,8 +97,8 @@
                         width: 100%;
                         height: 39px;
                         padding: 0 10px;
-                        cursor: default;
                         a {
+                            cursor: default;
                             position: relative;
                         }
                         .divLi {
@@ -128,7 +128,7 @@
                         }
                     }
                     .focusLiactive {
-                        background-color: rgb(218, 218, 218);
+                        background-color: #dadada;
                     }
                 }
                 &::-webkit-scrollbar {
