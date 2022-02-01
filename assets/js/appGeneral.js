@@ -200,7 +200,7 @@ overlay.addEventListener('click', () => { // écoute de l'overlay pour cache la 
 
 })
 
-//traitement du focus des a pour syliser les élémen quans les a son focus
+//traitement du focus des a pour syliser les élémen quand les a son focus
 for (const elemnt of focusHeader) {
     elemnt.addEventListener('focus', (e) => {
 
