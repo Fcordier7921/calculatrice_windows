@@ -20,11 +20,13 @@ function trigo() {
 
 scientTrigoClick.addEventListener('click', trigo)
 scientTrigoClick.addEventListener('keydown', (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-            trigo();
-        }
-    })
-    // afficher le menu fonction
+    if (event.key === "Enter" || event.key === " ") {
+        trigo();
+    }
+})
+
+
+// afficher le menu fonction
 function trigoFunction() {
     scientTrigoAffiche.classList.remove('itemsGeneralTrigoActive');
 

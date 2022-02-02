@@ -13,25 +13,40 @@ const choixCheckedTow = document.querySelector('#soustraire')
 
 
 //afficher la modale de choix de calcule des dates
+
+function activeDate() {
+    choixCalcul.classList.toggle('ActivDate');
+    if (dateDiff.classList.contains('ActivDate')) {
+        dateDiff.setAttribute("tabindex", "7")
+        dateAjout.setAttribute("tabindex", "8")
+    } else {
+        dateDiff.setAttribute("tabindex", "10")
+        dateAjout.setAttribute("tabindex", "11")
+    }
+    if (dateAjout.classList.contains('ActivChoixDate')) {
+        choixCalcul.style.top = "40px";
+
+
+    } else {
+        choixCalcul.style.top = "80px";
+
+    }
+}
 choixTypeDate.forEach(element => {
 
     element.addEventListener('click', () => {
-
-
-        choixCalcul.classList.toggle('ActivDate');
-        if (dateAjout.classList.contains('ActivChoixDate')) {
-            choixCalcul.style.top = "40px";
-        } else {
-            choixCalcul.style.top = "80px";
-
-        }
-
+        activeDate()
     })
+    element.addEventListener('keydown', (event) => { //écoute des touche entre et espace pour affiche la navBar
+
+        if (event.key === "Enter" || event.key === " ") {
+            activeDate()
+        }
+    });
 });
 
 //affichage de la caculette différence entre deux date
-dateDiff.addEventListener('click', () => {
-
+function datediffAffiche() {
     if (dateAjout.classList.contains("ActivChoixDate")) {
 
         dateAjout.classList.remove('ActivChoixDate');
@@ -43,12 +58,19 @@ dateDiff.addEventListener('click', () => {
         choixCalcul.classList.remove('ActivDate');
 
     }
+}
+dateDiff.addEventListener('click', () => {
+    datediffAffiche()
+});
+dateDiff.addEventListener('keydown', (event) => { //écoute des touche entre et espace pour affiche la navBar
 
+    if (event.key === "Enter" || event.key === " ") {
+        datediffAffiche()
+    }
 });
 
 //affichage de la caculette ajouter ou soustraire des dates
-dateAjout.addEventListener('click', () => {
-
+function dateAjouterAffichage() {
     if (dateDiff.classList.contains("ActivChoixDate")) {
 
         dateDiff.classList.remove('ActivChoixDate');
@@ -59,8 +81,16 @@ dateAjout.addEventListener('click', () => {
         ajoutDate.classList.toggle('ActivDate');
         choixCalcul.classList.remove('ActivDate');
     }
+}
 
+dateAjout.addEventListener('click', () => {
+    dateAjouterAffichage()
+});
+dateAjout.addEventListener('keydown', (event) => { //écoute des touche entre et espace pour affiche la navBar
 
+    if (event.key === "Enter" || event.key === " ") {
+        dateAjouterAffichage()
+    }
 });
 
 //traitemant de la différence entre date

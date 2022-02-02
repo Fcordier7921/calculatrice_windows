@@ -94,7 +94,7 @@ iconFermerFenetre.addEventListener('keydown', (event) => {
 });
 
 
-//menu burger
+//----------------menu burger----------
 
 
 
