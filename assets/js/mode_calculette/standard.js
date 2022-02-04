@@ -118,6 +118,119 @@
            Affichage: "÷",
            Type: "opperateur"
        },
+       {
+           name: "sept",
+           explication: "sept",
+           fomuleJs: "7",
+           Affichage: "7",
+           Type: "chiffre"
+       },
+       {
+           name: "huit",
+           explication: "huit",
+           fomuleJs: "8",
+           Affichage: "8",
+           Type: "chiffre"
+       },
+       {
+           name: "neuf",
+           explication: "neuf",
+           fomuleJs: "9",
+           Affichage: "9",
+           Type: "chiffre"
+       },
+       {
+           name: "multiplier",
+           explication: "multiplier",
+           fomuleJs: "*",
+           Affichage: "ₓ",
+           Type: "opperateur"
+       },
+       {
+           name: "quatre",
+           explication: "quatre",
+           fomuleJs: "4",
+           Affichage: "4",
+           Type: "chiffre"
+       },
+       {
+           name: "cinq",
+           explication: "cinq",
+           fomuleJs: "5",
+           Affichage: "5",
+           Type: "chiffre"
+       },
+       {
+           name: "six",
+           explication: "six",
+           fomuleJs: "6",
+           Affichage: "6",
+           Type: "chiffre"
+       },
+       {
+           name: "moin",
+           explication: "moin",
+           fomuleJs: "-",
+           Affichage: "-",
+           Type: "opperateur"
+       },
+       {
+           name: "un",
+           explication: "un",
+           fomuleJs: "1",
+           Affichage: "1",
+           Type: "chiffre"
+       },
+       {
+           name: "deux",
+           explication: "deux",
+           fomuleJs: "2",
+           Affichage: "2",
+           Type: "chiffre"
+       },
+       {
+           name: "trois",
+           explication: "trois",
+           fomuleJs: "3",
+           Affichage: "3",
+           Type: "chiffre"
+       },
+       {
+           name: "plus",
+           explication: "plus",
+           fomuleJs: "+",
+           Affichage: "+",
+           Type: "opperateur"
+       },
+       {
+           name: "PosNega",
+           explication: "PosNega ",
+           fomuleJs: "-",
+           Affichage: "-",
+           Type: "chiffre"
+       },
+       {
+           name: "zero",
+           explication: "zero ",
+           fomuleJs: "0",
+           Affichage: "0",
+           Type: "chiffre"
+       },
+       {
+           name: "visgule",
+           explication: "visgule ",
+           fomuleJs: ",",
+           Affichage: ",",
+           Type: "chiffre"
+       },
+       {
+           name: "egal",
+           explication: "egal ",
+           fomuleJs: "=",
+           Affichage: "=",
+           Type: "opperateur"
+       },
+
    ]
 
    console.log(Math.sqrt(16));
