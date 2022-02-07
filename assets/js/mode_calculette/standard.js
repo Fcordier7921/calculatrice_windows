@@ -4,6 +4,8 @@
    const contenaireSandard = document.querySelector('.container');
    const memoSandard = Array.from(document.querySelectorAll('.memo')) //selection de toute les emplacement mémoire
    const operateurSandard = Array.from(document.querySelectorAll('.opperateur')) //selection de toute les emplacement des opérateur
+   const calculeresult = document.querySelector('.calculeresult') //recuprer pour afficher le calcule en cours
+   const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour afficher les entré en cours
 
 
    //afficher la claculatrice en petite taille
@@ -19,7 +21,7 @@
    })
 
    //--------- logique de la calculatrice-------------------
-   //tobleau d'objet qui répertorie les touche de la calculette
+   //tableau d'objet qui répertorie les touche de la calculette
    let toucheStandard = [{
            name: "MC",
            explication: "suprime la mémoire",
@@ -233,9 +235,91 @@
 
    ]
 
-   console.log(Math.sqrt(16));
+   window.onload = () => {
+       // On écoute les clics sur les touches
+       let touchesOperateur = Array.from(document.querySelectorAll(".opperateur"));
+       let touchesChiffre = Array.from(document.querySelectorAll(".chiffre"));
+       let touchesMemo = Array.from(document.querySelectorAll(".memo"));
+       let touchesGenerals = touchesOperateur.concat(touchesChiffre, touchesMemo);
 
 
+
+       for (let touchesGeneral of touchesGenerals) {
+           touchesGeneral.addEventListener("click", gererTouches);
+       }
+
+   }
+   let affGeneral = {
+       AlffichageCalaculette: [],
+       AlffichageCResultat: [],
+       CcalculeJS: []
+   }
+
+   function gererTouches(event) {
+       let toucheEvent = '';
+
+       switch (event.path[1].classList[0]) {
+           case 'egal':
+               toucheEvent = event.path[1].classList[1];
+               break;
+           case 'chiffre':
+               toucheEvent = event.path[1].classList[1];
+               toucheStandard.forEach(element => {
+                   if (toucheEvent === element.name) {
+                       if (element.name === "CE") {
+                           if (affGeneral.AlffichageCalaculette.includes("-")) {
+                               affGeneral.AlffichageCalaculette.shift(element.Affichage)
+                               affGeneral.AlffichageCResultat.shift(element.Affichage)
+
+                               affGeneral.CcalculeJS.shift(element.fomuleJs)
+                           } else {
+                               affGeneral.AlffichageCalaculette.unshift(element.Affichage)
+                               affGeneral.AlffichageCResultat.unshift(element.Affichage)
+
+                               affGeneral.CcalculeJS.unshift(element.fomuleJs)
+                           }
+                       } else {
+
+                           affGeneral.AlffichageCalaculette.push(element.Affichage)
+                           affGeneral.AlffichageCResultat.push(element.Affichage)
+
+                           affGeneral.CcalculeJS.push(element.fomuleJs)
+                       }
+
+                   }
+               });
+
+               let affGeneralStringEnCours = affGeneral.AlffichageCResultat.join('');
+               chiffreresult.innerHTML = "<p>" + affGeneralStringEnCours + "</p>";
+               break;
+           case 'opperateur':
+               toucheEvent = event.path[1].classList[1];
+               console.log(toucheEvent);
+               toucheStandard.forEach(element => {
+                   if (toucheEvent === element.name) {
+
+                       if (element.name === "CE") {
+
+                       }
+                       affGeneral.AlffichageCalaculette.push(element.Affichage)
+                       affGeneral.AlffichageCResultat.push(element.Affichage)
+
+                       affGeneral.CcalculeJS.push(element.fomuleJs)
+                   }
+               })
+               break;
+           case 'memo':
+               toucheEvent = event.path[1].classList[1];
+
+               break;
+
+           default:
+               break;
+       }
+   }
+   //    console.log(Math.sqrt(16));
+
+   //    console.log(affGeneral.AlffichageCalaculette);
 
 
 
