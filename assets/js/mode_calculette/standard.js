@@ -100,13 +100,6 @@
            Type: "opperateur"
        },
        {
-           name: "carrer",
-           explication: "chiffre au carré",
-           fomuleJs: "Math.pow(x, 2)",
-           Affichage: "sqr(x)",
-           Type: "opperateur"
-       },
-       {
            name: "RasinCarrer",
            explication: "inverce du carré",
            fomuleJs: "Math.sqrt(x)",
@@ -249,9 +242,9 @@
        }
 
    }
-   let affGeneral = {
+   var affGeneral = {
        AlffichageCalaculette: [],
-       AlffichageCResultat: [],
+       AlffichageCTompontResulta: [],
        CcalculeJS: []
    }
 
@@ -266,45 +259,76 @@
                toucheEvent = event.path[1].classList[1];
                toucheStandard.forEach(element => {
                    if (toucheEvent === element.name) {
-                       if (element.name === "CE") {
-                           if (affGeneral.AlffichageCalaculette.includes("-")) {
-                               affGeneral.AlffichageCalaculette.shift(element.Affichage)
-                               affGeneral.AlffichageCResultat.shift(element.Affichage)
-
+                       if (element.name === "PosNega") {
+                           if (affGeneral.AlffichageCTompontResulta.includes("-")) {
+                               affGeneral.AlffichageCTompontResulta.shift(element.Affichage)
                                affGeneral.CcalculeJS.shift(element.fomuleJs)
-                           } else {
-                               affGeneral.AlffichageCalaculette.unshift(element.Affichage)
-                               affGeneral.AlffichageCResultat.unshift(element.Affichage)
 
+                           } else {
+                               affGeneral.AlffichageCTompontResulta.unshift(element.Affichage)
                                affGeneral.CcalculeJS.unshift(element.fomuleJs)
                            }
+
                        } else {
 
-                           affGeneral.AlffichageCalaculette.push(element.Affichage)
-                           affGeneral.AlffichageCResultat.push(element.Affichage)
-
+                           affGeneral.AlffichageCTompontResulta.push(element.Affichage)
                            affGeneral.CcalculeJS.push(element.fomuleJs)
                        }
 
                    }
                });
 
-               let affGeneralStringEnCours = affGeneral.AlffichageCResultat.join('');
+               let affGeneralStringEnCours = affGeneral.AlffichageCTompontResulta.join('');
                chiffreresult.innerHTML = "<p>" + affGeneralStringEnCours + "</p>";
                break;
            case 'opperateur':
                toucheEvent = event.path[1].classList[1];
-               console.log(toucheEvent);
                toucheStandard.forEach(element => {
                    if (toucheEvent === element.name) {
-
                        if (element.name === "CE") {
+                           affGeneral.AlffichageCTompontResulta = [];
+                           let affGeneralStringEnCours = affGeneral.AlffichageCTompontResulta.join('');
+                           chiffreresult.innerHTML = "<p>" + affGeneralStringEnCours + "</p>";
 
                        }
-                       affGeneral.AlffichageCalaculette.push(element.Affichage)
-                       affGeneral.AlffichageCResultat.push(element.Affichage)
+                       if (element.name === "C") {
+                           affGeneral.AlffichageCTompontResulta = [];
+                           affGeneral.AlffichageCalaculette = [];
+                           affGeneral.CcalculeJS = [];
+                           chiffreresult.innerHTML = "<p>" + 0 + "</p>";
 
-                       affGeneral.CcalculeJS.push(element.fomuleJs)
+
+                       }
+                       if (element.name === "suppChiffre") {
+                           affGeneral.AlffichageCTompontResulta.splice(-1, 1);
+                           affGeneral.AlffichageCalaculette.splice(-1, 1);
+                           affGeneral.CcalculeJS.splice(-1, 1);
+                           let affGeneralStringEnCoursSup = affGeneral.AlffichageCTompontResulta.join('');
+                           if (affGeneralStringEnCoursSup <= 0) {
+                               chiffreresult.innerHTML = "<p>" + 0 + "</p>";
+                               calculeresult.innerHTML = "<p> </p>";
+                           } else {
+                               chiffreresult.innerHTML = "<p>" + affGeneralStringEnCoursSup + "</p>";
+                               calculeresult.innerHTML = "<p> </p>";
+
+                           }
+
+                       }
+
+                       for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
+                           affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
+
+                       }
+                       affGeneral.AlffichageCTompontResulta = [];
+                       affGeneral.AlffichageCalaculette.push(element.Affichage);
+                       affGeneral.CcalculeJS.push(element.fomuleJs);
+                       let affGeneralStringEnCoursOperation = affGeneral.AlffichageCalaculette.join('');
+                       calculeresult.innerHTML = "<p>" + affGeneralStringEnCoursOperation + "</p>";
+
+
+
+
+
                    }
                })
                break;
@@ -319,7 +343,9 @@
    }
    //    console.log(Math.sqrt(16));
 
-   //    console.log(affGeneral.AlffichageCalaculette);
+   console.log(affGeneral.AlffichageCalaculette);
+   console.log(affGeneral.AlffichageCTompontResulta);
+   console.log(affGeneral.CcalculeJS);
 
 
 
