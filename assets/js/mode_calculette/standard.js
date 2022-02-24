@@ -373,11 +373,13 @@ function gererTouches(event) {
                                 calculeresult.innerHTML = "<p>" + element.Affichage + affGeneral.AlffichageCTompontResulta.join('') + ")</p>";
                                 affGeneral.AlffichageCTompontResulta = [];
                                 affGeneral.AlffichageCTompontResulta.push(resulteDivUdemi);
-
-
-
                                 chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                            } else {
+                                calculeresult.innerHTML = "<p>" + element.Affichage + "0)</p>";
+                                chiffreresult.innerHTML = '<p style="font-size: 25px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                             }
+                        } else if (element.name === "carrer") {
+
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
