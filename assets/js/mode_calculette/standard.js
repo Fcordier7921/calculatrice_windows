@@ -23,7 +23,7 @@ reductionFenétreBis.addEventListener('click', () => {
 
 //--------- logique de la calculatrice-------------------
 //tableau d'objet qui répertorie les touche de la calculette
-let toucheStandard = [{
+const toucheStandard = [{
         name: "MC",
         explication: "suprime la mémoire",
         fomuleJs: "",
@@ -90,21 +90,21 @@ let toucheStandard = [{
         name: "undemi",
         explication: "1 divisé par le chiffre affiché",
         fomuleJs: "1/",
-        Affichage: "1/(x)",
+        Affichage: "1/(",
         Type: "opperateur"
     },
     {
         name: "carrer",
         explication: "chiffre au carré",
-        fomuleJs: "Math.pow(x, 2)",
-        Affichage: "sqr(x)",
+        fomuleJs: "Math.pow(", //Math.pow(x, 2)
+        Affichage: "sqr(",
         Type: "opperateur"
     },
     {
         name: "RasinCarrer",
         explication: "inverce du carré",
-        fomuleJs: "Math.sqrt(x)",
-        Affichage: "√(x)",
+        fomuleJs: "Math.sqrt(",
+        Affichage: "√(",
         Type: "opperateur"
     },
     {
@@ -271,8 +271,20 @@ function gererTouches(event) {
                             affGeneral.CcalculeJS.unshift(element.fomuleJs)
                         }
 
-                    } else {
+                    } else if (element.name === "zero") {
 
+                        if (affGeneral.AlffichageCTompontResulta[0] === "0") {
+                            affGeneral.AlffichageCTompontResulta = []
+                            affGeneral.AlffichageCTompontResulta.push(element.Affichage)
+                        } else {
+                            affGeneral.AlffichageCTompontResulta.push(element.Affichage)
+                            affGeneral.CcalculeJS.push(element.fomuleJs)
+                        }
+
+                    } else {
+                        if (affGeneral.AlffichageCTompontResulta[0] === "0") {
+                            affGeneral.AlffichageCTompontResulta.shift();
+                        }
                         affGeneral.AlffichageCTompontResulta.push(element.Affichage)
                         affGeneral.CcalculeJS.push(element.fomuleJs)
                     }
@@ -325,6 +337,33 @@ function gererTouches(event) {
                             }
 
 
+                        } else if (element.name === "pourcentage") {
+
+                            if (affGeneral.AlffichageCalaculette.length != 0) {
+                                let resultJoinPourcentage = affGeneral.AlffichageCTompontResulta.join('');
+                                let resulteDivPourcentage = resultJoinPourcentage / 100;
+                                affGeneral.CcalculeJS = [];
+                                let operateurEtract = (affGeneral.AlffichageCalaculette.slice(0, -1).join('')) * resulteDivPourcentage;
+                                affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''))
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(operateurEtract);
+                                affGeneral.AlffichageCalaculette.push(operateurEtract);
+                                affGeneral.CcalculeJS.push(operateurEtract);
+
+
+                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+                            } else {
+                                affGeneral.AlffichageCalaculette.push("0");
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push("0");
+                                affGeneral.CcalculeJS = [];
+
+                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette + "</p>";
+                            }
+
+
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
@@ -339,11 +378,9 @@ function gererTouches(event) {
                         }
                     }
                 })
-                console.log(affGeneral.AlffichageCalaculette);
-                console.log(affGeneral.AlffichageCTompontResulta);
-                console.log(affGeneral.CcalculeJS);
-            } else {
 
+            } else {
+                // faire l'adition pour le rendu
             }
             break;
         case 'memo':
