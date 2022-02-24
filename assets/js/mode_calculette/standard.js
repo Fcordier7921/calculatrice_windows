@@ -364,6 +364,20 @@ function gererTouches(event) {
                             }
 
 
+                        } else if (element.name === "undemi") {
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+                                let resultJoinUdemi = affGeneral.AlffichageCTompontResulta.join('');
+                                let resulteDivUdemi = 1 / resultJoinUdemi;
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(resulteDivUdemi)
+                                calculeresult.innerHTML = "<p>" + element.Affichage + affGeneral.AlffichageCTompontResulta.join('') + ")</p>";
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resulteDivUdemi);
+
+
+
+                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                            }
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
@@ -376,6 +390,9 @@ function gererTouches(event) {
                             calculeresult.innerHTML = "<p>" + affGeneralStringEnCoursOperation + "</p>";
 
                         }
+                        console.log(affGeneral.AlffichageCalaculette);
+                        console.log(affGeneral.AlffichageCTompontResulta);
+                        console.log(affGeneral.CcalculeJS);
                     }
                 })
 
