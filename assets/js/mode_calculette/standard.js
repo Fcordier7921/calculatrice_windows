@@ -271,25 +271,38 @@ function gererTouches(event) {
                             affGeneral.CcalculeJS.unshift(element.fomuleJs)
                         }
 
-                    } else if (element.name === "zero") {
+                    } else if (element.name === "visgule") {
 
-                        if (affGeneral.AlffichageCTompontResulta[0] === "0") {
-                            affGeneral.AlffichageCTompontResulta = []
+                        if (affGeneral.AlffichageCTompontResulta[0] === "0" || affGeneral.AlffichageCTompontResulta.length < 1) {
+                            affGeneral.AlffichageCTompontResulta.push("0")
                             affGeneral.AlffichageCTompontResulta.push(element.Affichage)
+                            console.log(affGeneral.AlffichageCTompontResulta);
                         } else {
                             affGeneral.AlffichageCTompontResulta.push(element.Affichage)
                             affGeneral.CcalculeJS.push(element.fomuleJs)
                         }
 
                     } else {
-                        if (affGeneral.AlffichageCTompontResulta[0] === "0") {
+                        if (affGeneral.AlffichageCTompontResulta[0] === "0" && affGeneral.AlffichageCTompontResulta[1] != ",") {
                             affGeneral.AlffichageCTompontResulta.shift();
                         }
                         affGeneral.AlffichageCTompontResulta.push(element.Affichage)
                         affGeneral.CcalculeJS.push(element.fomuleJs)
                     }
-
+                    if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(')) { //pour le carré et la racine carré =>quand on rentre une nouvelle valeur 
+                        affGeneral.AlffichageCTompontResulta = [];
+                        affGeneral.AlffichageCalaculette = [];
+                        affGeneral.CcalculeJS = [];
+                        if (affGeneral.AlffichageCTompontResulta[0] === "0" && affGeneral.AlffichageCTompontResulta[1] != ",") {
+                            affGeneral.AlffichageCTompontResulta.shift();
+                        }
+                        affGeneral.AlffichageCTompontResulta.push(element.Affichage)
+                        affGeneral.CcalculeJS.push(element.fomuleJs)
+                    }
                 }
+                // console.log("affichage haut", affGeneral.AlffichageCalaculette);
+                // console.log("affichage resultat", affGeneral.AlffichageCTompontResulta);
+                // console.log("calcule js", affGeneral.CcalculeJS);
             });
 
             let affGeneralStringEnCours = affGeneral.AlffichageCTompontResulta.join('');
@@ -379,6 +392,45 @@ function gererTouches(event) {
                                 chiffreresult.innerHTML = '<p style="font-size: 25px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                             }
                         } else if (element.name === "carrer") {
+                            if (affGeneral.AlffichageCalaculette.includes('√(')) {
+                                affGeneral.AlffichageCalaculette.unshift(element.Affichage);
+
+                                console.log(affGeneral.AlffichageCalaculette);
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "))</p>";
+                            } else {
+                                affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                            }
+
+
+                            affGeneral.CcalculeJS = [];
+                            affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+                            let carreCalculJs = affGeneral.CcalculeJS.join('');
+                            let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                            affGeneral.AlffichageCTompontResulta = [];
+                            affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                            console.log(resultaCarre);
+
+
+                        } else if (element.name === "RasinCarrer") {
+                            if (affGeneral.AlffichageCalaculette.includes('sqr(')) {
+                                affGeneral.AlffichageCalaculette.unshift(element.Affichage);
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "))</p>";
+                            } else {
+                                affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                            }
+
+                            affGeneral.CcalculeJS = [];
+                            affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+                            let rassineCarreCalculJs = affGeneral.CcalculeJS.join('');
+                            let resultaRassineCarre = Function("return " + rassineCarreCalculJs + ")")(); //Math.pow(x, 2)
+                            affGeneral.AlffichageCTompontResulta = [];
+                            affGeneral.AlffichageCTompontResulta.push(resultaRassineCarre)
+                            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                            console.log(resultaRassineCarre);
+
 
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
@@ -392,9 +444,9 @@ function gererTouches(event) {
                             calculeresult.innerHTML = "<p>" + affGeneralStringEnCoursOperation + "</p>";
 
                         }
-                        console.log(affGeneral.AlffichageCalaculette);
-                        console.log(affGeneral.AlffichageCTompontResulta);
-                        console.log(affGeneral.CcalculeJS);
+                        // console.log(affGeneral.AlffichageCalaculette);
+                        // console.log(affGeneral.AlffichageCTompontResulta);
+                        // console.log(affGeneral.CcalculeJS);
                     }
                 })
 
