@@ -378,7 +378,7 @@ function gererTouches(event) {
 
 
                         } else if (element.name === "undemi") {
-                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) { //getion de l'afficjage de la fomule quand on fait un carre suivie d'une rassine ccarré
                                 let resultJoinUdemi = affGeneral.AlffichageCTompontResulta.join('');
                                 let resulteDivUdemi = 1 / resultJoinUdemi;
                                 affGeneral.CcalculeJS = [];
@@ -392,11 +392,12 @@ function gererTouches(event) {
                                 chiffreresult.innerHTML = '<p style="font-size: 25px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                             }
                         } else if (element.name === "carrer") {
-                            if (affGeneral.AlffichageCalaculette.includes('√(')) {
-                                affGeneral.AlffichageCalaculette.unshift(element.Affichage);
+                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(')) {
+                                affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                affGeneral.AlffichageCalaculette.push(')');
 
                                 console.log(affGeneral.AlffichageCalaculette);
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "))</p>";
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
                             } else {
                                 affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
@@ -409,14 +410,15 @@ function gererTouches(event) {
                             let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
                             affGeneral.AlffichageCTompontResulta = [];
                             affGeneral.AlffichageCTompontResulta.push(resultaCarre)
-                            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
-                            console.log(resultaCarre);
+                            chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(0) + "</p>";
+
 
 
                         } else if (element.name === "RasinCarrer") {
-                            if (affGeneral.AlffichageCalaculette.includes('sqr(')) {
+                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(')) { //getion de l'afficjage de la fomule quand on fait un rasinnecrarré suivie d'un carré
                                 affGeneral.AlffichageCalaculette.unshift(element.Affichage);
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "))</p>";
+                                affGeneral.AlffichageCalaculette.push(')');
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
                             } else {
                                 affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
@@ -428,7 +430,7 @@ function gererTouches(event) {
                             let resultaRassineCarre = Function("return " + rassineCarreCalculJs + ")")(); //Math.pow(x, 2)
                             affGeneral.AlffichageCTompontResulta = [];
                             affGeneral.AlffichageCTompontResulta.push(resultaRassineCarre)
-                            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                            chiffreresult.innerHTML = "<p>" + resultaRassineCarre.toFixed(14) + "</p>";
                             console.log(resultaRassineCarre);
 
 
