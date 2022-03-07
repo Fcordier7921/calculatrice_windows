@@ -65,6 +65,16 @@
             .memodéfaut {
                 display: none;
             }
+            .poubelle {
+                display: none;
+                position: absolute;
+                bottom: 5px;
+                right: 10px;
+                img {
+                    width: 17px;
+                    height: 17px;
+                }
+            }
         }
     }
     .resulCalcule {

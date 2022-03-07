@@ -9,6 +9,7 @@ const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour a
 
 
 
+
 //afficher la claculatrice en petite taille
 reductionFenétre.addEventListener('click', () => {
 
@@ -242,6 +243,11 @@ window.onload = () => {
         touchesGeneral.addEventListener("click", gererTouches);
     }
 
+    if (sessionStorage != null) {
+        // console.log(sessionStorage);
+
+    }
+
 }
 
 let affGeneral = {
@@ -256,6 +262,16 @@ function gererTouches(event) {
     switch (event.path[1].classList[0]) {
         case 'egal':
             toucheEvent = event.path[1].classList[1];
+            let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
+            let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+            affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
+            let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
+            sessionStorage.setItem(memoiirAffichageStockage, resultaOpérateur);
+            calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
+            chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+            affGeneral.AlffichageCTompontResulta = [];
+            affGeneral.AlffichageCalaculette = [];
+            affGeneral.CcalculeJS = [];
             break;
         case 'chiffre':
             toucheEvent = event.path[1].classList[1];
@@ -276,7 +292,7 @@ function gererTouches(event) {
                         if (affGeneral.AlffichageCTompontResulta[0] === "0" || affGeneral.AlffichageCTompontResulta.length < 1) {
                             affGeneral.AlffichageCTompontResulta.push("0")
                             affGeneral.AlffichageCTompontResulta.push(element.Affichage)
-                            console.log(affGeneral.AlffichageCTompontResulta);
+
                         } else {
                             affGeneral.AlffichageCTompontResulta.push(element.Affichage)
                             affGeneral.CcalculeJS.push(element.fomuleJs)
@@ -289,7 +305,7 @@ function gererTouches(event) {
                         affGeneral.AlffichageCTompontResulta.push(element.Affichage)
                         affGeneral.CcalculeJS.push(element.fomuleJs)
                     }
-                    if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(')) { //pour le carré et la racine carré =>quand on rentre une nouvelle valeur 
+                    if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) { //pour le carré et la racine carré =>quand on rentre une nouvelle valeur 
                         affGeneral.AlffichageCTompontResulta = [];
                         affGeneral.AlffichageCalaculette = [];
                         affGeneral.CcalculeJS = [];
@@ -300,9 +316,7 @@ function gererTouches(event) {
                         affGeneral.CcalculeJS.push(element.fomuleJs)
                     }
                 }
-                // console.log("affichage haut", affGeneral.AlffichageCalaculette);
-                // console.log("affichage resultat", affGeneral.AlffichageCTompontResulta);
-                // console.log("calcule js", affGeneral.CcalculeJS);
+
             });
 
             let affGeneralStringEnCours = affGeneral.AlffichageCTompontResulta.join('');
@@ -378,25 +392,34 @@ function gererTouches(event) {
 
 
                         } else if (element.name === "undemi") {
-                            if (affGeneral.AlffichageCTompontResulta.length != 0) { //getion de l'afficjage de la fomule quand on fait un carre suivie d'une rassine ccarré
-                                let resultJoinUdemi = affGeneral.AlffichageCTompontResulta.join('');
-                                let resulteDivUdemi = 1 / resultJoinUdemi;
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
                                 affGeneral.CcalculeJS = [];
-                                affGeneral.CcalculeJS.push(resulteDivUdemi)
-                                calculeresult.innerHTML = "<p>" + element.Affichage + affGeneral.AlffichageCTompontResulta.join('') + ")</p>";
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+                                let undemiCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaUndemi = Function("return " + undemiCalculJs)(); //Math.pow(x, 2)
                                 affGeneral.AlffichageCTompontResulta = [];
-                                affGeneral.AlffichageCTompontResulta.push(resulteDivUdemi);
-                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                                affGeneral.AlffichageCTompontResulta.push(resultaUndemi)
+                                chiffreresult.innerHTML = "<p>" + resultaUndemi.toFixed(16) + "</p>";
+
                             } else {
                                 calculeresult.innerHTML = "<p>" + element.Affichage + "0)</p>";
                                 chiffreresult.innerHTML = '<p style="font-size: 25px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                             }
                         } else if (element.name === "carrer") {
-                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(')) {
+                            if (affGeneral.AlffichageCalaculette.length = 0) {
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                            }
+                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
                                 affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
                                 affGeneral.AlffichageCalaculette.push(')');
-
-                                console.log(affGeneral.AlffichageCalaculette);
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
                             } else {
                                 affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
@@ -406,16 +429,20 @@ function gererTouches(event) {
 
                             affGeneral.CcalculeJS = [];
                             affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
                             let carreCalculJs = affGeneral.CcalculeJS.join('');
                             let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
                             affGeneral.AlffichageCTompontResulta = [];
                             affGeneral.AlffichageCTompontResulta.push(resultaCarre)
-                            chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(0) + "</p>";
+                            chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
 
 
 
                         } else if (element.name === "RasinCarrer") {
-                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(')) { //getion de l'afficjage de la fomule quand on fait un rasinnecrarré suivie d'un carré
+                            if (affGeneral.AlffichageCalaculette.length = 0) {
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                            }
+                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) { //getion de l'afficjage de la fomule quand on fait un rasinnecrarré suivie d'un carré
                                 affGeneral.AlffichageCalaculette.unshift(element.Affichage);
                                 affGeneral.AlffichageCalaculette.push(')');
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
@@ -428,12 +455,36 @@ function gererTouches(event) {
                             affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
                             let rassineCarreCalculJs = affGeneral.CcalculeJS.join('');
                             let resultaRassineCarre = Function("return " + rassineCarreCalculJs + ")")(); //Math.pow(x, 2)
+
                             affGeneral.AlffichageCTompontResulta = [];
                             affGeneral.AlffichageCTompontResulta.push(resultaRassineCarre)
                             chiffreresult.innerHTML = "<p>" + resultaRassineCarre.toFixed(14) + "</p>";
-                            console.log(resultaRassineCarre);
 
 
+                        } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
+                            if (affGeneral.AlffichageCalaculette.length != 0) {
+                                let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+                                affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
+                                let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
+                                sessionStorage.setItem(memoiirAffichageStockage, resultaOpérateur)
+                                affGeneral.AlffichageCalaculette = [];
+                                affGeneral.AlffichageCalaculette.push(resultaOpérateur, element.Affichage);
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(resultaOpérateur, element.Affichage);
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+                                chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+
+
+                            } else {
+                                affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ");
+                                affGeneral.CcalculeJS.push(element.fomuleJs);
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCalaculette.push(element.Affichage);
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+                                affGeneral.AlffichageCTompontResulta = [];
+                            }
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
@@ -464,6 +515,7 @@ function gererTouches(event) {
         default:
             break;
     }
+
 }
 //    console.log(Math.sqrt(16));
 

@@ -373,6 +373,16 @@ a {
 #corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
   display: none;
 }
+#corpsStandard .histoMemo .resultHistoMemo .poubelle {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .poubelle img {
+  width: 17px;
+  height: 17px;
+}
 #corpsStandard .resulCalcule {
   grid-row: 2/4;
   grid-column: 1/5;
@@ -883,6 +893,16 @@ a {
 }
 #corpsScientifique .histoMemo .resultHistoMemo .memodéfaut {
   display: none;
+}
+#corpsScientifique .histoMemo .resultHistoMemo .poubelle {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+#corpsScientifique .histoMemo .resultHistoMemo .poubelle img {
+  width: 17px;
+  height: 17px;
 }
 #corpsScientifique .resulCalcule {
   grid-row: 2/6;
