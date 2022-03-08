@@ -12,9 +12,11 @@ const corpNav = document.querySelector('.navBar'); //general--menu burger
 const overlay = document.querySelector('.overlay'); //general--menu burger
 const divattribut = Array.from(document.querySelectorAll('div[tabindex], a[tabindex]')); // selectionner tout les div et a, de la page qui on l'attribus tabindex
 const focusHeader = Array.from(corpNav.querySelectorAll('li a')); // secteionner tout les lien du la navbar pour le utiliser dans le cadre d'un focus
-const histo = document.querySelector('.histo'); // secteionner tout les lien pour l'historique
-const memoiregeneral = document.querySelector('.memoiregeneral'); // secteionner tout les lien pour la mémoire
+const histo = document.querySelector('.histo  h2'); // secteionner tout les lien pour l'historique
+const memoiregeneral = document.querySelector('.memoiregeneral h2'); // secteionner tout les lien pour la mémoire
 const poubelle = document.querySelector('.poubelle'); // secteionner tout les lien pour la poubelle
+const hitodéfaut = document.querySelector('.hitodéfaut'); // secteionner tout les lien pour la poubelle
+const memodéfaut = document.querySelector('.memodéfaut'); // secteionner tout les lien pour la poubelle
 
 
 //---------------gestion de la fenetre--------------------
@@ -223,6 +225,15 @@ for (const elemnt of focusHeader) {
 
 //gestion de l'affichage hitoriique et mémoire
 
-// histo.addEventListener('click', ()=>{
-
-// })
+histo.addEventListener('click', () => {
+    memoiregeneral.classList.remove('active_histoMemo');
+    histo.classList.add('active_histoMemo');
+    memodéfaut.style.display = "none";
+    hitodéfaut.style.display = "block";
+})
+memoiregeneral.addEventListener('click', () => {
+    histo.classList.remove('active_histoMemo');
+    memoiregeneral.classList.add('active_histoMemo');
+    hitodéfaut.style.display = "none";
+    memodéfaut.style.display = "block";
+})

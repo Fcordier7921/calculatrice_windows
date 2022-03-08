@@ -22,6 +22,7 @@ reductionFenétreBis.addEventListener('click', () => {
 
 })
 
+
 //--------- logique de la calculatrice-------------------
 //tableau d'objet qui répertorie les touche de la calculette
 const toucheStandard = [{
@@ -243,10 +244,7 @@ window.onload = () => {
         touchesGeneral.addEventListener("click", gererTouches);
     }
 
-    if (sessionStorage != null) {
-        // console.log(sessionStorage);
 
-    }
 
 }
 
@@ -266,7 +264,7 @@ function gererTouches(event) {
             let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
             affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
             let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-            sessionStorage.setItem(memoiirAffichageStockage, resultaOpérateur);
+            // sessionStorage.setItem(memoiirAffichageStockage, resultaOpérateur);
             calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
             chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
             affGeneral.AlffichageCTompontResulta = [];
@@ -517,22 +515,15 @@ function gererTouches(event) {
     }
 
 }
-//    console.log(Math.sqrt(16));
-
-//    console.log(affGeneral.AlffichageCalaculette);
-//    console.log(affGeneral.AlffichageCTompontResulta);
-//    console.log(affGeneral.CcalculeJS);
 
 
+// for (let i = 0; i < sessionStorage.length; i++) {
+//     let key = sessionStorage.key(i);
+//     console.log(key, sessionStorage.getItem(key));
 
+// }
 
-
-
-
-
-
-
-
+console.log(histoAffich);
 
 
 
