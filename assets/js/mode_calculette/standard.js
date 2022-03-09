@@ -288,6 +288,12 @@ function gererTouches(event) {
 
 
             } else {
+                if (affGeneral.CcalculeJS.includes('ₓ')) {
+                    affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
+                }
+                if (affGeneral.CcalculeJS.includes('÷')) {
+                    affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
+                }
                 let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
                 let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
                 if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
