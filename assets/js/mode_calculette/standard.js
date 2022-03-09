@@ -243,7 +243,7 @@ window.onload = () => {
     for (let touchesGeneral of touchesGenerals) {
         touchesGeneral.addEventListener("click", gererTouches);
     }
-
+    document.addEventListener('keydown', gererTouches)
 
 
 }
@@ -251,30 +251,77 @@ window.onload = () => {
 let affGeneral = {
     AlffichageCalaculette: [],
     AlffichageCTompontResulta: [],
-    CcalculeJS: []
+    CcalculeJS: [],
+    momeEgal: []
 }
 
 function gererTouches(event) {
-    let toucheEvent = '';
+    let toucheEvent;
+    let classEvent;
 
-    switch (event.path[1].classList[0]) {
+    //verifier si l'on as un keydow;
+    if (event.type === "keydown") {
+
+
+    } else {
+        classEvent = event.path[1].classList[0]
+        toucheEvent = event.path[1].classList[1]
+    }
+
+
+
+    switch (classEvent) {
         case 'egal':
-            toucheEvent = event.path[1].classList[1];
-            let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
-            let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
-            affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
-            let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-            // sessionStorage.setItem(memoiirAffichageStockage, resultaOpérateur);
-            calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
-            chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
-            affGeneral.AlffichageCTompontResulta = [];
-            affGeneral.AlffichageCalaculette = [];
-            affGeneral.CcalculeJS = [];
+            if (affGeneral.momeEgal.length != 0) {
+                affGeneral.CcalculeJS = [];
+                affGeneral.AlffichageCalaculette = [];
+                affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(''), affGeneral.momeEgal.join(''));
+                let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
+                let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+
+                affGeneral.AlffichageCTompontResulta = [];
+                affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
+
+                calculeresult.innerHTML = "<p>" + operateurCarreCalculJs + " =</p>";
+                chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+
+
+
+            } else {
+                let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
+                let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+                if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
+                    affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
+                } else {
+                    affGeneral.AlffichageCalaculette.push(" ", " =");
+                }
+                let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
+                calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
+                chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+                affGeneral.AlffichageCTompontResulta = [];
+                affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
+                affGeneral.momeEgal = [];
+                affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
+
+                affGeneral.CcalculeJS = [];
+
+            }
+
+
+
             break;
         case 'chiffre':
-            toucheEvent = event.path[1].classList[1];
+
             toucheStandard.forEach(element => {
                 if (toucheEvent === element.name) {
+
+                    if (affGeneral.AlffichageCalaculette.includes(' =')) {
+                        affGeneral.AlffichageCalaculette = [];
+                        affGeneral.AlffichageCTompontResulta = [];
+                        affGeneral.momeEgal = [];
+                        calculeresult.innerHTML = "<p> </p>";
+
+                    }
                     if (element.name === "PosNega") {
                         if (affGeneral.AlffichageCTompontResulta.includes("-")) {
                             affGeneral.AlffichageCTompontResulta.shift(element.Affichage)
@@ -321,10 +368,12 @@ function gererTouches(event) {
             chiffreresult.innerHTML = "<p>" + affGeneralStringEnCours + "</p>";
             break;
         case 'opperateur':
-            if (affGeneral.AlffichageCalaculette != []) {
-                toucheEvent = event.path[1].classList[1];
+            // console.log(affGeneral.AlffichageCalaculette);
+            if (affGeneral.momeEgal.length === 0) {
+
                 toucheStandard.forEach(element => {
                     if (toucheEvent === element.name) {
+
                         if (element.name === "CE") {
                             chiffreresult.innerHTML = "<p>" + 0 + "</p>";
                             if (affGeneral.AlffichageCalaculette === []) {
@@ -345,6 +394,7 @@ function gererTouches(event) {
                             affGeneral.AlffichageCTompontResulta = [];
                             affGeneral.AlffichageCalaculette = [];
                             affGeneral.CcalculeJS = [];
+                            affGeneral.momeEgal = [];
 
 
                         } else if (element.name === "suppChiffre") {
@@ -368,16 +418,38 @@ function gererTouches(event) {
                                 let resultJoinPourcentage = affGeneral.AlffichageCTompontResulta.join('');
                                 let resulteDivPourcentage = resultJoinPourcentage / 100;
                                 affGeneral.CcalculeJS = [];
-                                let operateurEtract = (affGeneral.AlffichageCalaculette.slice(0, -1).join('')) * resulteDivPourcentage;
-                                affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''))
-                                affGeneral.AlffichageCTompontResulta = [];
-                                affGeneral.AlffichageCTompontResulta.push(operateurEtract);
-                                affGeneral.AlffichageCalaculette.push(operateurEtract);
-                                affGeneral.CcalculeJS.push(operateurEtract);
+                                if (affGeneral.AlffichageCalaculette.includes('÷')) {
+                                    affGeneral.AlffichageCalaculette.pop();
+                                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''), '/', resulteDivPourcentage);
+
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(resulteDivPourcentage);
+                                    affGeneral.AlffichageCalaculette.push('÷');
+                                    affGeneral.AlffichageCalaculette.push(resulteDivPourcentage);
+                                } else if (affGeneral.AlffichageCalaculette.includes('ₓ')) {
+                                    affGeneral.AlffichageCalaculette.pop();
+                                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''), '*', resulteDivPourcentage);
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(resulteDivPourcentage);
+                                    affGeneral.AlffichageCalaculette.push('ₓ');
+                                    affGeneral.AlffichageCalaculette.push(resulteDivPourcentage);
+                                } else {
+                                    let operateurEtract = (affGeneral.AlffichageCalaculette.slice(0, -1).join('')) * resulteDivPourcentage;
+                                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''))
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(operateurEtract);
+                                    affGeneral.AlffichageCalaculette.push(operateurEtract);
+                                    affGeneral.CcalculeJS.push(operateurEtract);
+                                }
+                                // console.log(affGeneral.AlffichageCalaculette);
 
 
-                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+
+                                // console.log(affGeneral.CcalculeJS);
+
+
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
                             } else {
                                 affGeneral.AlffichageCalaculette.push("0");
                                 affGeneral.AlffichageCTompontResulta = [];
@@ -412,51 +484,91 @@ function gererTouches(event) {
                                 chiffreresult.innerHTML = '<p style="font-size: 25px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                             }
                         } else if (element.name === "carrer") {
-                            if (affGeneral.AlffichageCalaculette.length = 0) {
-                                affGeneral.AlffichageCTompontResulta.push('0');
-                            }
-                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
-                                affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
-                                affGeneral.AlffichageCalaculette.push(')');
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
                             } else {
-                                affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+
+
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(0) + "</p>";
                             }
 
-
-                            affGeneral.CcalculeJS = [];
-                            affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
-
-                            let carreCalculJs = affGeneral.CcalculeJS.join('');
-                            let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
-                            affGeneral.AlffichageCTompontResulta = [];
-                            affGeneral.AlffichageCTompontResulta.push(resultaCarre)
-                            chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
 
 
 
                         } else if (element.name === "RasinCarrer") {
-                            if (affGeneral.AlffichageCalaculette.length = 0) {
-                                affGeneral.AlffichageCTompontResulta.push('0');
-                            }
-                            if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) { //getion de l'afficjage de la fomule quand on fait un rasinnecrarré suivie d'un carré
-                                affGeneral.AlffichageCalaculette.unshift(element.Affichage);
-                                affGeneral.AlffichageCalaculette.push(')');
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
                             } else {
-                                affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+
+
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(0) + "</p>";
                             }
-
-                            affGeneral.CcalculeJS = [];
-                            affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
-                            let rassineCarreCalculJs = affGeneral.CcalculeJS.join('');
-                            let resultaRassineCarre = Function("return " + rassineCarreCalculJs + ")")(); //Math.pow(x, 2)
-
-                            affGeneral.AlffichageCTompontResulta = [];
-                            affGeneral.AlffichageCTompontResulta.push(resultaRassineCarre)
-                            chiffreresult.innerHTML = "<p>" + resultaRassineCarre.toFixed(14) + "</p>";
 
 
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
@@ -495,18 +607,228 @@ function gererTouches(event) {
                             calculeresult.innerHTML = "<p>" + affGeneralStringEnCoursOperation + "</p>";
 
                         }
-                        // console.log(affGeneral.AlffichageCalaculette);
-                        // console.log(affGeneral.AlffichageCTompontResulta);
-                        // console.log(affGeneral.CcalculeJS);
                     }
                 })
 
             } else {
-                // faire l'adition pour le rendu
+                toucheStandard.forEach(element => {
+                    if (toucheEvent === element.name) {
+
+                        if (element.name === "C" || element.name === "CE") {
+                            chiffreresult.innerHTML = "<p>" + 0 + "</p>";
+                            calculeresult.innerHTML = "<p> </p>";
+
+                            affGeneral.AlffichageCTompontResulta = [];
+                            affGeneral.AlffichageCalaculette = [];
+                            affGeneral.CcalculeJS = [];
+                            affGeneral.momeEgal = [];
+
+
+                        } else if (element.name === "suppChiffre") {
+                            affGeneral.AlffichageCTompontResulta.splice(-1, 1);
+                            affGeneral.CcalculeJS.splice(-1, 1);
+                            let affGeneralStringEnCoursSup = affGeneral.AlffichageCTompontResulta.join('');
+                            let affGeneralStringEnCoursSupTow = affGeneral.AlffichageCalaculette.join('');
+                            if (affGeneralStringEnCoursSup <= 0) {
+                                chiffreresult.innerHTML = "<p>" + 0 + "</p>";
+
+                            } else {
+                                chiffreresult.innerHTML = "<p>" + affGeneralStringEnCoursSup + "</p>";
+                                calculeresult.innerHTML = "<p>" + affGeneralStringEnCoursSupTow + "</p>";
+
+                            }
+
+
+                        } else if (element.name === "pourcentage") {
+
+                            if (affGeneral.AlffichageCalaculette.length != 0) {
+                                let resultJoinPourcentage = affGeneral.AlffichageCTompontResulta.join('');
+                                let resulteDivPourcentage = resultJoinPourcentage / 100;
+                                affGeneral.CcalculeJS = [];
+                                if (affGeneral.AlffichageCalaculette.includes('÷')) {
+                                    affGeneral.AlffichageCalaculette.pop();
+                                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''), '/', resulteDivPourcentage);
+
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(resulteDivPourcentage);
+                                    affGeneral.AlffichageCalaculette.push('÷');
+                                    affGeneral.AlffichageCalaculette.push(resulteDivPourcentage);
+                                } else if (affGeneral.AlffichageCalaculette.includes('ₓ')) {
+                                    affGeneral.AlffichageCalaculette.pop();
+                                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette.join(''), '*', resulteDivPourcentage);
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(resulteDivPourcentage);
+                                    affGeneral.AlffichageCalaculette.push('ₓ');
+                                    affGeneral.AlffichageCalaculette.push(resulteDivPourcentage);
+                                } else {
+                                    let operateurEtract = affGeneral.AlffichageCTompontResulta.join('') * resulteDivPourcentage;
+
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(operateurEtract);
+                                    affGeneral.AlffichageCalaculette = [];
+                                    affGeneral.AlffichageCalaculette.push(operateurEtract);
+                                    affGeneral.CcalculeJS.push(operateurEtract);
+                                }
+
+
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                            } else {
+                                affGeneral.AlffichageCalaculette.push("0");
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push("0");
+                                affGeneral.CcalculeJS = [];
+
+                                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
+                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette + "</p>";
+                            }
+
+
+                        } else if (element.name === "undemi") {
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette = [];
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+                                let undemiCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaUndemi = Function("return " + undemiCalculJs)(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaUndemi)
+                                chiffreresult.innerHTML = "<p>" + resultaUndemi.toFixed(16) + "</p>";
+
+                            } else {
+                                calculeresult.innerHTML = "<p>" + element.Affichage + "0)</p>";
+                                chiffreresult.innerHTML = '<p style="font-size: 25px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
+                            }
+                        } else if (element.name === "carrer") {
+
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette = [];
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
+                            } else {
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+
+
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(0) + "</p>";
+                            }
+
+
+
+
+                        } else if (element.name === "RasinCarrer") {
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette = [];
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
+                            } else {
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                                if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
+                                    affGeneral.AlffichageCalaculette.unshift(element.Affichage, ' ');
+                                    affGeneral.AlffichageCalaculette.push(')');
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                } else {
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
+                                }
+
+
+                                affGeneral.CcalculeJS = [];
+                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                affGeneral.AlffichageCTompontResulta = [];
+                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(0) + "</p>";
+                            }
+
+
+                        } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
+                            console.log(affGeneral.CcalculeJS);
+                            affGeneral.AlffichageCalaculette = [];
+                            affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ", element.Affichage);
+                            affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(''), element.fomuleJs);
+                            affGeneral.AlffichageCTompontResulta = [];
+
+                            calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+                            affGeneral.AlffichageCTompontResulta = [];
+                            affGeneral.momeEgal = [];
+
+                        } else {
+                            for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
+                                affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
+
+                            }
+                            affGeneral.AlffichageCTompontResulta = [];
+                            affGeneral.AlffichageCalaculette.push(element.Affichage);
+                            affGeneral.CcalculeJS.push(element.fomuleJs);
+                            let affGeneralStringEnCoursOperation = affGeneral.AlffichageCalaculette.join('');
+                            calculeresult.innerHTML = "<p>" + affGeneralStringEnCoursOperation + "</p>";
+
+                        }
+                    }
+                })
+
+
             }
             break;
         case 'memo':
-            toucheEvent = event.path[1].classList[1];
+
 
             break;
 
@@ -523,7 +845,7 @@ function gererTouches(event) {
 
 // }
 
-console.log(histoAffich);
+
 
 
 
