@@ -261,13 +261,71 @@ function gererTouches(event) {
 
     //verifier si l'on as un keydow;
     if (event.type === "keydown") {
+        console.log(event);
+        if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9') {
+            classEvent = 'chiffre';
+        } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+            classEvent = 'opperateur';
+        } else if (event.key === 'Enter') {
+            classEvent = 'egal';
+        }
+        switch (event.key) {
+            case '0':
+                toucheEvent = 'zero'
+                break;
+            case '1':
+                toucheEvent = 'un'
+                break;
+            case '2':
+                toucheEvent = 'deux'
+                break;
+            case '3':
+                toucheEvent = 'trois'
+                break;
+            case '4':
+                toucheEvent = 'quatre'
+                break;
+            case '5':
+                toucheEvent = 'cinq'
+                break;
+            case '6':
+                toucheEvent = 'six'
+                break;
+            case '7':
+                toucheEvent = 'sept'
+                break;
+            case '8':
+                toucheEvent = 'huit'
+                break;
+            case '9':
+                toucheEvent = 'neuf'
+                break;
+            case '+':
+                toucheEvent = 'plus'
+                break;
+            case '-':
+                toucheEvent = 'moin'
+                break;
+            case '*':
+                toucheEvent = 'multiplier'
+                break;
+            case '/':
+                toucheEvent = 'division'
+                break;
+            case 'Enter':
+                toucheEvent = 'opperateur'
+                break;
 
+            default:
+                break;
+        }
 
     } else {
         classEvent = event.path[1].classList[0]
         toucheEvent = event.path[1].classList[1]
     }
 
+    console.log(classEvent, toucheEvent);
 
 
     switch (classEvent) {
