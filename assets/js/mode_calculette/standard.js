@@ -6,7 +6,7 @@ const memoSandard = Array.from(document.querySelectorAll('.memo')) //selection d
 const operateurSandard = Array.from(document.querySelectorAll('.opperateur')) //selection de toute les emplacement des opérateur
 const calculeresult = document.querySelector('.calculeresult') //recuprer pour afficher le calcule en cours
 const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour afficher les entré en cours
-
+const histodéfaut = document.querySelector(".histodéfaut") //emplacement pour afficher l'historique des calcule
 
 
 
@@ -237,6 +237,7 @@ window.onload = () => {
     let touchesChiffre = Array.from(document.querySelectorAll(".chiffre"));
     let touchesMemo = Array.from(document.querySelectorAll(".memo"));
     let touchesGenerals = touchesOperateur.concat(touchesChiffre, touchesMemo);
+    sessionStorage.removeItem("historiqueCalcule");
 
 
 
@@ -248,11 +249,22 @@ window.onload = () => {
 
 }
 
+//affichage de l'historique
+let sessionHisto = Window.sessionStorage;
+console.log(sessionHisto);
+
+// sessionHisto.addEventListener("change", () => {
+//     histodéfaut.innerHTML = sessionHisto
+// });
+
+
+// variable tempon pour l'afaffichage, les calcule , la mémoi et l'historique
 let affGeneral = {
     AlffichageCalaculette: [],
     AlffichageCTompontResulta: [],
     CcalculeJS: [],
-    momeEgal: []
+    momeEgal: [],
+    histo: []
 }
 
 function gererTouches(event) {
@@ -261,7 +273,7 @@ function gererTouches(event) {
 
     //verifier si l'on as un keydow;
     if (event.type === "keydown") {
-        console.log(event);
+        // console.log(event);
         if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9') {
             classEvent = 'chiffre';
         } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
@@ -325,7 +337,7 @@ function gererTouches(event) {
         toucheEvent = event.path[1].classList[1]
     }
 
-    console.log(classEvent, toucheEvent);
+
 
 
     switch (classEvent) {
@@ -342,6 +354,8 @@ function gererTouches(event) {
 
                 calculeresult.innerHTML = "<p>" + operateurCarreCalculJs + " =</p>";
                 chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+                affGeneral.histo.unshift("<p>" + operateurCarreCalculJs + "=</p> <br> <p>" + resultaOpérateur + "</p>");
+                console.log(affGeneral.histo);
 
 
 
@@ -366,9 +380,12 @@ function gererTouches(event) {
                 affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
                 affGeneral.momeEgal = [];
                 affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
-
+                affGeneral.histo.unshift("<p>" + memoiirAffichageStockage + "</p> <br> <p>" + resultaOpérateur + "</p>");
+                sessionStorage.setItem("historiqueCalcule", affGeneral.histo);
+                // console.log(sessionStorage.getItem("historiqueCalcule"));
                 affGeneral.CcalculeJS = [];
 
+                // console.log(operateurCarreCalculJs, " =", resultaOpérateur, affGeneral.CcalculeJS);
             }
 
 
@@ -505,11 +522,7 @@ function gererTouches(event) {
                                     affGeneral.AlffichageCalaculette.push(operateurEtract);
                                     affGeneral.CcalculeJS.push(operateurEtract);
                                 }
-                                // console.log(affGeneral.AlffichageCalaculette);
 
-
-
-                                // console.log(affGeneral.CcalculeJS);
 
 
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
@@ -870,7 +883,7 @@ function gererTouches(event) {
 
 
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
-                            console.log(affGeneral.CcalculeJS);
+                            // console.log(affGeneral.CcalculeJS);
                             affGeneral.AlffichageCalaculette = [];
                             affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ", element.Affichage);
                             affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(''), element.fomuleJs);

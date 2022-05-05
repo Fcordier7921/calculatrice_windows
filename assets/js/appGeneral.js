@@ -90,7 +90,10 @@ iconAgrandirFenetre.addEventListener('keydown', (event) => {
 
 //gestion de la fenétre avec la fermeture de fenêtre
 
-iconFermerFenetre.addEventListener('click', CacheContainer);
+iconFermerFenetre.addEventListener('click', () => {
+    CacheContainer();
+    sessionStorage.removeItem("historiqueCalcule"); //suprimer l'historique
+});
 
 iconFermerFenetre.addEventListener('keydown', (event) => {
     if (event.key === "Enter" || event.key === " ") {
