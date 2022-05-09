@@ -15,7 +15,7 @@ const focusHeader = Array.from(corpNav.querySelectorAll('li a')); // secteionner
 const histo = document.querySelector('.histo  h2'); // secteionner tout les lien pour l'historique
 const memoiregeneral = document.querySelector('.memoiregeneral h2'); // secteionner tout les lien pour la mémoire
 const poubelle = document.querySelector('.poubelle'); // secteionner tout les lien pour la poubelle
-const hitodéfaut = document.querySelector('.hitodéfaut'); // secteionner tout les lien pour la poubelle
+const hitodéfaut = document.querySelector('.histodéfaut'); // secteionner tout les lien pour la poubelle
 const memodéfaut = document.querySelector('.memodéfaut'); // secteionner tout les lien pour la poubelle
 
 
