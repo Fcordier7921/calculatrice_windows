@@ -6,7 +6,7 @@ const memoSandard = Array.from(document.querySelectorAll('.memo')) //selection d
 const operateurSandard = Array.from(document.querySelectorAll('.opperateur')) //selection de toute les emplacement des opérateur
 const calculeresult = document.querySelector('.calculeresult') //recuprer pour afficher le calcule en cours
 const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour afficher les entré en cours
-const histodéfaut = document.querySelector(".histodéfaut") //emplacement pour afficher l'historique des calcule
+
 
 
 
@@ -252,6 +252,7 @@ window.onload = () => {
     let touchesGenerals = touchesOperateur.concat(touchesChiffre, touchesMemo);
 
     if (sessionStorage["historiqueCalcule"]) {
+        affGeneral.histo = [];
         affGeneral.histo.push(sessionStorage.getItem('historiqueCalcule'));
     }
 
@@ -404,7 +405,7 @@ function gererTouches(event) {
                     affGeneral.CcalculeJS = [];
 
                     // console.log(operateurCarreCalculJs, " =", resultaOpérateur, affGeneral.CcalculeJS);
-                    console.log(affGeneral.histo);
+                    // console.log(affGeneral.histo);
                 }
                 historique();
             }

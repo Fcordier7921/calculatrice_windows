@@ -17,6 +17,7 @@ const memoiregeneral = document.querySelector('.memoiregeneral h2'); // secteion
 const poubelle = document.querySelector('.poubelle'); // secteionner tout les lien pour la poubelle
 const hitodéfaut = document.querySelector('.histodéfaut'); // secteionner tout les lien pour la poubelle
 const memodéfaut = document.querySelector('.memodéfaut'); // secteionner tout les lien pour la poubelle
+const histodéfaut = document.querySelector(".histodéfaut") //emplacement pour afficher l'historique des calcule
 
 
 //---------------gestion de la fenetre--------------------
@@ -92,7 +93,18 @@ iconAgrandirFenetre.addEventListener('keydown', (event) => {
 
 iconFermerFenetre.addEventListener('click', () => {
     CacheContainer();
+    affGeneral.histo = [];
     sessionStorage.removeItem("historiqueCalcule"); //suprimer l'historique
+    setTimeout(() => {
+        histodéfaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
+        chiffreresult.innerHTML = "<p>" + 0 + "</p>";
+        calculeresult.innerHTML = "<p> </p>";
+
+        affGeneral.AlffichageCTompontResulta = [];
+        affGeneral.AlffichageCalaculette = [];
+        affGeneral.CcalculeJS = [];
+        affGeneral.momeEgal = [];
+    }, 1000);
 });
 
 iconFermerFenetre.addEventListener('keydown', (event) => {
