@@ -373,9 +373,9 @@ function gererTouches(event) {
 
                     calculeresult.innerHTML = "<p>" + operateurCarreCalculJs + " =</p>";
                     chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
-                    affGeneral.histo.unshift("<p>" + operateurCarreCalculJs + "=</p> <p class='HistoResultaSotrage'>" + resultaOpérateur + "</p>");
-                    console.log(affGeneral.histo);
-
+                    affGeneral.histo.unshift("<div><p>" + operateurCarreCalculJs + "=</p> <p class='HistoResultaSotrage'>" + resultaOpérateur + "</p></div>");
+                    sessionStorage.setItem("historiqueCalcule", affGeneral.histo);
+                    historique();
 
 
                 } else {
@@ -399,15 +399,16 @@ function gererTouches(event) {
                     affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
                     affGeneral.momeEgal = [];
                     affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
-                    affGeneral.histo.unshift("<p>" + memoiirAffichageStockage + "</p>  <p class='HistoResultaSotrage'>" + resultaOpérateur + "</p>");
+                    affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "</p>  <p class='HistoResultaSotrage'>" + resultaOpérateur + "</p></div>");
                     sessionStorage.setItem("historiqueCalcule", affGeneral.histo);
+                    historique();
                     // console.log(sessionStorage.getItem("historiqueCalcule"));
                     affGeneral.CcalculeJS = [];
 
                     // console.log(operateurCarreCalculJs, " =", resultaOpérateur, affGeneral.CcalculeJS);
                     // console.log(affGeneral.histo);
                 }
-                historique();
+
             }
 
 
@@ -681,11 +682,13 @@ function gererTouches(event) {
                                     affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
                                 }
 
+
                                 let operateurCarreCalculJs = affGeneral.CcalculeJS.join('');
                                 let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
-                                affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
+                                affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''));
                                 let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-                                sessionStorage.setItem(memoiirAffichageStockage, resultaOpérateur)
+                                affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "=</p> <p class='HistoResultaSotrage'>" + resultaOpérateur + "</p></div>");
+                                sessionStorage.setItem("historiqueCalcule", affGeneral.histo)
                                 affGeneral.AlffichageCalaculette = [];
                                 affGeneral.AlffichageCalaculette.push(resultaOpérateur, element.Affichage);
                                 affGeneral.AlffichageCTompontResulta = [];
@@ -693,9 +696,7 @@ function gererTouches(event) {
                                 affGeneral.CcalculeJS.push(resultaOpérateur, element.Affichage);
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
                                 chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
-                                affGeneral.histo.unshift("<p>" + affGeneral.AlffichageCalaculette + "</p> <br> <p>" + resultaOpérateur + "</p>");
-                                sessionStorage.setItem("historiqueCalcule", affGeneral.histo);
-
+                                historique();
 
                             } else {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ");
@@ -708,7 +709,6 @@ function gererTouches(event) {
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta[i])
-
                             }
                             affGeneral.AlffichageCTompontResulta = [];
                             affGeneral.AlffichageCalaculette.push(element.Affichage);
