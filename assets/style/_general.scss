@@ -180,3 +180,13 @@
             z-index: 2;
             cursor: pointer;
         }
+        
+        //animation de l'historique et de la mémoir
+        @keyframes histoMemo {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }

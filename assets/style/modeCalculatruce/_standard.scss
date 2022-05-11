@@ -73,6 +73,11 @@
                         text-align: start;
                         margin-left: 20px;
                     }
+                    div {
+                        &:nth-child(1) {
+                            @include histoMemo(2s);
+                        }
+                    }
                 }
                 .memodéfaut {
                     display: none;

@@ -271,3 +271,7 @@
         }
     }
 }
+
+@mixin histoMemo($dutration) {
+    animation: histoMemo $dutration ease-in-out;
+}

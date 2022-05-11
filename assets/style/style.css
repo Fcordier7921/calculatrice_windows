@@ -380,6 +380,9 @@ a {
   text-align: start;
   margin-left: 20px;
 }
+#corpsStandard .histoMemo .resultHistoMemo .histodéfaut div:nth-child(1) {
+  animation: histoMemo 2s ease-in-out;
+}
 #corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
   display: none;
 }
@@ -5272,6 +5275,15 @@ a {
   bottom: 0;
   z-index: 2;
   cursor: pointer;
+}
+
+@keyframes histoMemo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
