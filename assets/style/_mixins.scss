@@ -272,6 +272,7 @@
     }
 }
 
+//mixine pour l'animation de l'apartition des nouveau calcule dans l'historique ety la mémoire
 @mixin histoMemo($dutration) {
     animation: histoMemo $dutration ease-in-out;
 }
