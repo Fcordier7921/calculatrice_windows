@@ -15,9 +15,10 @@ const focusHeader = Array.from(corpNav.querySelectorAll('li a')); // secteionner
 const histo = document.querySelector('.histo  h2'); // secteionner tout les lien pour l'historique
 const memoiregeneral = document.querySelector('.memoiregeneral h2'); // secteionner tout les lien pour la mémoire
 const poubelle = document.querySelector('.poubelle'); // secteionner tout les lien pour la poubelle
-const hitodéfaut = document.querySelector('.histodéfaut'); // secteionner tout les lien pour la poubelle
-const memodéfaut = document.querySelector('.memodéfaut'); // secteionner tout les lien pour la poubelle
-const histodéfaut = document.querySelector(".histodéfaut") //emplacement pour afficher l'historique des calcule
+const poubelleImg = document.querySelector('.poubelle img'); // secteionner tout les lien pour la poubelle
+const histodefaut = document.querySelector('.histodefaut'); // secteionner tout les lien pour la poubelle
+const memodefaut = document.querySelector('.memodefaut'); // secteionner tout les lien pour la poubelle
+
 
 
 //---------------gestion de la fenetre--------------------
@@ -95,8 +96,9 @@ iconFermerFenetre.addEventListener('click', () => {
     CacheContainer();
     affGeneral.histo = [];
     sessionStorage.removeItem("historiqueCalcule"); //suprimer l'historique
+    poubelle.style.opacity = "0"
     setTimeout(() => {
-        histodéfaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
+        histodefaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
         chiffreresult.innerHTML = "<p>" + 0 + "</p>";
         calculeresult.innerHTML = "<p> </p>";
 
@@ -141,7 +143,7 @@ function togolleBurgerMenu() { // fonction pour afficher la navbar
                     divattribut[i].setAttribute("tabindex", i)
 
                 }
-                console.log('tutu');
+                // console.log('tutu');
             }
 
 
@@ -243,12 +245,19 @@ for (const elemnt of focusHeader) {
 histo.addEventListener('click', () => {
     memoiregeneral.classList.remove('active_histoMemo');
     histo.classList.add('active_histoMemo');
-    memodéfaut.style.display = "none";
-    hitodéfaut.style.display = "block";
+    memodefaut.style.display = "none";
+    histodefaut.style.display = "block";
 })
 memoiregeneral.addEventListener('click', () => {
     histo.classList.remove('active_histoMemo');
     memoiregeneral.classList.add('active_histoMemo');
-    hitodéfaut.style.display = "none";
-    memodéfaut.style.display = "block";
+    histodefaut.style.display = "none";
+    memodefaut.style.display = "block";
+})
+
+//ecouter le clikc poubelle histo/memo
+poubelleImg.addEventListener('click', () => {
+    sessionStorage.removeItem("historiqueCalcule");
+    historique();
+
 })

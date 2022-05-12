@@ -56,17 +56,22 @@
                 grid-column: 1/3;
                 width: 100%;
                 height: 100%;
-                .histodéfaut p,
-                .memodéfaut p {
+                .histodefaut,
+                .memodefaut {
+                    margin: 0;
+                }
+                .histodefaut p,
+                .memodefaut p {
+                    margin: 9px 15px 0 0;
                     font-size: 13px;
                     white-space: nowrap;
                     text-align: end;
-                    margin-right: 15px;
                 }
-                .histodéfaut {
-                    .HistoResultaSotrage {
+                .histoAffichage .histodefaut,
+                .memoAffichage .memodefaut {
+                    .resultaSotrage {
                         font-size: 20px;
-                        margin: 0 15px 0 0;
+                        margin: 7px 15px 30px 0;
                         font-weight: 700;
                     }
                     .defaultMessage {
@@ -75,21 +80,38 @@
                     }
                     div {
                         &:nth-child(1) {
-                            @include histoMemo(2s);
+                            @include histoMemo(1s);
                         }
                     }
                 }
-                .memodéfaut {
+                .memodefaut {
                     display: none;
                 }
-                .poubelle {
-                    display: none;
-                    position: absolute;
-                    bottom: 5px;
-                    right: 10px;
-                    img {
-                        width: 17px;
-                        height: 17px;
+                .histoAffichage,
+                .memoAffichage {
+                    .poubelle {
+                        opacity: 0;
+                        position: absolute;
+                        width: 40px;
+                        height: 40px;
+                        bottom: 0;
+                        right: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: $CouleurMain;
+                        cursor: pointer;
+                        img {
+                            width: 17px;
+                            height: 16px;
+                            padding: 2% 2%;
+                        }
+                        &:hover {
+                            border-top: 1px solid gray;
+                            border-left: 1px solid gray;
+                            background-color: rgb(214, 214, 214);
+                            pointer-events: none;
+                        }
                     }
                 }
             }

@@ -26,7 +26,7 @@
             max-width: 100%;
             min-width: 258px;
             height: 500px;
-            background-color: rgba($CouleurMain, 0.95);
+            background-color: $CouleurMain;
             border-radius: 4px;
             box-shadow: 0 0 20px rgba($CouleurText, 0.5);
             border: 1px solid rgba($CouleurText, 0.3);
@@ -184,9 +184,11 @@
         //animation de l'historique et de la mémoir
         @keyframes histoMemo {
             0% {
+                transform: translateX(-3%);
                 opacity: 0;
             }
             100% {
+                transform: translateX(0);
                 opacity: 1;
             }
         }

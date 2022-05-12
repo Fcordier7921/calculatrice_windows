@@ -35,7 +35,7 @@ a {
   max-width: 100%;
   min-width: 258px;
   height: 500px;
-  background-color: rgba(230, 230, 230, 0.95);
+  background-color: #e6e6e6;
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -364,37 +364,61 @@ a {
   width: 100%;
   height: 100%;
 }
-#corpsStandard .histoMemo .resultHistoMemo .histodéfaut p,
-#corpsStandard .histoMemo .resultHistoMemo .memodéfaut p {
+#corpsStandard .histoMemo .resultHistoMemo .histodefaut,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut {
+  margin: 0;
+}
+#corpsStandard .histoMemo .resultHistoMemo .histodefaut p,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut p {
+  margin: 9px 15px 0 0;
   font-size: 13px;
   white-space: nowrap;
   text-align: end;
-  margin-right: 15px;
 }
-#corpsStandard .histoMemo .resultHistoMemo .histodéfaut .HistoResultaSotrage {
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage .histodefaut .resultaSotrage,
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage .memodefaut .resultaSotrage {
   font-size: 20px;
-  margin: 0 15px 0 0;
+  margin: 7px 15px 30px 0;
   font-weight: 700;
 }
-#corpsStandard .histoMemo .resultHistoMemo .histodéfaut .defaultMessage {
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage .histodefaut .defaultMessage,
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage .memodefaut .defaultMessage {
   text-align: start;
   margin-left: 20px;
 }
-#corpsStandard .histoMemo .resultHistoMemo .histodéfaut div:nth-child(1) {
-  animation: histoMemo 2s ease-in-out;
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage .histodefaut div:nth-child(1),
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage .memodefaut div:nth-child(1) {
+  animation: histoMemo 1s ease-in-out;
 }
-#corpsStandard .histoMemo .resultHistoMemo .memodéfaut {
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut {
   display: none;
 }
-#corpsStandard .histoMemo .resultHistoMemo .poubelle {
-  display: none;
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage .poubelle,
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage .poubelle {
+  opacity: 0;
   position: absolute;
-  bottom: 5px;
-  right: 10px;
+  width: 40px;
+  height: 40px;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6e6e6;
+  cursor: pointer;
 }
-#corpsStandard .histoMemo .resultHistoMemo .poubelle img {
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage .poubelle img,
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage .poubelle img {
   width: 17px;
-  height: 17px;
+  height: 16px;
+  padding: 2% 2%;
+}
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage .poubelle:hover,
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage .poubelle:hover {
+  border-top: 1px solid gray;
+  border-left: 1px solid gray;
+  background-color: #d6d6d6;
+  pointer-events: none;
 }
 #corpsStandard .resulCalcule {
   grid-row: 2/4;
@@ -5279,9 +5303,11 @@ a {
 
 @keyframes histoMemo {
   0% {
+    transform: translateX(-3%);
     opacity: 0;
   }
   100% {
+    transform: translateX(0);
     opacity: 1;
   }
 }
