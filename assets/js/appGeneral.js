@@ -20,7 +20,6 @@ const histodefaut = document.querySelector('.histodefaut'); // secteionner tout 
 const memodefaut = document.querySelector('.memodefaut'); // secteionner tout les lien pour la poubelle
 
 
-
 //---------------gestion de la fenetre--------------------
 
 
@@ -49,10 +48,12 @@ function reduictionFenetre() {
     if (containerCalculatrice.classList.contains('containerReduit')) {
         containerCalculatrice.classList.remove('containerReduit', 'containerAgrandis');
         containerCalculatrice.style.animation = 'removrReduire 1s forwards';
+        poubelle.style.display = 'none'
     } else {
         containerCalculatrice.classList.remove('containerAgrandis');
         containerCalculatrice.classList.add('containerReduit');
         containerCalculatrice.style.removeProperty('animation');
+        poubelle.style.display = 'none'
 
     }
 }
@@ -259,5 +260,6 @@ memoiregeneral.addEventListener('click', () => {
 poubelleImg.addEventListener('click', () => {
     sessionStorage.removeItem("historiqueCalcule");
     historique();
+    affGeneral.histo = [];
 
 })
