@@ -235,7 +235,7 @@ function historique() {
         let historiqueMemorise = sessionStorage.getItem('historiqueCalcule');
 
         histodefaut.innerHTML = historiqueMemorise;
-        // console.log(historiqueMemorise);
+
         poubelle.style.opacity = "1"
 
 
@@ -294,67 +294,85 @@ function gererTouches(event) {
 
     //verifier si l'on as un keydow;
     if (event.type === "keydown") {
-        // console.log(event);
-        if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === ',' || event.key === '.') {
+        // console.log(event.key);
+        if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === ',' || event.key === '.' || event.key === 'q') {
             classEvent = 'chiffre';
-        } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+        } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/' || event.key === 'r' || event.key === 'Delete' || event.key === 'Backspace' || event.key === '%' || event.key === 'ù') {
             classEvent = 'opperateur';
-        } else if (event.key === 'Enter') {
+        } else if (event.key === 'Enter' || event.key === ' ') {
             classEvent = 'egal';
         }
 
         switch (event.key) {
             case '0':
-                toucheEvent = 'zero'
+                toucheEvent = 'zero';
                 break;
             case '1':
-                toucheEvent = 'un'
+                toucheEvent = 'un';
                 break;
             case '2':
-                toucheEvent = 'deux'
+                toucheEvent = 'deux';
                 break;
             case '3':
-                toucheEvent = 'trois'
+                toucheEvent = 'trois';
                 break;
             case '4':
-                toucheEvent = 'quatre'
+                toucheEvent = 'quatre';
                 break;
             case '5':
-                toucheEvent = 'cinq'
+                toucheEvent = 'cinq';
                 break;
             case '6':
-                toucheEvent = 'six'
+                toucheEvent = 'six';
                 break;
             case '7':
-                toucheEvent = 'sept'
+                toucheEvent = 'sept';
                 break;
             case '8':
-                toucheEvent = 'huit'
+                toucheEvent = 'huit';
                 break;
             case '9':
-                toucheEvent = 'neuf'
+                toucheEvent = 'neuf';
                 break;
             case '+':
-                toucheEvent = 'plus'
+                toucheEvent = 'plus';
                 break;
             case '-':
-                toucheEvent = 'moin'
+                toucheEvent = 'moin';
                 break;
             case '*':
-                toucheEvent = 'multiplier'
+                toucheEvent = 'multiplier';
                 break;
             case '/':
-                toucheEvent = 'division'
+                toucheEvent = 'division';
                 break;
             case 'Enter':
-                toucheEvent = 'opperateur'
+            case ' ':
+                toucheEvent = 'opperateur';
+                break;
+            case 'Backspace':
+                toucheEvent = 'suppChiffre';
+                break;
+            case 'Delete':
+                toucheEvent = 'CE';
+                break;
+            case 'r':
+                toucheEvent = 'undemi';
+                break;
+            case 'q':
+                toucheEvent = 'carrer';
+                break;
+            case '%':
+            case 'ù':
+                toucheEvent = 'pourcentage';
                 break;
             case ',':
             case '.':
-                toucheEvent = 'visgule'
+                toucheEvent = 'visgule';
                 break;
 
             default:
+
                 break;
         }
 
@@ -368,60 +386,96 @@ function gererTouches(event) {
 
     switch (classEvent) {
         case 'egal':
-            console.log(affGeneral.AlffichageCalaculette);
+
 
             if (affGeneral.AlffichageCalaculette.includes(' =')) {
 
+
                 affGeneral.CcalculeJS = [];
                 affGeneral.AlffichageCalaculette = [];
-                affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(' '), ' ', affGeneral.momeEgal.join(' '));
-                affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(' '), affGeneral.momeEgal.join(' '), ' =');
-                let operateurDoubleEgalCarreCalculJs = affGeneral.CcalculeJS.join('');
+                affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(' '), affGeneral.momeEgal.join(' '));
+                affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(' '), ' ', affGeneral.momeEgal.join(' '), ' =');
+                let operateurDoubleEgalCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.').replaceAll('ₓ', '*').replaceAll('÷', '/');
+
                 let resultaDoubleEgaleOpérateur = Function("return " + operateurDoubleEgalCarreCalculJs)();
                 affGeneral.AlffichageCTompontResulta = [];
                 affGeneral.AlffichageCTompontResulta.push(resultaDoubleEgaleOpérateur);
-                calculeresult.innerHTML = "<p>" + operateurDoubleEgalCarreCalculJs + " =</p>";
+                calculeresult.innerHTML = "<p>" + operateurDoubleEgalCarreCalculJs.replaceAll('*', ' ₓ').replaceAll('/', ' ÷').replaceAll('+', ' +').replaceAll('-', ' -') + " =</p>";
                 chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
-                affGeneral.histo.unshift("<div><p>" + operateurDoubleEgalCarreCalculJs + "=</p> <p class='resultaSotrage'>" + affGeneral.AlffichageCTompontResulta + "</p></div>");
+                affGeneral.histo.unshift("<div><p>" + operateurDoubleEgalCarreCalculJs.replaceAll('*', ' ₓ').replaceAll('/', ' ÷').replaceAll('+', ' +').replaceAll('-', ' -') + "=</p> <p class='resultaSotrage'>" + affGeneral.AlffichageCTompontResulta + "</p></div>");
                 sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
                 historique();
 
-
-
-            } else if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('-') || affGeneral.AlffichageCalaculette.includes('+')) {
-
-                affGeneral.momeEgal = [];
-                if (affGeneral.CcalculeJS.includes('ₓ')) {
-                    affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
-                }
-                if (affGeneral.CcalculeJS.includes('÷')) {
-                    affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
-                }
-                // console.log(affGeneral.CcalculeJS.join('').replaceAll(',', '.'));
-                let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
-
-                let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
-                if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
-                    affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
-                } else {
-                    affGeneral.AlffichageCalaculette.push(" ", " =");
-                }
-                let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-                calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
-                chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
-                affGeneral.AlffichageCTompontResulta = [];
-                affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
-                affGeneral.momeEgal = [];
-                affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
-
-                affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
-                sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
-                historique();
-                // console.log(sessionStorage.getItem("historiqueCalcule"));
                 affGeneral.CcalculeJS = [];
 
-                // console.log(operateurCarreCalculJs, " =", resultaOpérateur, affGeneral.CcalculeJS);
-                // console.log(affGeneral.histo);
+            } else if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('-') || affGeneral.AlffichageCalaculette.includes('+')) {
+                if (affGeneral.AlffichageCTompontResulta.length != 0) {
+
+                    affGeneral.momeEgal = [];
+                    if (affGeneral.CcalculeJS.includes('ₓ')) {
+                        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
+                    }
+                    if (affGeneral.CcalculeJS.includes('÷')) {
+                        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
+                    }
+
+                    let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
+
+                    let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+                    if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
+                        affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
+                    } else {
+                        affGeneral.AlffichageCalaculette.push(" ", " =");
+                    }
+                    let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
+                    calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
+                    chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+                    affGeneral.AlffichageCTompontResulta = [];
+                    affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
+                    affGeneral.momeEgal = [];
+                    affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
+
+                    affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+                    sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
+                    historique();
+
+                    affGeneral.CcalculeJS = [];
+                } else {
+                    console.log(affGeneral.AlffichageCalaculette, '1msfdjkgdfgdfsgds');
+                    affGeneral.momeEgal = [];
+                    if (affGeneral.CcalculeJS.includes('ₓ')) {
+                        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
+                    }
+                    if (affGeneral.CcalculeJS.includes('÷')) {
+                        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
+                    }
+                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette[0]);
+                    affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette[2], affGeneral.AlffichageCalaculette[0])
+                    console.log(affGeneral.momeEgal);
+                    let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
+                    console.log(affGeneral.AlffichageCTompontResulta, '2msfdjkgdfgdfsgds');
+                    console.log(affGeneral.CcalculeJS, '3msfdjkgdfgdfsgds');
+
+                    let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+                    if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
+                        affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
+                    } else {
+                        affGeneral.AlffichageCalaculette.push(" ", " =");
+                    }
+                    let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
+                    calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
+                    chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+                    affGeneral.AlffichageCTompontResulta = [];
+                    affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
+                    affGeneral.momeEgal = [];
+                    affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
+
+                    affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+                    sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
+                    historique();
+
+                    affGeneral.CcalculeJS = [];
+                }
 
             }
 
@@ -490,7 +544,7 @@ function gererTouches(event) {
             chiffreresult.innerHTML = "<p>" + affGeneralStringEnCours + "</p>";
             break;
         case 'opperateur':
-            // console.log(affGeneral.AlffichageCalaculette);
+
             if (affGeneral.momeEgal.length === 0) {
 
                 toucheStandard.forEach(element => {
@@ -698,8 +752,9 @@ function gererTouches(event) {
                                     affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
                                 }
 
-
                                 let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
+
+
                                 let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
                                 affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''));
                                 let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
@@ -714,6 +769,7 @@ function gererTouches(event) {
                                 chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
                                 historique();
 
+
                             } else {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ");
                                 affGeneral.CcalculeJS.push(element.fomuleJs);
@@ -721,6 +777,7 @@ function gererTouches(event) {
                                 affGeneral.AlffichageCalaculette.push(element.Affichage);
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
                                 affGeneral.AlffichageCTompontResulta = [];
+
                             }
                         } else {
                             for (let i = 0; i < affGeneral.AlffichageCTompontResulta.length; i++) {
@@ -925,7 +982,7 @@ function gererTouches(event) {
 
 
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
-                            // console.log(affGeneral.CcalculeJS);
+
                             affGeneral.AlffichageCalaculette = [];
                             affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ", element.Affichage);
                             affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(''), element.fomuleJs);
@@ -967,7 +1024,7 @@ function gererTouches(event) {
 
 // for (let i = 0; i < sessionStorage.length; i++) {
 //     let key = sessionStorage.key(i);
-//     console.log(key, sessionStorage.getItem(key));
+
 
 // }
 
