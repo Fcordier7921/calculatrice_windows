@@ -469,7 +469,7 @@ a {
   font-weight: 600;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: 25px 1fr;
+  grid-template-rows: 17px 1fr;
   margin-right: 10px;
 }
 #corpsStandard .resulCalcule .result .calculeresult {

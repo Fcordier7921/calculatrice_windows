@@ -389,7 +389,9 @@ function gererTouches(event) {
 
 
             if (affGeneral.AlffichageCalaculette.includes(' =')) {
-
+                // coconsole.log(affGeneral.AlffichageCalaculette, '1msfdjkgdfgdfsgds');
+                console.log(affGeneral.AlffichageCTompontResulta, '2msfdjkgdfgdfsgds');
+                // console.log(affGeneral.CcalculeJS, '3msfdjkgdfgdfsgds');
 
                 affGeneral.CcalculeJS = [];
                 affGeneral.AlffichageCalaculette = [];
@@ -441,39 +443,23 @@ function gererTouches(event) {
 
                     affGeneral.CcalculeJS = [];
                 } else {
-                    console.log(affGeneral.AlffichageCalaculette, '1msfdjkgdfgdfsgds');
-                    affGeneral.momeEgal = [];
-                    if (affGeneral.CcalculeJS.includes('ₓ')) {
-                        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
-                    }
-                    if (affGeneral.CcalculeJS.includes('÷')) {
-                        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
-                    }
-                    affGeneral.CcalculeJS.push(affGeneral.AlffichageCalaculette[0]);
-                    affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette[2], affGeneral.AlffichageCalaculette[0])
-                    console.log(affGeneral.momeEgal);
-                    let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
-                    console.log(affGeneral.AlffichageCTompontResulta, '2msfdjkgdfgdfsgds');
-                    console.log(affGeneral.CcalculeJS, '3msfdjkgdfgdfsgds');
 
-                    let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
-                    if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
-                        affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
-                    } else {
-                        affGeneral.AlffichageCalaculette.push(" ", " =");
-                    }
-                    let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-                    calculeresult.innerHTML = "<p>" + memoiirAffichageStockage + "</p>";
+                    affGeneral.momeEgal = [];
+
+                    let chiffreAjouter = affGeneral.AlffichageCalaculette[0];
+                    affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette[2], chiffreAjouter)
+                    affGeneral.AlffichageCalaculette.push(chiffreAjouter, ' =');
+                    affGeneral.CcalculeJS.push(chiffreAjouter);
+                    let operateurBisCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
+
+                    let resultaOpérateur = Function("return " + operateurBisCarreCalculJs)();
+                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join(' ') + "</p>";
                     chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
                     affGeneral.AlffichageCTompontResulta = [];
                     affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
-                    affGeneral.momeEgal = [];
-                    affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
-
-                    affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+                    affGeneral.histo.unshift("<div><p>" + affGeneral.AlffichageCalaculette.join(' ') + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
                     sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
                     historique();
-
                     affGeneral.CcalculeJS = [];
                 }
 
