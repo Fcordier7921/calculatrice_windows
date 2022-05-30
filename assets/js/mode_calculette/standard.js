@@ -25,228 +25,249 @@ reductionFenétreBis.addEventListener('click', () => {
 //--------- logique de la calculatrice-------------------
 //tableau d'objet qui répertorie les touche de la calculette
 const toucheStandard = [{
-            name: "MC",
-            explication: "suprime la mémoire", //aide au développement inutile pour le code
-            fomuleJs: "",
-            Affichage: "",
-            Type: "memo"
-        },
-        {
-            name: "MR",
-            explication: "rejoute dans le calcule le chiffre en mémoire",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "memo"
-        },
-        {
-            name: "MP",
-            explication: "aditione le chiffre affiché a celui en mémoire",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "memo"
-        },
-        {
-            name: "MM",
-            explication: "soustrait le chiffre affiché a celui en mémoire",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "memo"
-        },
-        {
-            name: "MS",
-            explication: "ajoute le chiffre a la mémoire",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "memo"
-        },
-        {
-            name: "pourcentage",
-            explication: "pourcentage",
-            fomuleJs: "/100",
-            Affichage: "",
-            Type: "opperateur"
-        },
-        {
-            name: "CE",
-            explication: "suprime l'élément affiché",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "opperateur"
-        },
-        {
-            name: "C",
-            explication: "suprime toute l'opération en cours",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "opperateur"
-        },
-        {
-            name: "suppChiffre",
-            explication: "suprime le dernier chiffre affiché et quand il y a plus de chiffre on affiche 0",
-            fomuleJs: "",
-            Affichage: "",
-            Type: "opperateur"
-        },
-        {
-            name: "undemi",
-            explication: "1 divisé par le chiffre affiché",
-            fomuleJs: "1/",
-            Affichage: "1/(",
-            Type: "opperateur"
-        },
-        {
-            name: "carrer",
-            explication: "chiffre au carré",
-            fomuleJs: "Math.pow(", //Math.pow(x, 2)
-            Affichage: "sqr(",
-            Type: "opperateur"
-        },
-        {
-            name: "RasinCarrer",
-            explication: "inverce du carré",
-            fomuleJs: "Math.sqrt(",
-            Affichage: "√(",
-            Type: "opperateur"
-        },
-        {
-            name: "division",
-            explication: "division",
-            fomuleJs: "/",
-            Affichage: "÷",
-            Type: "opperateur"
-        },
-        {
-            name: "sept",
-            explication: "sept",
-            fomuleJs: "7",
-            Affichage: "7",
-            Type: "chiffre"
-        },
-        {
-            name: "huit",
-            explication: "huit",
-            fomuleJs: "8",
-            Affichage: "8",
-            Type: "chiffre"
-        },
-        {
-            name: "neuf",
-            explication: "neuf",
-            fomuleJs: "9",
-            Affichage: "9",
-            Type: "chiffre"
-        },
-        {
-            name: "multiplier",
-            explication: "multiplier",
-            fomuleJs: "*",
-            Affichage: "ₓ",
-            Type: "opperateur"
-        },
-        {
-            name: "quatre",
-            explication: "quatre",
-            fomuleJs: "4",
-            Affichage: "4",
-            Type: "chiffre"
-        },
-        {
-            name: "cinq",
-            explication: "cinq",
-            fomuleJs: "5",
-            Affichage: "5",
-            Type: "chiffre"
-        },
-        {
-            name: "six",
-            explication: "six",
-            fomuleJs: "6",
-            Affichage: "6",
-            Type: "chiffre"
-        },
-        {
-            name: "moin",
-            explication: "moin",
-            fomuleJs: "-",
-            Affichage: "-",
-            Type: "opperateur"
-        },
-        {
-            name: "un",
-            explication: "un",
-            fomuleJs: "1",
-            Affichage: "1",
-            Type: "chiffre"
-        },
-        {
-            name: "deux",
-            explication: "deux",
-            fomuleJs: "2",
-            Affichage: "2",
-            Type: "chiffre"
-        },
-        {
-            name: "trois",
-            explication: "trois",
-            fomuleJs: "3",
-            Affichage: "3",
-            Type: "chiffre"
-        },
-        {
-            name: "plus",
-            explication: "plus",
-            fomuleJs: "+",
-            Affichage: "+",
-            Type: "opperateur"
-        },
-        {
-            name: "PosNega",
-            explication: "PosNega ",
-            fomuleJs: "-",
-            Affichage: "-",
-            Type: "chiffre"
-        },
-        {
-            name: "zero",
-            explication: "zero ",
-            fomuleJs: "0",
-            Affichage: "0",
-            Type: "chiffre"
-        },
-        {
-            name: "visgule",
-            explication: "visgule ",
-            fomuleJs: ",",
-            Affichage: ",",
-            Type: "chiffre"
-        },
-        {
-            name: "egal",
-            explication: "egal ",
-            fomuleJs: "=",
-            Affichage: "=",
-            Type: "opperateur"
-        },
+        name: "MC",
+        explication: "suprime la mémoire", //aide au développement inutile pour le code
+        fomuleJs: "",
+        Affichage: "",
+        Type: "memo"
+    },
+    {
+        name: "MR",
+        explication: "rejoute dans le calcule le chiffre en mémoire",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "memo"
+    },
+    {
+        name: "MP",
+        explication: "aditione le chiffre affiché a celui en mémoire",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "memo"
+    },
+    {
+        name: "MM",
+        explication: "soustrait le chiffre affiché a celui en mémoire",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "memo"
+    },
+    {
+        name: "MS",
+        explication: "ajoute le chiffre a la mémoire",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "memo"
+    },
+    {
+        name: "pourcentage",
+        explication: "pourcentage",
+        fomuleJs: "/100",
+        Affichage: "",
+        Type: "opperateur"
+    },
+    {
+        name: "CE",
+        explication: "suprime l'élément affiché",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "opperateur"
+    },
+    {
+        name: "C",
+        explication: "suprime toute l'opération en cours",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "opperateur"
+    },
+    {
+        name: "suppChiffre",
+        explication: "suprime le dernier chiffre affiché et quand il y a plus de chiffre on affiche 0",
+        fomuleJs: "",
+        Affichage: "",
+        Type: "opperateur"
+    },
+    {
+        name: "undemi",
+        explication: "1 divisé par le chiffre affiché",
+        fomuleJs: "1/",
+        Affichage: "1/(",
+        Type: "opperateur"
+    },
+    {
+        name: "carrer",
+        explication: "chiffre au carré",
+        fomuleJs: "Math.pow(", //Math.pow(x, 2)
+        Affichage: "sqr(",
+        Type: "opperateur"
+    },
+    {
+        name: "RasinCarrer",
+        explication: "inverce du carré",
+        fomuleJs: "Math.sqrt(",
+        Affichage: "√(",
+        Type: "opperateur"
+    },
+    {
+        name: "division",
+        explication: "division",
+        fomuleJs: "/",
+        Affichage: "÷",
+        Type: "opperateur"
+    },
+    {
+        name: "sept",
+        explication: "sept",
+        fomuleJs: "7",
+        Affichage: "7",
+        Type: "chiffre"
+    },
+    {
+        name: "huit",
+        explication: "huit",
+        fomuleJs: "8",
+        Affichage: "8",
+        Type: "chiffre"
+    },
+    {
+        name: "neuf",
+        explication: "neuf",
+        fomuleJs: "9",
+        Affichage: "9",
+        Type: "chiffre"
+    },
+    {
+        name: "multiplier",
+        explication: "multiplier",
+        fomuleJs: "*",
+        Affichage: "ₓ",
+        Type: "opperateur"
+    },
+    {
+        name: "quatre",
+        explication: "quatre",
+        fomuleJs: "4",
+        Affichage: "4",
+        Type: "chiffre"
+    },
+    {
+        name: "cinq",
+        explication: "cinq",
+        fomuleJs: "5",
+        Affichage: "5",
+        Type: "chiffre"
+    },
+    {
+        name: "six",
+        explication: "six",
+        fomuleJs: "6",
+        Affichage: "6",
+        Type: "chiffre"
+    },
+    {
+        name: "moin",
+        explication: "moin",
+        fomuleJs: "-",
+        Affichage: "-",
+        Type: "opperateur"
+    },
+    {
+        name: "un",
+        explication: "un",
+        fomuleJs: "1",
+        Affichage: "1",
+        Type: "chiffre"
+    },
+    {
+        name: "deux",
+        explication: "deux",
+        fomuleJs: "2",
+        Affichage: "2",
+        Type: "chiffre"
+    },
+    {
+        name: "trois",
+        explication: "trois",
+        fomuleJs: "3",
+        Affichage: "3",
+        Type: "chiffre"
+    },
+    {
+        name: "plus",
+        explication: "plus",
+        fomuleJs: "+",
+        Affichage: "+",
+        Type: "opperateur"
+    },
+    {
+        name: "PosNega",
+        explication: "PosNega ",
+        fomuleJs: "-",
+        Affichage: "-",
+        Type: "chiffre"
+    },
+    {
+        name: "zero",
+        explication: "zero ",
+        fomuleJs: "0",
+        Affichage: "0",
+        Type: "chiffre"
+    },
+    {
+        name: "visgule",
+        explication: "visgule ",
+        fomuleJs: ",",
+        Affichage: ",",
+        Type: "chiffre"
+    },
+    {
+        name: "egal",
+        explication: "egal ",
+        fomuleJs: "=",
+        Affichage: "=",
+        Type: "opperateur"
+    },
 
-    ]
-    //gérer l'affichage de l'historique
-function historique() {
-    if (sessionStorage["historiqueCalcule"]) {
-        let historiqueMemorise = sessionStorage.getItem('historiqueCalcule');
+]
 
-        histodefaut.innerHTML = historiqueMemorise;
-
-        poubelle.style.opacity = "1"
-
-
-    } else {
-        histodefaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
-        poubelle.style.opacity = "0";
-        affGeneral.histo = [];
+//gérer le -- qui devien plus
+function moisMois() {
+    if (affGeneral.AlffichageCTompontResulta.includes('-') && affGeneral.AlffichageCalaculette.includes('-')) {
+        affGeneral.CcalculeJS.shift();
+        let moismois = affGeneral.CcalculeJS.indexOf('-');
+        affGeneral.CcalculeJS.splice(moismois, 1, '+')
 
     }
-
 }
+
+//gérer le calcule des opératuer + - * /
+
+function opperateurAditionEtc(element) {
+    if (affGeneral.CcalculeJS.includes('ₓ')) {
+        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
+    }
+    if (affGeneral.CcalculeJS.includes('÷')) {
+        affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
+    }
+
+    let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
+
+
+    let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+    affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''));
+    let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
+    affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "=</p> <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+    sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '))
+    affGeneral.AlffichageCalaculette = [];
+    affGeneral.AlffichageCalaculette.push(resultaOpérateur, element.Affichage);
+    affGeneral.AlffichageCTompontResulta = [];
+    affGeneral.CcalculeJS = [];
+    affGeneral.CcalculeJS.push(resultaOpérateur, element.Affichage);
+    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+    chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+}
+
+
 
 
 window.onload = () => {
@@ -290,14 +311,14 @@ let affGeneral = {
 
 function gererTouches(event) {
     let toucheEvent;
-    let classEvent;
+    var classEvent;
 
     //verifier si l'on as un keydow;
     if (event.type === "keydown") {
         // console.log(event.key);
-        if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === ',' || event.key === '.' || event.key === 'q') {
+        if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === ',' || event.key === '.') {
             classEvent = 'chiffre';
-        } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/' || event.key === 'r' || event.key === 'Delete' || event.key === 'Backspace' || event.key === '%' || event.key === 'ù') {
+        } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/' || event.key === 'r' || event.key === 'Delete' || event.key === 'Backspace' || event.key === '%' || event.key === 'ù' || event.key === 'q' || event.key === '*') {
             classEvent = 'opperateur';
         } else if (event.key === 'Enter' || event.key === ' ') {
             classEvent = 'egal';
@@ -379,9 +400,10 @@ function gererTouches(event) {
     } else {
         classEvent = event.path[1].classList[0]
         toucheEvent = event.path[1].classList[1]
+
     }
 
-
+    // console.log(classEvent);
 
 
     switch (classEvent) {
@@ -389,9 +411,7 @@ function gererTouches(event) {
 
 
             if (affGeneral.AlffichageCalaculette.includes(' =')) {
-                // coconsole.log(affGeneral.AlffichageCalaculette, '1msfdjkgdfgdfsgds');
-                console.log(affGeneral.AlffichageCTompontResulta, '2msfdjkgdfgdfsgds');
-                // console.log(affGeneral.CcalculeJS, '3msfdjkgdfgdfsgds');
+
 
                 affGeneral.CcalculeJS = [];
                 affGeneral.AlffichageCalaculette = [];
@@ -411,6 +431,10 @@ function gererTouches(event) {
                 affGeneral.CcalculeJS = [];
 
             } else if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('-') || affGeneral.AlffichageCalaculette.includes('+')) {
+                console.log(affGeneral.AlffichageCalaculette, 'affGeneral.AlffichageCalaculette');
+                console.log(affGeneral.AlffichageCTompontResulta, 'affGeneral.AlffichageCTompontResulta');
+                console.log(affGeneral.CcalculeJS, 'affGeneral.CcalculeJS');
+                moisMois();
                 if (affGeneral.AlffichageCTompontResulta.length != 0) {
 
                     affGeneral.momeEgal = [];
@@ -424,6 +448,7 @@ function gererTouches(event) {
                     let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
 
                     let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
+
                     if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
                         affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''), " =");
                     } else {
@@ -489,7 +514,6 @@ function gererTouches(event) {
 
                         } else {
                             affGeneral.AlffichageCTompontResulta.unshift(element.Affichage);
-                            affGeneral.CcalculeJS.unshift(element.fomuleJs);
                         }
 
                     } else if (element.name === "visgule") {
@@ -730,32 +754,19 @@ function gererTouches(event) {
 
 
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
-                            if (affGeneral.AlffichageCalaculette.length != 0) {
-                                if (affGeneral.CcalculeJS.includes('ₓ')) {
-                                    affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('ₓ'), 1, '*')
-                                }
-                                if (affGeneral.CcalculeJS.includes('÷')) {
-                                    affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
-                                }
+                            moisMois();
+                            if (affGeneral.AlffichageCTompontResulta.length === 0) {
+                                affGeneral.AlffichageCTompontResulta.push('0');
+                                affGeneral.CcalculeJS.push('0');
+                            }
 
-                                let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
-
-
-                                let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
-                                affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''));
-                                let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-                                affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "=</p> <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
-                                sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '))
-                                affGeneral.AlffichageCalaculette = [];
-                                affGeneral.AlffichageCalaculette.push(resultaOpérateur, element.Affichage);
-                                affGeneral.AlffichageCTompontResulta = [];
-                                affGeneral.CcalculeJS = [];
-                                affGeneral.CcalculeJS.push(resultaOpérateur, element.Affichage);
-                                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
-                                chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
+                            if (affGeneral.AlffichageCTompontResulta.length != 0 && affGeneral.AlffichageCalaculette.length != 0) {
+                                opperateurAditionEtc(element);
                                 historique();
-
-
+                            } else if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('+') || affGeneral.AlffichageCalaculette.includes('-')) {
+                                affGeneral.CcalculeJS.pop();
+                                affGeneral.AlffichageCalaculette.pop();
+                                opperateurAditionEtc(element);
                             } else {
                                 affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ");
                                 affGeneral.CcalculeJS.push(element.fomuleJs);

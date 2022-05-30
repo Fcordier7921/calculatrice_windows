@@ -14,8 +14,8 @@ const divattribut = Array.from(document.querySelectorAll('div[tabindex], a[tabin
 const focusHeader = Array.from(corpNav.querySelectorAll('li a')); // secteionner tout les lien du la navbar pour le utiliser dans le cadre d'un focus
 const histo = document.querySelector('.histo  h2'); // secteionner tout les lien pour l'historique
 const memoiregeneral = document.querySelector('.memoiregeneral h2'); // secteionner tout les lien pour la mémoire
-const poubelle = document.querySelector('.poubelle'); // secteionner tout les lien pour la poubelle
-const poubelleImg = document.querySelector('.poubelle img'); // secteionner tout les lien pour la poubelle
+const poubelleHisto = document.querySelector('.histoAffichage .poubelle '); // secteionner tout les lien pour la poubelle pour l'historique
+const poubelleMemo = document.querySelector('.memoAffichage .poubelle '); // secteionner tout les lien pour la poubelle pour la mémoire
 const histodefaut = document.querySelector('.histodefaut'); // secteionner tout les lien pour la poubelle
 const memodefaut = document.querySelector('.memodefaut'); // secteionner tout les lien pour la poubelle
 
@@ -48,12 +48,14 @@ function reduictionFenetre() {
     if (containerCalculatrice.classList.contains('containerReduit')) {
         containerCalculatrice.classList.remove('containerReduit', 'containerAgrandis');
         containerCalculatrice.style.animation = 'removrReduire 1s forwards';
-        poubelle.style.display = 'none'
+        poubelleHisto.style.display = 'none'
+        poubelleMemo.style.display = 'none'
     } else {
         containerCalculatrice.classList.remove('containerAgrandis');
         containerCalculatrice.classList.add('containerReduit');
         containerCalculatrice.style.removeProperty('animation');
-        poubelle.style.display = 'none'
+        poubelleHisto.style.display = 'none'
+        poubelleMemo.style.display = 'none'
 
     }
 }
@@ -97,7 +99,8 @@ iconFermerFenetre.addEventListener('click', () => {
     CacheContainer();
     affGeneral.histo = [];
     sessionStorage.removeItem("historiqueCalcule"); //suprimer l'historique
-    poubelle.style.opacity = "0"
+    poubelleHisto.style.opacity = "0"
+    poubelleMemo.style.opacity = "0"
     setTimeout(() => {
         histodefaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
         chiffreresult.innerHTML = "<p>" + 0 + "</p>";
@@ -241,25 +244,65 @@ for (const elemnt of focusHeader) {
 }
 
 
-//gestion de l'affichage hitoriique et mémoire
+//gérer l'affichage de l'historique
+function historique() {
+    if (sessionStorage["historiqueCalcule"]) {
+        let historiqueMemorise = sessionStorage.getItem('historiqueCalcule');
+
+        histodefaut.innerHTML = historiqueMemorise;
+
+        poubelleHisto.style.opacity = "1";
+        poubelleHisto.style.zIndex = '1';
+        poubelleMemo.style.zIndex = '-1';
+
+
+    } else {
+        histodefaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
+        poubelleHisto.style.opacity = "0";
+        poubelleHisto.style.zIndex = '-1';
+        affGeneral.histo = [];
+
+    }
+
+}
+
+//gestion de l'affichage hitorique et mémoire
 
 histo.addEventListener('click', () => {
     memoiregeneral.classList.remove('active_histoMemo');
     histo.classList.add('active_histoMemo');
-    memodefaut.style.display = "none";
-    histodefaut.style.display = "block";
+    memodefaut.style.display = 'none';
+    histodefaut.style.display = 'block';
+
+    if (sessionStorage["historiqueCalcule"]) {
+        poubelleHisto.style.opacity = '1';
+        poubelleMemo.style.opacity = '0';
+        poubelleMemo.style.zIndex = '-1';
+    }
 })
 memoiregeneral.addEventListener('click', () => {
     histo.classList.remove('active_histoMemo');
     memoiregeneral.classList.add('active_histoMemo');
-    histodefaut.style.display = "none";
-    memodefaut.style.display = "block";
+    histodefaut.style.display = 'none';
+    memodefaut.style.display = 'block';
+    poubelleHisto.style.opacity = '0';
+
+    if (sessionStorage["memoireStockage"]) {
+        poubelleMemo.style.opacity = '1';
+        poubelleHisto.style.opacity = '0';
+        poubelleHisto.style.zIndex = '-1';
+    }
 })
 
-//ecouter le clikc poubelle histo/memo
-poubelleImg.addEventListener('click', () => {
-    sessionStorage.removeItem("historiqueCalcule");
-    historique();
-    affGeneral.histo = [];
+//ecouter le clikc poubelle histo
+poubelleHisto.addEventListener('click', () => {
+        sessionStorage.removeItem("historiqueCalcule");
+        historique();
+        affGeneral.histo = [];
+
+    })
+    //ecouter le clikc poubelle memo
+poubelleMemo.addEventListener('click', () => {
+    alert('en cour de production')
 
 })

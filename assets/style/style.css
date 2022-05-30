@@ -244,6 +244,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsStandard .box .navBar .navCahce ul {
   position: relative;
@@ -293,7 +297,7 @@ a {
   background-color: #dadada;
 }
 #corpsStandard .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsStandard .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -367,6 +371,29 @@ a {
 #corpsStandard .histoMemo .resultHistoMemo .histodefaut,
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut {
   margin: 0;
+  width: 100%;
+  height: 372px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #e6e6e6 gray;
+  /* scroll thumb and track */
+}
+#corpsStandard .histoMemo .resultHistoMemo .histodefaut::-webkit-scrollbar,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut::-webkit-scrollbar {
+  width: 9px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .histodefaut::-webkit-scrollbar-track,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut::-webkit-scrollbar-track {
+  background: #e6e6e6;
+  margin: 10px 0;
+}
+#corpsStandard .histoMemo .resultHistoMemo .histodefaut::-webkit-scrollbar-thumb,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid #f1f1f1;
 }
 #corpsStandard .histoMemo .resultHistoMemo .histodefaut p,
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut p {
@@ -393,19 +420,23 @@ a {
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut {
   display: none;
 }
+#corpsStandard .histoMemo .resultHistoMemo .histoAffichage,
+#corpsStandard .histoMemo .resultHistoMemo .memoAffichage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
 #corpsStandard .histoMemo .resultHistoMemo .histoAffichage .poubelle,
 #corpsStandard .histoMemo .resultHistoMemo .memoAffichage .poubelle {
   opacity: 0;
-  position: absolute;
   width: 40px;
   height: 40px;
-  bottom: 0;
-  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #e6e6e6;
-  cursor: pointer;
+  cursor: default;
 }
 #corpsStandard .histoMemo .resultHistoMemo .histoAffichage .poubelle img,
 #corpsStandard .histoMemo .resultHistoMemo .memoAffichage .poubelle img {
@@ -799,6 +830,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsScientifique .box .navBar .navCahce ul {
   position: relative;
@@ -848,7 +883,7 @@ a {
   background-color: #dadada;
 }
 #corpsScientifique .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsScientifique .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -1325,6 +1360,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsDate .box .navBar .navCahce ul {
   position: relative;
@@ -1374,7 +1413,7 @@ a {
   background-color: #dadada;
 }
 #corpsDate .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsDate .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -1777,6 +1816,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsDevise .box .navBar .navCahce ul {
   position: relative;
@@ -1826,7 +1869,7 @@ a {
   background-color: #dadada;
 }
 #corpsDevise .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsDevise .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -2068,6 +2111,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsVolume .box .navBar .navCahce ul {
   position: relative;
@@ -2117,7 +2164,7 @@ a {
   background-color: #dadada;
 }
 #corpsVolume .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsVolume .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -2338,6 +2385,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsLongueur .box .navBar .navCahce ul {
   position: relative;
@@ -2387,7 +2438,7 @@ a {
   background-color: #dadada;
 }
 #corpsLongueur .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsLongueur .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -2608,6 +2659,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsPoids .box .navBar .navCahce ul {
   position: relative;
@@ -2657,7 +2712,7 @@ a {
   background-color: #dadada;
 }
 #corpsPoids .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsPoids .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -2878,6 +2933,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsTemp .box .navBar .navCahce ul {
   position: relative;
@@ -2927,7 +2986,7 @@ a {
   background-color: #dadada;
 }
 #corpsTemp .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsTemp .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -3167,6 +3226,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsEnergie .box .navBar .navCahce ul {
   position: relative;
@@ -3216,7 +3279,7 @@ a {
   background-color: #dadada;
 }
 #corpsEnergie .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsEnergie .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -3437,6 +3500,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsSurface .box .navBar .navCahce ul {
   position: relative;
@@ -3486,7 +3553,7 @@ a {
   background-color: #dadada;
 }
 #corpsSurface .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsSurface .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -3707,6 +3774,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsVitesse .box .navBar .navCahce ul {
   position: relative;
@@ -3756,7 +3827,7 @@ a {
   background-color: #dadada;
 }
 #corpsVitesse .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsVitesse .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -3977,6 +4048,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsHeure .box .navBar .navCahce ul {
   position: relative;
@@ -4026,7 +4101,7 @@ a {
   background-color: #dadada;
 }
 #corpsHeure .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsHeure .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -4247,6 +4322,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsPuissance .box .navBar .navCahce ul {
   position: relative;
@@ -4296,7 +4375,7 @@ a {
   background-color: #dadada;
 }
 #corpsPuissance .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsPuissance .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -4539,6 +4618,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsDonne .box .navBar .navCahce ul {
   position: relative;
@@ -4588,7 +4671,7 @@ a {
   background-color: #dadada;
 }
 #corpsDonne .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsDonne .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -4809,6 +4892,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsPression .box .navBar .navCahce ul {
   position: relative;
@@ -4858,7 +4945,7 @@ a {
   background-color: #dadada;
 }
 #corpsPression .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsPression .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -5079,6 +5166,10 @@ a {
   overflow: scroll;
   overflow-x: hidden;
   z-index: 20;
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #f1f1f1 gray;
+  /* scroll thumb and track */
 }
 #corpsAngle .box .navBar .navCahce ul {
   position: relative;
@@ -5128,7 +5219,7 @@ a {
   background-color: #dadada;
 }
 #corpsAngle .box .navBar .navCahce::-webkit-scrollbar {
-  width: 12px;
+  width: 9px;
 }
 #corpsAngle .box .navBar .navCahce::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -5298,7 +5389,7 @@ a {
   right: 0;
   bottom: 0;
   z-index: 2;
-  cursor: pointer;
+  cursor: default;
 }
 
 @keyframes histoMemo {

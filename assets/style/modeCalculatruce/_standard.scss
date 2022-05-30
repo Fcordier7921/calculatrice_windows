@@ -59,6 +59,27 @@
                 .histodefaut,
                 .memodefaut {
                     margin: 0;
+                    width: 100%;
+                    height: 372px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    //ligne si dessous pour fixerfox
+                    scrollbar-width: thin;
+                    /* "auto" or "thin" */
+                    scrollbar-color: $CouleurMain gray;
+                    /* scroll thumb and track */
+                    &::-webkit-scrollbar {
+                        width: 9px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background: $CouleurMain;
+                        margin: 10px 0;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: gray;
+                        border-radius: 20px;
+                        border: 3px solid $CouleurNav;
+                    }
                 }
                 .histodefaut p,
                 .memodefaut p {
@@ -89,18 +110,19 @@
                 }
                 .histoAffichage,
                 .memoAffichage {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    justify-content: center;
                     .poubelle {
                         opacity: 0;
-                        position: absolute;
                         width: 40px;
                         height: 40px;
-                        bottom: 0;
-                        right: 0;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         background-color: $CouleurMain;
-                        cursor: pointer;
+                        cursor: default;
                         img {
                             width: 17px;
                             height: 16px;
@@ -110,7 +132,7 @@
                             border-top: 1px solid gray;
                             border-left: 1px solid gray;
                             background-color: rgb(214, 214, 214);
-                            pointer-events: none;
+                            @include eventPointer();
                         }
                     }
                 }

@@ -131,8 +131,13 @@
                         background-color: #dadada;
                     }
                 }
+                //ligne si dessous pour fixerfox
+                scrollbar-width: thin;
+                /* "auto" or "thin" */
+                scrollbar-color: $CouleurNav gray;
+                /* scroll thumb and track */
                 &::-webkit-scrollbar {
-                    width: 12px;
+                    width: 9px;
                 }
                 &::-webkit-scrollbar-track {
                     background: $CouleurNav;
@@ -275,4 +280,9 @@
 //mixine pour l'animation de l'apartition des nouveau calcule dans l'historique ety la mémoire
 @mixin histoMemo($dutration) {
     animation: histoMemo $dutration ease-in-out;
+}
+
+//gestion des élenement aiu clic
+@mixin eventPointer() {
+    pointer-events: none;
 }
