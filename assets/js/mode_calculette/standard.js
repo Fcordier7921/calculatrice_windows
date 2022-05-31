@@ -6,7 +6,7 @@ const memoSandard = Array.from(document.querySelectorAll('.memo')) //selection d
 const operateurSandard = Array.from(document.querySelectorAll('.opperateur')) //selection de toute les emplacement des opérateur
 const calculeresult = document.querySelector('.calculeresult') //recuprer pour afficher le calcule en cours
 const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour afficher les entré en cours
-
+const corpsStandard = document.querySelector('#corpsStandard')
 
 
 //afficher la claculatrice en petite taille
@@ -14,10 +14,12 @@ reductionFenétre.addEventListener('click', () => {
 
     contenaireSandard.classList.toggle('PetitTailleActive');
 
+
 })
 reductionFenétreBis.addEventListener('click', () => {
 
     contenaireSandard.classList.remove('PetitTailleActive');
+
 
 })
 

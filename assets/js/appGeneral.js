@@ -220,7 +220,8 @@ window.addEventListener('keydown', (event) => { //écoute des touche entre et es
 });
 
 
-overlay.addEventListener('click', () => { // écoute de l'overlay pour cache la navBar
+// écoute de l'overlay pour cache la navBar
+overlay.addEventListener('click', () => {
     overlay.classList.remove('activeOverlay');
     corpNav.classList.remove('active-nav');
 
