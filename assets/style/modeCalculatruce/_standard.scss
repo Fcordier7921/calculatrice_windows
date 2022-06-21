@@ -193,6 +193,15 @@
                         background-color: rgb(214, 214, 214);
                     }
                 }
+                .active_memo {
+                    cursor: default;
+                    color: #000000;
+                    &:hover {
+                        opacity: 1;
+                        border: 1px solid gray;
+                        background-color: rgb(214, 214, 214);
+                    }
+                }
             }
             .result {
                 grid-row: 1/3;

@@ -1052,9 +1052,12 @@ function gererTouches(event) {
                 if (toucheEvent === element.name) {
                     // console.log(affGeneral.AlffichageCTompontResulta);
                     if (element.name === "MC") {
-
+                        sessionStorage.removeItem("memoireStockage");
                     } else if (element.name === "MR") {
-
+                        affGeneral.memo = [];
+                        affGeneral.memo = sessionStorage.getItem('memoireStockage').split(',');
+                        let tutu = affGeneral.memo[0]
+                        console.log(tutu);
                     } else if (element.name === "MP") {
 
                     } else if (element.name === "MM") {

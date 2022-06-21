@@ -20,6 +20,8 @@ const histodefaut = document.querySelector('.histodefaut'); // secteionner tout 
 const memodefaut = document.querySelector('.memodefaut'); // secteionner tout les lien pour la poubelle
 const histoAffichage = document.querySelector('.histoAffichage'); // secteionner tout les lien pour la poubelle
 const memoAffichage = document.querySelector('.memoAffichage'); // secteionner tout les lien pour la poubelle
+const mc = document.querySelector('.MC'); // secteionner tout les lien pour la poubelle
+const mr = document.querySelector('.MR'); // secteionner tout les lien pour la poubelle
 
 
 
@@ -281,6 +283,8 @@ function memoire() {
         poubelleMemo.style.opacity = "1";
         poubelleMemo.style.zIndex = '1';
 
+        mc.classList.add('active_memo');
+        mr.classList.add('active_memo');
 
 
     } else {
@@ -288,6 +292,8 @@ function memoire() {
         poubelleMemo.style.opacity = "0";
         poubelleMemo.style.zIndex = '-1';
         affGeneral.memo = [];
+        mc.classList.remove('active_memo');
+        mr.classList.remove('active_memo');
 
     }
 
