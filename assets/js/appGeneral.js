@@ -18,6 +18,9 @@ const poubelleHisto = document.querySelector('.histoAffichage .poubelle '); // s
 const poubelleMemo = document.querySelector('.memoAffichage .poubelle '); // secteionner tout les lien pour la poubelle pour la mémoire
 const histodefaut = document.querySelector('.histodefaut'); // secteionner tout les lien pour la poubelle
 const memodefaut = document.querySelector('.memodefaut'); // secteionner tout les lien pour la poubelle
+const histoAffichage = document.querySelector('.histoAffichage'); // secteionner tout les lien pour la poubelle
+const memoAffichage = document.querySelector('.memoAffichage'); // secteionner tout les lien pour la poubelle
+
 
 
 //---------------gestion de la fenetre--------------------
@@ -255,6 +258,7 @@ function historique() {
         poubelleHisto.style.opacity = "1";
         poubelleHisto.style.zIndex = '1';
         poubelleMemo.style.zIndex = '-1';
+        ecouteHisto()
 
 
     } else {
@@ -267,32 +271,49 @@ function historique() {
 
 }
 
+//gérer l'affichage de la mémoire
+function memoire() {
+    if (sessionStorage["memoireStockage"]) {
+        let memoriseChiffre = sessionStorage.getItem('memoireStockage');
+
+        memodefaut.innerHTML = memoriseChiffre;
+
+        poubelleMemo.style.opacity = "1";
+        poubelleMemo.style.zIndex = '1';
+
+
+
+    } else {
+        memodefaut.innerHTML = "<p class='defaultMessage'> La mémoire est vide</p>";
+        poubelleMemo.style.opacity = "0";
+        poubelleMemo.style.zIndex = '-1';
+        affGeneral.memo = [];
+
+    }
+
+}
+
 //gestion de l'affichage hitorique et mémoire
 
 histo.addEventListener('click', () => {
     memoiregeneral.classList.remove('active_histoMemo');
     histo.classList.add('active_histoMemo');
-    memodefaut.style.display = 'none';
+    memoAffichage.style.display = 'none';
+    histoAffichage.style.display = 'flex';
     histodefaut.style.display = 'block';
+    poubelleHisto.style.opacity = '10';
+    historique();
 
-    if (sessionStorage["historiqueCalcule"]) {
-        poubelleHisto.style.opacity = '1';
-        poubelleMemo.style.opacity = '0';
-        poubelleMemo.style.zIndex = '-1';
-    }
 })
 memoiregeneral.addEventListener('click', () => {
     histo.classList.remove('active_histoMemo');
     memoiregeneral.classList.add('active_histoMemo');
-    histodefaut.style.display = 'none';
+    histoAffichage.style.display = 'none';
+    memoAffichage.style.display = 'flex';
     memodefaut.style.display = 'block';
-    poubelleHisto.style.opacity = '0';
 
-    if (sessionStorage["memoireStockage"]) {
-        poubelleMemo.style.opacity = '1';
-        poubelleHisto.style.opacity = '0';
-        poubelleHisto.style.zIndex = '-1';
-    }
+    memoire();
+
 })
 
 //ecouter le clikc poubelle histo
@@ -304,6 +325,28 @@ poubelleHisto.addEventListener('click', () => {
     })
     //ecouter le clikc poubelle memo
 poubelleMemo.addEventListener('click', () => {
-    alert('en cour de production')
+    sessionStorage.removeItem("memoireStockage");
+    memoire();
+    affGeneral.memo = [];
 
 })
+
+//ecoute le click sur les élément en mémoire
+function ecouteHisto() {
+    let survolHisto = Array.from(document.querySelectorAll('.survolHisto')); // secteionner tout calcule en mémoire
+
+    for (const elemnt of survolHisto) {
+        elemnt.addEventListener('click', (e) => {
+            affGeneral.AlffichageCTompontResulta = [];
+            affGeneral.AlffichageCalaculette = [];
+            affGeneral.CcalculeJS = [];
+            affGeneral.AlffichageCalaculette.unshift(e.path[0].querySelector('.survolHisto :nth-child(1)').innerHTML);
+            affGeneral.AlffichageCTompontResulta.unshift(e.path[0].querySelector('.survolHisto :nth-child(2)').innerHTML);
+            affGeneral.CcalculeJS.unshift(e.path[0].querySelector('.survolHisto :nth-child(2)').innerHTML);
+            calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + " </p>";
+            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+
+
+        })
+    }
+}

@@ -258,7 +258,7 @@ function opperateurAditionEtc(element) {
     let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
     affGeneral.AlffichageCalaculette.push(" ", affGeneral.AlffichageCTompontResulta.join(''));
     let memoiirAffichageStockage = affGeneral.AlffichageCalaculette.join('');
-    affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "=</p> <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+    affGeneral.histo.unshift("<div class='survolHisto'><p>" + memoiirAffichageStockage + "=</p> <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
     sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '))
     affGeneral.AlffichageCalaculette = [];
     affGeneral.AlffichageCalaculette.push(resultaOpérateur, element.Affichage);
@@ -294,6 +294,7 @@ window.onload = () => {
     }
 
     historique()
+    memoire()
 
 
     for (let touchesGeneral of touchesGenerals) {
@@ -436,7 +437,7 @@ function gererTouches(event) {
                 affGeneral.AlffichageCTompontResulta.push(resultaDoubleEgaleOpérateur);
                 calculeresult.innerHTML = "<p>" + operateurDoubleEgalCarreCalculJs.replaceAll('*', ' ₓ').replaceAll('/', ' ÷').replaceAll('+', ' +').replaceAll('-', ' -') + " =</p>";
                 chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta + "</p>";
-                affGeneral.histo.unshift("<div><p>" + operateurDoubleEgalCarreCalculJs.replaceAll('*', ' ₓ').replaceAll('/', ' ÷').replaceAll('+', ' +').replaceAll('-', ' -') + "=</p> <p class='resultaSotrage'>" + affGeneral.AlffichageCTompontResulta + "</p></div>");
+                affGeneral.histo.unshift("<div class='survolHisto'><p>" + operateurDoubleEgalCarreCalculJs.replaceAll('*', ' ₓ').replaceAll('/', ' ÷').replaceAll('+', ' +').replaceAll('-', ' -') + "=</p> <p class='resultaSotrage'>" + affGeneral.AlffichageCTompontResulta + "</p></div>");
                 sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
                 historique();
 
@@ -448,7 +449,7 @@ function gererTouches(event) {
                 if (affGeneral.AlffichageCTompontResulta.length != 0) {
 
                     affGeneral.momeEgal = [];
-                    console.log(affGeneral.AlffichageCTompontResulta);
+                    // console.log(affGeneral.AlffichageCTompontResulta);
                     if (affGeneral.AlffichageCalaculette.includes('÷') && affGeneral.AlffichageCTompontResulta.includes('0')) {
 
                         chiffreresult.innerHTML = '<p style="font-size: 20px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
@@ -480,7 +481,7 @@ function gererTouches(event) {
                         affGeneral.momeEgal = [];
                         affGeneral.momeEgal.push(affGeneral.AlffichageCalaculette.splice(-4, 3).join(''));
 
-                        affGeneral.histo.unshift("<div><p>" + memoiirAffichageStockage + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+                        affGeneral.histo.unshift("<div class='survolHisto'><p>" + memoiirAffichageStockage + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
                         sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
                         historique();
 
@@ -501,7 +502,7 @@ function gererTouches(event) {
                     chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
                     affGeneral.AlffichageCTompontResulta = [];
                     affGeneral.AlffichageCTompontResulta.push(resultaOpérateur);
-                    affGeneral.histo.unshift("<div><p>" + affGeneral.AlffichageCalaculette.join(' ') + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
+                    affGeneral.histo.unshift("<div class='survolHisto'><p>" + affGeneral.AlffichageCalaculette.join(' ') + "</p>  <p class='resultaSotrage'>" + resultaOpérateur + "</p></div>");
                     sessionStorage.setItem("historiqueCalcule", affGeneral.histo.join(' '));
                     historique();
                     affGeneral.CcalculeJS = [];
@@ -776,6 +777,8 @@ function gererTouches(event) {
 
 
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
+
+
                             if (affGeneral.AlffichageCalaculette.includes('÷') && affGeneral.AlffichageCTompontResulta.includes('0')) {
                                 console.log(element.Affichage);
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ' ' + affGeneral.AlffichageCTompontResulta.join('') + ' ' + element.Affichage + "</p>";
@@ -1057,8 +1060,11 @@ function gererTouches(event) {
                     } else if (element.name === "MM") {
 
                     } else if (element.name === "MS") {
-                        affGeneral.memo.push(affGeneral.AlffichageCTompontResulta)
+
+                        affGeneral.memo.unshift("<div><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p></div>");
                         sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                        memoire()
+
                     }
                 }
 
