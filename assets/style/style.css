@@ -431,8 +431,10 @@ a {
 }
 #corpsStandard .histoMemo .resultHistoMemo .histoAffichage .histodefaut .defaultMessage,
 #corpsStandard .histoMemo .resultHistoMemo .memoAffichage .memodefaut .defaultMessage {
+  font-size: 13px;
   text-align: start;
   margin-left: 20px;
+  font-weight: normal;
 }
 #corpsStandard .histoMemo .resultHistoMemo .histoAffichage .histodefaut div:nth-child(1),
 #corpsStandard .histoMemo .resultHistoMemo .memoAffichage .memodefaut div:nth-child(1) {
@@ -440,6 +442,64 @@ a {
 }
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut {
   display: none;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement {
+  height: 63px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  padding-right: 13px;
+  margin-bottom: 5px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .memo {
+  width: 30px;
+  height: 25px;
+  margin-bottom: 5px;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .memo p {
+  margin: 0;
+  margin-top: 4px;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MC,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MP,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MM {
+  cursor: default;
+  background-color: #ffffffd0;
+  margin: 0 2px;
+  display: flex;
+  justify-content: center;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MC p,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MP p,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MM p {
+  pointer-events: none;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MC:hover,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MP:hover,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MM:hover {
+  border: 1px solid gray;
+  background-color: #53b4ddd0;
+  color: white;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MC:hover p,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MP:hover p,
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MM:hover p {
+  margin-top: 3px;
+  pointer-events: none;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement:hover {
+  height: 72px;
+  background-color: #dadada;
+  border: 1px solid #cccccc;
+  padding: 0;
+}
+#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement:hover .memodefaulElementButoon {
+  opacity: 1;
 }
 #corpsStandard .histoMemo .resultHistoMemo .histoAffichage,
 #corpsStandard .histoMemo .resultHistoMemo .memoAffichage {

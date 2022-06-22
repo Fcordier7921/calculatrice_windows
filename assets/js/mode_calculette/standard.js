@@ -7,7 +7,7 @@ const operateurSandard = Array.from(document.querySelectorAll('.opperateur')) //
 const calculeresult = document.querySelector('.calculeresult') //recuprer pour afficher le calcule en cours
 const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour afficher les entré en cours
 const corpsStandard = document.querySelector('#corpsStandard')
-
+let chiffreMemo;
 
 //afficher la claculatrice en petite taille
 reductionFenétre.addEventListener('click', () => {
@@ -269,6 +269,7 @@ function opperateurAditionEtc(element) {
     chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
 }
 
+//mise a séro des variable de stocage 
 function razAffGeneral() {
     affGeneral.AlffichageCalaculette = []
     affGeneral.AlffichageCTompontResulta = []
@@ -278,7 +279,15 @@ function razAffGeneral() {
     affGeneral.memo = []
 }
 
+//gestion du chiffre sélectionné pour les chiffre mis en mémoire
+function chiffreMemoSecelction(chiffre) {
+    affGeneral.memo = [];
+    affGeneral.memo = sessionStorage.getItem('memoireStockage').split(',');
 
+    chiffreMemo = Number(affGeneral.memo[chiffre].replace("<div class='memodefaulElement'><p>", '').replace("</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>", ''));
+
+
+}
 
 
 window.onload = () => {
@@ -1052,19 +1061,53 @@ function gererTouches(event) {
                 if (toucheEvent === element.name) {
                     // console.log(affGeneral.AlffichageCTompontResulta);
                     if (element.name === "MC") {
-                        sessionStorage.removeItem("memoireStockage");
+                        if (sessionStorage["memoireStockage"]) {
+
+                            sessionStorage.removeItem("memoireStockage");
+                            memoire();
+                        }
                     } else if (element.name === "MR") {
-                        affGeneral.memo = [];
-                        affGeneral.memo = sessionStorage.getItem('memoireStockage').split(',');
-                        let tutu = affGeneral.memo[0]
-                        console.log(tutu);
+                        if (sessionStorage["memoireStockage"]) {
+                            chiffreMemoSecelction(0);
+                            affGeneral.AlffichageCTompontResulta = [];
+                            console.log(chiffreMemo);
+                            affGeneral.AlffichageCTompontResulta.push(chiffreMemo);
+                            affGeneral.CcalculeJS.push(chiffreMemo);
+                            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+                        }
+
+
                     } else if (element.name === "MP") {
+                        if (sessionStorage["memoireStockage"]) {
+                            chiffreMemoSecelction(0);
+                            let mPlus = Number(affGeneral.AlffichageCTompontResulta.join('')) + chiffreMemo;
+                            affGeneral.memo.splice(0, 1, "<div class='memodefaulElement'><p>" + mPlus + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                            memoire();
+
+                        } else {
+                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                            memoire()
+                        }
 
                     } else if (element.name === "MM") {
+                        if (sessionStorage["memoireStockage"]) {
+                            chiffreMemoSecelction(0);
+                            let mMois = Number(chiffreMemo - affGeneral.AlffichageCTompontResulta.join(''));
+                            affGeneral.memo.splice(0, 1, "<div class='memodefaulElement'><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                            memoire();
+
+                        } else {
+                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                            memoire()
+                        }
 
                     } else if (element.name === "MS") {
 
-                        affGeneral.memo.unshift("<div><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p></div>");
+                        affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                         sessionStorage.setItem('memoireStockage', affGeneral.memo);
                         memoire()
 

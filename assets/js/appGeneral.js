@@ -104,6 +104,9 @@ iconFermerFenetre.addEventListener('click', () => {
     CacheContainer();
     affGeneral.histo = [];
     sessionStorage.removeItem("historiqueCalcule"); //suprimer l'historique
+    sessionStorage.removeItem("memoireStockage"); //suprimer les chiffre en mémoire
+    historique();
+    memoire();
     poubelleHisto.style.opacity = "0"
     poubelleMemo.style.opacity = "0"
     setTimeout(() => {
@@ -276,7 +279,7 @@ function historique() {
 //gérer l'affichage de la mémoire
 function memoire() {
     if (sessionStorage["memoireStockage"]) {
-        let memoriseChiffre = sessionStorage.getItem('memoireStockage');
+        let memoriseChiffre = sessionStorage.getItem('memoireStockage').replaceAll(',', '');
 
         memodefaut.innerHTML = memoriseChiffre;
 
