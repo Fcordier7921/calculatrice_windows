@@ -301,9 +301,14 @@ window.onload = () => {
         affGeneral.histo = [];
         affGeneral.histo.push(sessionStorage.getItem('historiqueCalcule'));
     }
+    if (sessionStorage["memoireStockage"]) {
+        affGeneral.memo = [];
+        affGeneral.memo.push(sessionStorage.getItem('memoireStockage'));
+        toucheMemo();
+    }
+    historique();
+    memoire();
 
-    historique()
-    memoire()
 
 
     for (let touchesGeneral of touchesGenerals) {
@@ -1070,7 +1075,7 @@ function gererTouches(event) {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
                             affGeneral.AlffichageCTompontResulta = [];
-                            console.log(chiffreMemo);
+
                             affGeneral.AlffichageCTompontResulta.push(chiffreMemo);
                             affGeneral.CcalculeJS.push(chiffreMemo);
                             chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
@@ -1084,11 +1089,21 @@ function gererTouches(event) {
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement'><p>" + mPlus + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
+                            toucheMemo();
 
                         } else {
-                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
-                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
-                            memoire()
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                                memoire();
+                                toucheMemo();
+                            } else {
+                                affGeneral.AlffichageCTompontResulta.push('0')
+                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                                memoire();
+                                toucheMemo();
+                            }
                         }
 
                     } else if (element.name === "MM") {
@@ -1098,18 +1113,38 @@ function gererTouches(event) {
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement'><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
+                            toucheMemo();
 
                         } else {
-                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
-                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
-                            memoire()
+                            if (affGeneral.AlffichageCTompontResulta.length != 0) {
+                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                                memoire();
+                                toucheMemo();
+                            } else {
+                                affGeneral.AlffichageCTompontResulta.push('0')
+                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                                memoire();
+                                toucheMemo();
+                            }
                         }
 
                     } else if (element.name === "MS") {
+                        if (affGeneral.AlffichageCTompontResulta.length != 0) {
+                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                            memoire();
+                            toucheMemo();
+                        } else {
+                            affGeneral.AlffichageCTompontResulta.push('0')
+                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                            memoire();
+                            toucheMemo();
+                        }
 
-                        affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
-                        sessionStorage.setItem('memoireStockage', affGeneral.memo);
-                        memoire()
+
 
                     }
                 }
@@ -1130,8 +1165,18 @@ function gererTouches(event) {
 
 
 // }
+function toucheMemo() {
+    let chiffreMémoAffiché = Array.from(document.querySelectorAll('.memodefaulElement'))
 
+    for (let touchememoStocage of chiffreMémoAffiché) {
 
+        touchememoStocage.addEventListener("click", (e) => {
+            console.log(e.path[0]);
+
+        });
+
+    }
+}
 
 
 
