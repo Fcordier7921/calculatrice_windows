@@ -461,6 +461,7 @@ a {
   width: 30px;
   height: 25px;
   margin-bottom: 5px;
+  pointer-events: auto;
 }
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .memo p {
   margin: 0;
@@ -477,11 +478,6 @@ a {
   margin: 0 2px;
   display: flex;
   justify-content: center;
-}
-#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MC p,
-#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MP p,
-#corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MM p {
-  pointer-events: none;
 }
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MC:hover,
 #corpsStandard .histoMemo .resultHistoMemo .memodefaut .memodefaulElement .memodefaulElementButoon .MP:hover,

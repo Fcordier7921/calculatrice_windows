@@ -1166,12 +1166,37 @@ function gererTouches(event) {
 
 // }
 function toucheMemo() {
-    let chiffreMémoAffiché = Array.from(document.querySelectorAll('.memodefaulElement'))
+    let chiffreMemoAffiche = Array.from(document.querySelectorAll('.memodefaulElement'))
+    let butomMemoAffiche = Array.from(document.querySelectorAll('.memodefaulElement .memodefaulElementButoon .memo'))
 
-    for (let touchememoStocage of chiffreMémoAffiché) {
+    for (let touchememoStocage of chiffreMemoAffiche) {
 
         touchememoStocage.addEventListener("click", (e) => {
-            console.log(e.path[0]);
+
+            let chifrreMemoClick = Number(e.path[0].innerHTML.replace('</p><div class="memodefaulElementButoon"><div class="memo MC" tabindex="10"><p>MC</p></div>   <div class=" memo MP" tabindex="12"><p>M+</p></div><div class="memo MM" tabindex="13"><p>M-</p></div></div>', '').replace('<p>', ''));
+
+            if (chifrreMemoClick) {
+                affGeneral.AlffichageCTompontResulta = [];
+
+                affGeneral.AlffichageCTompontResulta.push(chifrreMemoClick);
+                affGeneral.CcalculeJS.push(chifrreMemoClick);
+                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+            }
+
+
+        });
+
+    }
+    for (let buttonTouchememoStocage of butomMemoAffiche) {
+
+        buttonTouchememoStocage.addEventListener("click", (e) => {
+            let buttonTouchememoStocageClicke = e.path[0].classList[1];
+            let chifrreMemoClickMome = Number(e.path[2].innerHTML.replace('</p><div class="memodefaulElementButoon"><div class="memo MC" tabindex="10"><p>MC</p></div>   <div class=" memo MP" tabindex="12"><p>M+</p></div><div class="memo MM" tabindex="13"><p>M-</p></div></div>', '').replace('<p>', ''));
+            console.log(e);
+            if (buttonTouchememoStocageClicke === "MC") {
+                // console.log(affGeneral.memo);
+            }
+
 
         });
 
