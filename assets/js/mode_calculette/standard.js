@@ -284,9 +284,26 @@ function chiffreMemoSecelction(chiffre) {
     affGeneral.memo = [];
     affGeneral.memo = sessionStorage.getItem('memoireStockage').split(',');
 
-    chiffreMemo = Number(affGeneral.memo[chiffre].replace("<div class='memodefaulElement'><p>", '').replace("</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>", ''));
+    let regexHtml = affGeneral.memo[chiffre].match(/\d+/g);
+    chiffreMemo = regexHtml[0];
 
 
+
+}
+
+//indique l'index de l'élément selectioné dans la mémoire
+function repereIndexElementSelectionableDansLaMemoireChiffre() {
+
+
+    let memodefaulElement = Array.from(document.querySelectorAll('.memodefaulElement '));
+    for (let i = 0; i < memodefaulElement.length; i++) {
+
+
+        memodefaulElement[i].dataset.indexNumber = '' + i + '';
+
+
+
+    }
 }
 
 
@@ -304,7 +321,7 @@ window.onload = () => {
     if (sessionStorage["memoireStockage"]) {
         affGeneral.memo = [];
         affGeneral.memo.push(sessionStorage.getItem('memoireStockage'));
-        toucheMemo();
+        toucheMemoChiffre();
     }
     historique();
     memoire();
@@ -1062,6 +1079,7 @@ function gererTouches(event) {
             }
             break;
         case 'memo':
+
             toucheStandard.forEach(element => {
                 if (toucheEvent === element.name) {
                     // console.log(affGeneral.AlffichageCTompontResulta);
@@ -1085,63 +1103,74 @@ function gererTouches(event) {
                     } else if (element.name === "MP") {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
-                            let mPlus = Number(affGeneral.AlffichageCTompontResulta.join('')) + chiffreMemo;
-                            affGeneral.memo.splice(0, 1, "<div class='memodefaulElement'><p>" + mPlus + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            let mPlus = Number(chiffreMemo) + Number(affGeneral.AlffichageCTompontResulta.join(''));
+                            // console.log(typeof chiffreMemo);
+                            affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlus + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
-                            toucheMemo();
+                            toucheMemoChiffre();
+                            repereIndexElementSelectionableDansLaMemoireChiffre()
 
                         } else {
                             if (affGeneral.AlffichageCTompontResulta.length != 0) {
-                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                affGeneral.memo.unshift("<div class='memodefaulElement' data-index-number=''><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                                 sessionStorage.setItem('memoireStockage', affGeneral.memo);
                                 memoire();
-                                toucheMemo();
+                                toucheMemoChiffre();
+                                repereIndexElementSelectionableDansLaMemoireChiffre()
                             } else {
                                 affGeneral.AlffichageCTompontResulta.push('0')
-                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                affGeneral.memo.unshift("<div class='memodefaulElement' data-index-number=''><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                                 sessionStorage.setItem('memoireStockage', affGeneral.memo);
                                 memoire();
-                                toucheMemo();
+                                toucheMemoChiffre();
+                                repereIndexElementSelectionableDansLaMemoireChiffre()
                             }
                         }
 
                     } else if (element.name === "MM") {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
-                            let mMois = Number(chiffreMemo - affGeneral.AlffichageCTompontResulta.join(''));
-                            affGeneral.memo.splice(0, 1, "<div class='memodefaulElement'><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            let mMois = Number(chiffreMemo) - Number(affGeneral.AlffichageCTompontResulta.join(''));
+                            affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
-                            toucheMemo();
+                            toucheMemoChiffre();
+                            repereIndexElementSelectionableDansLaMemoireChiffre()
 
                         } else {
                             if (affGeneral.AlffichageCTompontResulta.length != 0) {
-                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                affGeneral.memo.unshift("<div class='memodefaulElement' data-index-number=''><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                                 sessionStorage.setItem('memoireStockage', affGeneral.memo);
                                 memoire();
-                                toucheMemo();
+                                toucheMemoChiffre();
+                                repereIndexElementSelectionableDansLaMemoireChiffre()
                             } else {
                                 affGeneral.AlffichageCTompontResulta.push('0')
-                                affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                                affGeneral.memo.unshift("<div class='memodefaulElement' data-index-number=''><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                                 sessionStorage.setItem('memoireStockage', affGeneral.memo);
                                 memoire();
-                                toucheMemo();
+                                toucheMemoChiffre();
+                                repereIndexElementSelectionableDansLaMemoireChiffre()
                             }
                         }
 
                     } else if (element.name === "MS") {
                         if (affGeneral.AlffichageCTompontResulta.length != 0) {
-                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                            affGeneral.memo.unshift("<div class='memodefaulElement' data-index-number=''><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
-                            toucheMemo();
+                            toucheMemoChiffre();
+                            repereIndexElementSelectionableDansLaMemoireChiffre();
                         } else {
                             affGeneral.AlffichageCTompontResulta.push('0')
-                            affGeneral.memo.unshift("<div class='memodefaulElement'><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+
+                            affGeneral.memo.unshift("<div class='memodefaulElement' data-index-number=''><p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
-                            toucheMemo();
+                            toucheMemoChiffre();
+                            repereIndexElementSelectionableDansLaMemoireChiffre();
                         }
 
 
@@ -1165,38 +1194,89 @@ function gererTouches(event) {
 
 
 // }
-function toucheMemo() {
+function toucheMemoChiffre() {
     let chiffreMemoAffiche = Array.from(document.querySelectorAll('.memodefaulElement'))
     let butomMemoAffiche = Array.from(document.querySelectorAll('.memodefaulElement .memodefaulElementButoon .memo'))
 
-    for (let touchememoStocage of chiffreMemoAffiche) {
+    for (let touchememoStocage of chiffreMemoAffiche) { //gestion du clique sur la case entiére du chiffre mémorisé
 
         touchememoStocage.addEventListener("click", (e) => {
 
-            let chifrreMemoClick = Number(e.path[0].innerHTML.replace('</p><div class="memodefaulElementButoon"><div class="memo MC" tabindex="10"><p>MC</p></div>   <div class=" memo MP" tabindex="12"><p>M+</p></div><div class="memo MM" tabindex="13"><p>M-</p></div></div>', '').replace('<p>', ''));
 
-            if (chifrreMemoClick) {
-                affGeneral.AlffichageCTompontResulta = [];
 
-                affGeneral.AlffichageCTompontResulta.push(chifrreMemoClick);
-                affGeneral.CcalculeJS.push(chifrreMemoClick);
-                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+            if (e.path[0].innerHTML.includes('</p><div class="memodefaulElementButoon"><div class="memo MC" tabindex="10"><p>MC</p></div>   <div class=" memo MP" tabindex="12"><p>M+</p></div><div class="memo MM" tabindex="13"><p>M-</p></div></div>')) {
+                let chifrreMemoClick = Number(e.path[0].innerHTML.replace('</p><div class="memodefaulElementButoon"><div class="memo MC" tabindex="10"><p>MC</p></div>   <div class=" memo MP" tabindex="12"><p>M+</p></div><div class="memo MM" tabindex="13"><p>M-</p></div></div>', '').replace('<p>', ''));
+                if (chifrreMemoClick != 0) {
+                    affGeneral.AlffichageCTompontResulta = [];
+                    affGeneral.AlffichageCTompontResulta.push(chifrreMemoClick);
+
+                    affGeneral.CcalculeJS.push(chifrreMemoClick);
+                    chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+                    repereIndexElementSelectionableDansLaMemoireChiffre()
+                } else {
+                    affGeneral.AlffichageCTompontResulta = [];
+                    affGeneral.AlffichageCTompontResulta.push('0');
+                    console.log(affGeneral.AlffichageCTompontResulta);
+                    affGeneral.CcalculeJS.push('0');
+                    chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+                    repereIndexElementSelectionableDansLaMemoireChiffre()
+
+                }
+
             }
+
+
+
+
+
+
+
+
+
 
 
         });
 
     }
-    for (let buttonTouchememoStocage of butomMemoAffiche) {
+
+    for (let buttonTouchememoStocage of butomMemoAffiche) { //gestion du clique sur le mc mp mm
 
         buttonTouchememoStocage.addEventListener("click", (e) => {
             let buttonTouchememoStocageClicke = e.path[0].classList[1];
-            let chifrreMemoClickMome = Number(e.path[2].innerHTML.replace('</p><div class="memodefaulElementButoon"><div class="memo MC" tabindex="10"><p>MC</p></div>   <div class=" memo MP" tabindex="12"><p>M+</p></div><div class="memo MM" tabindex="13"><p>M-</p></div></div>', '').replace('<p>', ''));
-            console.log(e);
-            if (buttonTouchememoStocageClicke === "MC") {
-                // console.log(affGeneral.memo);
-            }
 
+
+            if (buttonTouchememoStocageClicke === "MC") {
+                let indexOfMcSelectionerMc = e.path[2].dataset.indexNumber;
+
+                affGeneral.memo.splice(indexOfMcSelectionerMc, 1);
+                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                memoire();
+                toucheMemoChiffre();
+                repereIndexElementSelectionableDansLaMemoireChiffre();
+            } else if (buttonTouchememoStocageClicke === "MP") {
+                let indexOfMcSelectionerMp = e.path[2].dataset.indexNumber;
+                chiffreMemoSecelction(indexOfMcSelectionerMp);
+                let mPlusMp = Number(chiffreMemo) + Number(affGeneral.AlffichageCTompontResulta.join(''));
+                affGeneral.memo.splice(indexOfMcSelectionerMp, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlusMp + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                memoire();
+                toucheMemoChiffre();
+                repereIndexElementSelectionableDansLaMemoireChiffre()
+
+
+            } else if (buttonTouchememoStocageClicke === "MM") {
+                let indexOfMcSelectionerMm = e.path[2].dataset.indexNumber;
+                chiffreMemoSecelction(indexOfMcSelectionerMm);
+                let mPlusMm = Number(chiffreMemo) - Number(affGeneral.AlffichageCTompontResulta.join(''));
+
+                affGeneral.memo.splice(indexOfMcSelectionerMm, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlusMm + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
+                sessionStorage.setItem('memoireStockage', affGeneral.memo);
+                memoire();
+                toucheMemoChiffre();
+                repereIndexElementSelectionableDansLaMemoireChiffre()
+
+
+            }
 
         });
 

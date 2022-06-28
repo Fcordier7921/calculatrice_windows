@@ -322,6 +322,7 @@ memoiregeneral.addEventListener('click', () => {
     memodefaut.style.display = 'block';
 
     memoire();
+    toucheMemoChiffre()
 
 })
 
