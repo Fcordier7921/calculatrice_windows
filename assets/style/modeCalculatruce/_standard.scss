@@ -554,12 +554,7 @@
                 }
                 .petiteTaillebis {
                     display: block;
-                    width: 30px;
-                    height: 30px;
-                    &:hover {
-                        border: 1px solid gray;
-                        background-color: rgb(218, 218, 218);
-                    }
+                    opacity: 0;
                 }
                 .fenetre {
                     margin: 0;
@@ -611,7 +606,34 @@
                 grid-template-columns: repeat(4, 77.5px);
                 grid-template-rows: 70px repeat(5, 55px);
                 .box {
-                    display: none;
+                    position: absolute;
+                    top: 0;
+                    .headMenu {
+                        .petiteTaille {
+                            display: none;
+                        }
+                    }
+                    .navBar {
+                        position: absolute;
+                        top: 0;
+                        .navHedaer {
+                            width: 200px;
+                            height: 40px;
+                            background-color: $CouleurNav;
+                            z-index: 20;
+                        }
+                        .navCahce {
+                            width: 200px;
+                            height: 290px;
+                            background-color: $CouleurNav;
+                        }
+                        a {
+                            .apropos {
+                                background-color: $CouleurNav;
+                                width: 200px;
+                            }
+                        }
+                    }
                 }
                 .histoMemo {
                     display: none;

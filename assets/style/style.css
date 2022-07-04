@@ -883,12 +883,7 @@ a {
   }
   .container #titreGeneral .petiteTaillebis {
     display: block;
-    width: 30px;
-    height: 30px;
-  }
-  .container #titreGeneral .petiteTaillebis:hover {
-    border: 1px solid gray;
-    background-color: #dadada;
+    opacity: 0;
   }
   .container #titreGeneral .fenetre {
     margin: 0;
@@ -939,7 +934,30 @@ a {
     grid-template-rows: 70px repeat(5, 55px);
   }
   .container #corpsStandard .box {
+    position: absolute;
+    top: 0;
+  }
+  .container #corpsStandard .box .headMenu .petiteTaille {
     display: none;
+  }
+  .container #corpsStandard .box .navBar {
+    position: absolute;
+    top: 0;
+  }
+  .container #corpsStandard .box .navBar .navHedaer {
+    width: 200px;
+    height: 40px;
+    background-color: #f1f1f1;
+    z-index: 20;
+  }
+  .container #corpsStandard .box .navBar .navCahce {
+    width: 200px;
+    height: 290px;
+    background-color: #f1f1f1;
+  }
+  .container #corpsStandard .box .navBar a .apropos {
+    background-color: #f1f1f1;
+    width: 200px;
   }
   .container #corpsStandard .histoMemo {
     display: none;
