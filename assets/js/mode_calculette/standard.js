@@ -284,10 +284,13 @@ function chiffreMemoSecelction(chiffre) {
     affGeneral.memo = [];
     affGeneral.memo = sessionStorage.getItem('memoireStockage').split(',');
 
-    let regexHtml = affGeneral.memo[chiffre].match(/-[0-9]+/i);
-    console.log(regexHtml);
-    chiffreMemo = regexHtml[0];
 
+    // let regexHtml = affGeneral.memo[chiffre].match(/-[0-9]+/i);
+
+    chiffreMemo = affGeneral.memo[chiffre].replace("<div class='memodefaulElement' data-index-number=''><p>", '').replace("</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>", '');
+
+
+    console.log(chiffreMemo);
 
 
 }
@@ -360,7 +363,6 @@ function gererTouches(event) {
 
     //verifier si l'on as un keydow;
     if (event.type === "keydown") {
-        // console.log(event.key);
         if (event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === ',' || event.key === '.') {
             classEvent = 'chiffre';
         } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/' || event.key === 'r' || event.key === 'Delete' || event.key === 'Backspace' || event.key === '%' || event.key === 'ù' || event.key === 'q' || event.key === '*') {
@@ -448,7 +450,6 @@ function gererTouches(event) {
 
     }
 
-    // console.log(classEvent);
 
 
     switch (classEvent) {
@@ -481,7 +482,6 @@ function gererTouches(event) {
                 if (affGeneral.AlffichageCTompontResulta.length != 0) {
 
                     affGeneral.momeEgal = [];
-                    // console.log(affGeneral.AlffichageCTompontResulta);
                     if (affGeneral.AlffichageCalaculette.includes('÷') && affGeneral.AlffichageCTompontResulta.includes('0')) {
 
                         chiffreresult.innerHTML = '<p style="font-size: 20px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
@@ -812,16 +812,14 @@ function gererTouches(event) {
 
 
                             if (affGeneral.AlffichageCalaculette.includes('÷') && affGeneral.AlffichageCTompontResulta.includes('0')) {
-                                console.log(element.Affichage);
+
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ' ' + affGeneral.AlffichageCTompontResulta.join('') + ' ' + element.Affichage + "</p>";
                                 chiffreresult.innerHTML = '<p style="font-size: 20px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                                 razAffGeneral();
 
                             } else {
                                 moisMois();
-                                // console.log(affGeneral.AlffichageCalaculette, 'affGeneral.AlffichageCalaculette');
-                                // console.log(affGeneral.AlffichageCTompontResulta, 'affGeneral.AlffichageCTompontResulta');
-                                // console.log(affGeneral.CcalculeJS, 'affGeneral.CcalculeJS');
+
 
                                 if (affGeneral.AlffichageCTompontResulta.length === 0) {
                                     affGeneral.AlffichageCTompontResulta.push('0');
@@ -1083,7 +1081,6 @@ function gererTouches(event) {
 
             toucheStandard.forEach(element => {
                 if (toucheEvent === element.name) {
-                    // console.log(affGeneral.AlffichageCTompontResulta);
                     if (element.name === "MC") {
                         if (sessionStorage["memoireStockage"]) {
 
@@ -1105,7 +1102,6 @@ function gererTouches(event) {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
                             let mPlus = (Number(chiffreMemo)) + (Number(affGeneral.AlffichageCTompontResulta.join('')));
-                            console.log(mPlus, Number(chiffreMemo), Number(affGeneral.AlffichageCTompontResulta.join('')));
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlus + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
@@ -1133,6 +1129,7 @@ function gererTouches(event) {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
                             let mMois = (Number(chiffreMemo)) - (Number(affGeneral.AlffichageCTompontResulta.join('')));
+                            console.log(mMois, Number(chiffreMemo), (Number(affGeneral.AlffichageCTompontResulta.join(''))));
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
@@ -1217,7 +1214,6 @@ function toucheMemoChiffre() {
                 } else {
                     affGeneral.AlffichageCTompontResulta = [];
                     affGeneral.AlffichageCTompontResulta.push('0');
-                    console.log(affGeneral.AlffichageCTompontResulta);
                     affGeneral.CcalculeJS.push('0');
                     chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
                     repereIndexElementSelectionableDansLaMemoireChiffre()
