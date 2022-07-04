@@ -284,7 +284,8 @@ function chiffreMemoSecelction(chiffre) {
     affGeneral.memo = [];
     affGeneral.memo = sessionStorage.getItem('memoireStockage').split(',');
 
-    let regexHtml = affGeneral.memo[chiffre].match(/\d+/g);
+    let regexHtml = affGeneral.memo[chiffre].match(/-[0-9]+/i);
+    console.log(regexHtml);
     chiffreMemo = regexHtml[0];
 
 
@@ -1103,8 +1104,8 @@ function gererTouches(event) {
                     } else if (element.name === "MP") {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
-                            let mPlus = Number(chiffreMemo) + Number(affGeneral.AlffichageCTompontResulta.join(''));
-                            // console.log(typeof chiffreMemo);
+                            let mPlus = (Number(chiffreMemo)) + (Number(affGeneral.AlffichageCTompontResulta.join('')));
+                            console.log(mPlus, Number(chiffreMemo), Number(affGeneral.AlffichageCTompontResulta.join('')));
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlus + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
@@ -1131,7 +1132,7 @@ function gererTouches(event) {
                     } else if (element.name === "MM") {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
-                            let mMois = Number(chiffreMemo) - Number(affGeneral.AlffichageCTompontResulta.join(''));
+                            let mMois = (Number(chiffreMemo)) - (Number(affGeneral.AlffichageCTompontResulta.join('')));
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
@@ -1256,7 +1257,7 @@ function toucheMemoChiffre() {
             } else if (buttonTouchememoStocageClicke === "MP") {
                 let indexOfMcSelectionerMp = e.path[2].dataset.indexNumber;
                 chiffreMemoSecelction(indexOfMcSelectionerMp);
-                let mPlusMp = Number(chiffreMemo) + Number(affGeneral.AlffichageCTompontResulta.join(''));
+                let mPlusMp = (Number(chiffreMemo)) + (Number(affGeneral.AlffichageCTompontResulta.join('')));
                 affGeneral.memo.splice(indexOfMcSelectionerMp, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlusMp + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                 sessionStorage.setItem('memoireStockage', affGeneral.memo);
                 memoire();
@@ -1267,7 +1268,7 @@ function toucheMemoChiffre() {
             } else if (buttonTouchememoStocageClicke === "MM") {
                 let indexOfMcSelectionerMm = e.path[2].dataset.indexNumber;
                 chiffreMemoSecelction(indexOfMcSelectionerMm);
-                let mPlusMm = Number(chiffreMemo) - Number(affGeneral.AlffichageCTompontResulta.join(''));
+                let mPlusMm = (Number(chiffreMemo)) - (Number(affGeneral.AlffichageCTompontResulta.join('')));
 
                 affGeneral.memo.splice(indexOfMcSelectionerMm, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mPlusMm + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                 sessionStorage.setItem('memoireStockage', affGeneral.memo);
