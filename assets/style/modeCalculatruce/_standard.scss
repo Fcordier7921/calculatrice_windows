@@ -709,3 +709,13 @@
             }
         }
     }
+    
+    @media (min-height: 200px) and (max-height: 883px) {
+        body {
+            overflow-y: auto;
+            .container {
+                @include positionCenter(50%, 0);
+                overflow-y: auto;
+            }
+        }
+    }
