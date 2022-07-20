@@ -1,7 +1,7 @@
 //------------------------------ code général--------------------------------------
 
-const url = window.location.href; //indication de la page active
-const urlSotcked = "http://127.0.0.1:5500/index.html#stanndar";
+const url = window.location.href.split('/').pop('/'); //indication de la page active
+const urlSotcked = "index.html#stanndar";
 const containerCalculatrice = document.querySelector('.container'); //general--gestion de la fenetre  contenaire général
 const iconCalculatrice = document.querySelector('.iconCalculatrice'); //general--gestion de la fenetre icone du bureau
 const iconRedutionFenetre = document.querySelector('.moin'); //general--gestion de la fenetre pour réduire la fenétre
@@ -22,7 +22,7 @@ const histoAffichage = document.querySelector('.histoAffichage'); // secteionner
 const memoAffichage = document.querySelector('.memoAffichage'); // secteionner tout les lien pour la poubelle
 const mc = document.querySelector('.MC'); // secteionner tout les lien pour la poubelle
 const mr = document.querySelector('.MR'); // secteionner tout les lien pour la poubelle
-
+console.log(url);
 
 
 //---------------gestion de la fenetre--------------------
@@ -47,7 +47,7 @@ iconCalculatrice.addEventListener('keydown', (event) => {
     }
 })
 
-//gestion de la fenétre avec le moin pour réduire la fênétre
+//gestion de la fenétre avec le moin pour réduire la fênétre le -
 
 function reduictionFenetre() {
     if (containerCalculatrice.classList.contains('containerReduit')) {
@@ -128,18 +128,18 @@ iconFermerFenetre.addEventListener('keydown', (event) => {
 });
 
 
-//----------------menu burger----------
+//----------------menu burger---------------------------------------------------
 
 
 
-
-function togolleBurgerMenu() { // fonction pour afficher la navbar
+// fonction pour afficher la navbar
+function togolleBurgerMenu() {
     if (corpNav.classList.contains('active-nav')) {
         corpNav.classList.remove('active-nav');
         corpNav.setAttribute('aria-hidden', true);
         corpNav.removeAttribute('aria-modal');
         overlay.classList.remove('activeOverlay');
-        for (let i = 0; i < divattribut.length; i++) {
+        for (let i = 0; i < divattribut.length; i++) { // gestion de la tabulation
 
             if (url === urlSotcked) {
                 if (i === 5) {
@@ -155,7 +155,7 @@ function togolleBurgerMenu() { // fonction pour afficher la navbar
                     divattribut[i].setAttribute("tabindex", i)
 
                 }
-                // console.log('tutu');
+
             }
 
 
@@ -186,15 +186,19 @@ function togolleBurgerMenu() { // fonction pour afficher la navbar
 
 }
 
-allBtn.addEventListener('click', togolleBurgerMenu) // écoute du click sue l'icone burger pour afficher le menu
+// écoute du click sue l'icone burger pour afficher le menu
+allBtn.addEventListener('click', togolleBurgerMenu);
 
-allBtn.addEventListener('keydown', (event) => { //écoute des touche entre et espace pour affiche la navBar
+//écoute des touche entre et espace pour affiche la navBar
+allBtn.addEventListener('keydown', (event) => {
 
     if (event.key === "Enter" || event.key === " ") {
         togolleBurgerMenu();
     }
 });
-window.addEventListener('keydown', (event) => { //écoute des touche entre et espace pour affiche la navBar
+
+//écoute des touche entre et espace pour affiche la navBar
+window.addEventListener('keydown', (event) => {
 
     if (event.key === "Escape") {
         if (corpNav.classList.contains('active-nav')) {
@@ -253,110 +257,119 @@ for (const elemnt of focusHeader) {
 }
 
 
-//gérer l'affichage de l'historique
-function historique() {
-    if (sessionStorage["historiqueCalcule"]) {
-        let historiqueMemorise = sessionStorage.getItem('historiqueCalcule');
-
-        histodefaut.innerHTML = historiqueMemorise;
-
-        poubelleHisto.style.opacity = "1";
-        poubelleHisto.style.zIndex = '1';
-        poubelleMemo.style.zIndex = '-1';
-        ecouteHisto()
 
 
-    } else {
-        histodefaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
-        poubelleHisto.style.opacity = "0";
-        poubelleHisto.style.zIndex = '-1';
-        affGeneral.histo = [];
 
-    }
+//-------------------historique et mémoire-------------------------------------
 
-}
+if (url === 'index.html' || url === 'scientifique.html') {
 
-//gérer l'affichage de la mémoire
-function memoire() {
-    if (sessionStorage["memoireStockage"]) {
-        let memoriseChiffre = sessionStorage.getItem('memoireStockage').replaceAll(',', '');
+    //gérer l'affichage de l'historique
+    function historique() {
+        if (sessionStorage["historiqueCalcule"]) {
+            let historiqueMemorise = sessionStorage.getItem('historiqueCalcule');
 
-        memodefaut.innerHTML = memoriseChiffre;
+            histodefaut.innerHTML = historiqueMemorise;
 
-        poubelleMemo.style.opacity = "1";
-        poubelleMemo.style.zIndex = '1';
-
-        mc.classList.add('active_memo');
-        mr.classList.add('active_memo');
+            poubelleHisto.style.opacity = "1";
+            poubelleHisto.style.zIndex = '1';
+            poubelleMemo.style.zIndex = '-1';
+            ecouteHisto()
 
 
-    } else {
-        memodefaut.innerHTML = "<p class='defaultMessage'> La mémoire est vide</p>";
-        poubelleMemo.style.opacity = "0";
-        poubelleMemo.style.zIndex = '-1';
-        affGeneral.memo = [];
-        mc.classList.remove('active_memo');
-        mr.classList.remove('active_memo');
+        } else {
+            histodefaut.innerHTML = "<p class='defaultMessage'> Aucun historique pour l 'instant</p>";
+            poubelleHisto.style.opacity = "0";
+            poubelleHisto.style.zIndex = '-1';
+            affGeneral.histo = [];
+
+        }
 
     }
 
-}
+    //gérer l'affichage de la mémoire
+    function memoire() {
+        if (sessionStorage["memoireStockage"]) {
+            let memoriseChiffre = sessionStorage.getItem('memoireStockage').replaceAll(',', '');
 
-//gestion de l'affichage hitorique et mémoire
+            memodefaut.innerHTML = memoriseChiffre;
 
-histo.addEventListener('click', () => {
-    memoiregeneral.classList.remove('active_histoMemo');
-    histo.classList.add('active_histoMemo');
-    memoAffichage.style.display = 'none';
-    histoAffichage.style.display = 'flex';
-    histodefaut.style.display = 'block';
-    poubelleHisto.style.opacity = '10';
-    historique();
+            poubelleMemo.style.opacity = "1";
+            poubelleMemo.style.zIndex = '1';
 
-})
-memoiregeneral.addEventListener('click', () => {
-    histo.classList.remove('active_histoMemo');
-    memoiregeneral.classList.add('active_histoMemo');
-    histoAffichage.style.display = 'none';
-    memoAffichage.style.display = 'flex';
-    memodefaut.style.display = 'block';
+            mc.classList.add('active_memo');
+            mr.classList.add('active_memo');
 
-    memoire();
-    toucheMemoChiffre()
 
-})
+        } else {
+            memodefaut.innerHTML = "<p class='defaultMessage'> La mémoire est vide</p>";
+            poubelleMemo.style.opacity = "0";
+            poubelleMemo.style.zIndex = '-1';
+            affGeneral.memo = [];
+            mc.classList.remove('active_memo');
+            mr.classList.remove('active_memo');
 
-//ecouter le clikc poubelle histo
-poubelleHisto.addEventListener('click', () => {
-        sessionStorage.removeItem("historiqueCalcule");
+        }
+
+    }
+
+
+    //gestion de l'affichage hitorique et mémoire
+
+    histo.addEventListener('click', () => {
+        memoiregeneral.classList.remove('active_histoMemo');
+        histo.classList.add('active_histoMemo');
+        memoAffichage.style.display = 'none';
+        histoAffichage.style.display = 'flex';
+        histodefaut.style.display = 'block';
+        poubelleHisto.style.opacity = '10';
         historique();
-        affGeneral.histo = [];
 
     })
-    //ecouter le clikc poubelle memo
-poubelleMemo.addEventListener('click', () => {
-    sessionStorage.removeItem("memoireStockage");
-    memoire();
-    affGeneral.memo = [];
+    memoiregeneral.addEventListener('click', () => {
+        histo.classList.remove('active_histoMemo');
+        memoiregeneral.classList.add('active_histoMemo');
+        histoAffichage.style.display = 'none';
+        memoAffichage.style.display = 'flex';
+        memodefaut.style.display = 'block';
 
-})
+        memoire();
+        toucheMemoChiffre()
 
-//ecoute le click sur les élément en mémoire
-function ecouteHisto() {
-    let survolHisto = Array.from(document.querySelectorAll('.survolHisto')); // secteionner tout calcule en mémoire
+    })
 
-    for (const elemnt of survolHisto) {
-        elemnt.addEventListener('click', (e) => {
-            affGeneral.AlffichageCTompontResulta = [];
-            affGeneral.AlffichageCalaculette = [];
-            affGeneral.CcalculeJS = [];
-            affGeneral.AlffichageCalaculette.unshift(e.path[0].querySelector('.survolHisto :nth-child(1)').innerHTML);
-            affGeneral.AlffichageCTompontResulta.unshift(e.path[0].querySelector('.survolHisto :nth-child(2)').innerHTML);
-            affGeneral.CcalculeJS.unshift(e.path[0].querySelector('.survolHisto :nth-child(2)').innerHTML);
-            calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + " </p>";
-            chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
-
+    //ecouter le clikc poubelle histo
+    poubelleHisto.addEventListener('click', () => {
+            sessionStorage.removeItem("historiqueCalcule");
+            historique();
+            affGeneral.histo = [];
 
         })
+        //ecouter le clikc poubelle memo
+    poubelleMemo.addEventListener('click', () => {
+        sessionStorage.removeItem("memoireStockage");
+        memoire();
+        affGeneral.memo = [];
+
+    })
+
+    //ecoute le click sur les élément en mémoire
+    function ecouteHisto() {
+        let survolHisto = Array.from(document.querySelectorAll('.survolHisto')); // secteionner tout calcule en mémoire
+
+        for (const elemnt of survolHisto) {
+            elemnt.addEventListener('click', (e) => {
+                affGeneral.AlffichageCTompontResulta = [];
+                affGeneral.AlffichageCalaculette = [];
+                affGeneral.CcalculeJS = [];
+                affGeneral.AlffichageCalaculette.unshift(e.path[0].querySelector('.survolHisto :nth-child(1)').innerHTML);
+                affGeneral.AlffichageCTompontResulta.unshift(e.path[0].querySelector('.survolHisto :nth-child(2)').innerHTML);
+                affGeneral.CcalculeJS.unshift(e.path[0].querySelector('.survolHisto :nth-child(2)').innerHTML);
+                calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + " </p>";
+                chiffreresult.innerHTML = "<p>" + affGeneral.AlffichageCTompontResulta.join('') + "</p>";
+
+
+            })
+        }
     }
 }

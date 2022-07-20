@@ -1028,7 +1028,7 @@ a {
     border: 1px solid #009db9;
   }
 }
-@media (min-height: 200px) and (max-height: 883px) {
+@media (min-height: 200px) and (max-height: 500px) {
   body {
     overflow-y: auto;
   }

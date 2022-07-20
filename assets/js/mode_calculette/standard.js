@@ -2,11 +2,11 @@
 const reductionFenétre = document.querySelector('.petiteTaille'); // sélection de la zone  pour réduire en petit
 const reductionFenétreBis = document.querySelector('.petiteTaillebis');
 const contenaireSandard = document.querySelector('.container');
-const memoSandard = Array.from(document.querySelectorAll('.memo')) //selection de toute les emplacement mémoire
-const operateurSandard = Array.from(document.querySelectorAll('.opperateur')) //selection de toute les emplacement des opérateur
-const calculeresult = document.querySelector('.calculeresult') //recuprer pour afficher le calcule en cours
-const chiffreresult = document.querySelector('.chiffreresult') //recuprer pour afficher les entré en cours
-const corpsStandard = document.querySelector('#corpsStandard')
+const memoSandard = Array.from(document.querySelectorAll('.memo')); //selection de toute les emplacement mémoire
+const operateurSandard = Array.from(document.querySelectorAll('.opperateur')); //selection de toute les emplacement des opérateur
+const calculeresult = document.querySelector('.calculeresult'); //recuprer pour afficher le calcule en cours
+const chiffreresult = document.querySelector('.chiffreresult'); //recuprer pour afficher les entré en cours
+const corpsStandard = document.querySelector('#corpsStandard'); //recupéle coprs de la calculatrice standard
 let chiffreMemo;
 
 //afficher la claculatrice en petite taille
@@ -25,7 +25,8 @@ reductionFenétreBis.addEventListener('click', () => {
 
 
 //--------- logique de la calculatrice-------------------
-//tableau d'objet qui répertorie les touche de la calculette
+
+//tableau d'objet qui répertorie les touche de la calculette standard 
 const toucheStandard = [{
         name: "MC",
         explication: "suprime la mémoire", //aide au développement inutile pour le code
@@ -232,12 +233,13 @@ const toucheStandard = [{
 
 ]
 
-//gérer le -- qui devien plus
+//gérer le -- qui devien plus 3 - -6=
 function moisMois() {
     if (affGeneral.AlffichageCTompontResulta.includes('-') && affGeneral.AlffichageCalaculette.includes('-')) {
         affGeneral.CcalculeJS.shift();
         let moismois = affGeneral.CcalculeJS.indexOf('-');
         affGeneral.CcalculeJS.splice(moismois, 1, '+')
+
 
     }
 }
@@ -251,7 +253,7 @@ function opperateurAditionEtc(element) {
     if (affGeneral.CcalculeJS.includes('÷')) {
         affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
     }
-
+    console.log(affGeneral.CcalculeJS);
     let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
 
 
@@ -269,7 +271,7 @@ function opperateurAditionEtc(element) {
     chiffreresult.innerHTML = "<p>" + resultaOpérateur + "</p>";
 }
 
-//mise a séro des variable de stocage 
+//mise a zéro des variable de stocage 
 function razAffGeneral() {
     affGeneral.AlffichageCalaculette = []
     affGeneral.AlffichageCTompontResulta = []
@@ -290,7 +292,7 @@ function chiffreMemoSecelction(chiffre) {
     chiffreMemo = affGeneral.memo[chiffre].replace("<div class='memodefaulElement' data-index-number=''><p>", '').replace("</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>", '');
 
 
-    console.log(chiffreMemo);
+
 
 
 }
@@ -456,7 +458,7 @@ function gererTouches(event) {
         case 'egal':
 
 
-            if (affGeneral.AlffichageCalaculette.includes(' =')) {
+            if (affGeneral.AlffichageCalaculette.includes(' =')) { //apuis plusieur fois sur le =
 
 
                 affGeneral.CcalculeJS = [];
@@ -496,8 +498,9 @@ function gererTouches(event) {
                             affGeneral.CcalculeJS.splice(affGeneral.CcalculeJS.indexOf('÷'), 1, '/')
                         }
 
-                        let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
 
+
+                        let operateurCarreCalculJs = affGeneral.CcalculeJS.join('').replaceAll(',', '.');
                         let resultaOpérateur = Function("return " + operateurCarreCalculJs)();
 
                         if (affGeneral.AlffichageCalaculette[affGeneral.AlffichageCalaculette.length - 1] != affGeneral.AlffichageCTompontResulta.join()) {
@@ -561,13 +564,43 @@ function gererTouches(event) {
                     }
                     if (element.name === "PosNega") {
                         if (affGeneral.AlffichageCTompontResulta.includes("-")) {
-                            affGeneral.AlffichageCTompontResulta.shift(element.Affichage);
-                            affGeneral.CcalculeJS.shift(element.fomuleJs);
+                            affGeneral.AlffichageCTompontResulta.shift();
+                            if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('+') || affGeneral.AlffichageCalaculette.includes('-')) {
+                                let indexOpérateur;
+                                if (affGeneral.CcalculeJS.includes('*')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('*');
+                                } else if (affGeneral.CcalculeJS.includes('/')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('/');
+                                } else if (affGeneral.CcalculeJS.includes('+')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('+');
+                                } else if (affGeneral.CcalculeJS.includes('-')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('-');
+                                }
+                                affGeneral.CcalculeJS.splice((indexOpérateur + 1), 1);
+
+                            } else {
+                                affGeneral.CcalculeJS.shift();
+                            }
 
                         } else {
                             affGeneral.AlffichageCTompontResulta.unshift(element.Affichage);
-                        }
+                            if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('+') || affGeneral.AlffichageCalaculette.includes('-')) {
+                                let indexOpérateur;
+                                if (affGeneral.CcalculeJS.includes('*')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('*');
+                                } else if (affGeneral.CcalculeJS.includes('/')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('/');
+                                } else if (affGeneral.CcalculeJS.includes('+')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('+');
+                                } else if (affGeneral.CcalculeJS.includes('-')) {
+                                    indexOpérateur = affGeneral.CcalculeJS.indexOf('-');
+                                }
+                                affGeneral.CcalculeJS.splice((indexOpérateur + 1), 0, '-');
 
+                            } else {
+                                affGeneral.CcalculeJS.unshift('-');
+                            }
+                        }
                     } else if (element.name === "visgule") {
 
                         if (affGeneral.AlffichageCTompontResulta[0] === "0" || affGeneral.AlffichageCTompontResulta.length < 1) {
@@ -584,7 +617,9 @@ function gererTouches(event) {
                             affGeneral.AlffichageCTompontResulta.shift();
                         }
                         affGeneral.AlffichageCTompontResulta.push(element.Affichage);
+                        console.log(affGeneral.AlffichageCTompontResulta, "calsule tompont quand on rajoute un chiffre");
                         affGeneral.CcalculeJS.push(element.fomuleJs);
+                        console.log(affGeneral.CcalculeJS, "calsule js quand on rajoute un chiffre");
                     }
                     if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) { //pour le carré et la racine carré =>quand on rentre une nouvelle valeur 
                         affGeneral.AlffichageCTompontResulta = [];
@@ -777,14 +812,24 @@ function gererTouches(event) {
                                     affGeneral.AlffichageCalaculette.push(element.Affichage, affGeneral.AlffichageCTompontResulta.join(''));
                                     calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ")</p>";
                                 }
-                                affGeneral.CcalculeJS = [];
-                                affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+                                if (affGeneral.AlffichageCTompontResulta.includes('-')) {
+                                    affGeneral.AlffichageCTompontResulta = [];
 
-                                let carreCalculJs = affGeneral.CcalculeJS.join('');
-                                let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
-                                affGeneral.AlffichageCTompontResulta = [];
-                                affGeneral.AlffichageCTompontResulta.push(resultaCarre)
-                                chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
+                                    chiffreresult.innerHTML = "<p>Entrée non valide</p>";
+                                } else {
+                                    affGeneral.CcalculeJS = [];
+                                    affGeneral.CcalculeJS.push(element.fomuleJs, affGeneral.AlffichageCTompontResulta.join(''));
+
+                                    let carreCalculJs = affGeneral.CcalculeJS.join('');
+                                    let resultaCarre = Function("return " + carreCalculJs + ",2)")(); //Math.pow(x, 2)
+                                    // console.log(affGeneral.AlffichageCTompontResulta.AlffichageCTompontResulta);
+
+
+                                    affGeneral.AlffichageCTompontResulta = [];
+                                    affGeneral.AlffichageCTompontResulta.push(resultaCarre)
+                                    chiffreresult.innerHTML = "<p>" + resultaCarre.toFixed(14) + "</p>";
+                                }
+
                             } else {
                                 affGeneral.AlffichageCTompontResulta.push('0');
                                 if (affGeneral.AlffichageCalaculette.includes('sqr(') || affGeneral.AlffichageCalaculette.includes('√(') || affGeneral.AlffichageCalaculette.includes('1/(')) {
@@ -811,31 +856,37 @@ function gererTouches(event) {
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
 
 
-                            if (affGeneral.AlffichageCalaculette.includes('÷') && affGeneral.AlffichageCTompontResulta.includes('0')) {
+                            if (affGeneral.AlffichageCalaculette.includes('÷') && affGeneral.AlffichageCTompontResulta.includes('0')) { //indiqué que l'on ne peux pas diviser par zero
 
                                 calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + ' ' + affGeneral.AlffichageCTompontResulta.join('') + ' ' + element.Affichage + "</p>";
                                 chiffreresult.innerHTML = '<p style="font-size: 20px;">Désolé... Nous ne pouvons pas diviser par zéro</p>';
                                 razAffGeneral();
 
                             } else {
+
                                 moisMois();
 
 
-                                if (affGeneral.AlffichageCTompontResulta.length === 0) {
+                                if (affGeneral.AlffichageCTompontResulta.length === 0) { //si je rantre aucun chiffre en appuyiant sur un opérateur
                                     affGeneral.AlffichageCTompontResulta.push('0');
                                     affGeneral.CcalculeJS.push('0');
                                 }
-
-                                if (affGeneral.AlffichageCTompontResulta.length != 0 && affGeneral.AlffichageCalaculette.length != 0) {
-                                    opperateurAditionEtc(element);
-                                    historique();
-                                } else if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('+') || affGeneral.AlffichageCalaculette.includes('-')) {
+                                if (affGeneral.AlffichageCalaculette.includes('ₓ') || affGeneral.AlffichageCalaculette.includes('÷') || affGeneral.AlffichageCalaculette.includes('+') || affGeneral.AlffichageCalaculette.includes('-')) { //si on change d'avie quand on a choisir un opérateur
                                     affGeneral.CcalculeJS.pop();
                                     affGeneral.AlffichageCalaculette.pop();
+                                    affGeneral.CcalculeJS.push(element.fomuleJs);
+                                    affGeneral.AlffichageCalaculette.push(element.Affichage);
+                                    calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
+
+
+                                } else if (affGeneral.AlffichageCTompontResulta.length != 0 && affGeneral.AlffichageCalaculette.length != 0) {
                                     opperateurAditionEtc(element);
+                                    historique();
                                 } else {
                                     affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ");
+
                                     affGeneral.CcalculeJS.push(element.fomuleJs);
+
                                     affGeneral.AlffichageCTompontResulta = [];
                                     affGeneral.AlffichageCalaculette.push(element.Affichage);
                                     calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
@@ -1049,9 +1100,11 @@ function gererTouches(event) {
 
                         } else if (element.name === "plus" || element.name === "moin" || element.name === "multiplier" || element.name === "division") {
 
+
                             affGeneral.AlffichageCalaculette = [];
                             affGeneral.AlffichageCalaculette.push(affGeneral.AlffichageCTompontResulta.join(''), " ", element.Affichage);
                             affGeneral.CcalculeJS.push(affGeneral.AlffichageCTompontResulta.join(''), element.fomuleJs);
+
                             affGeneral.AlffichageCTompontResulta = [];
 
                             calculeresult.innerHTML = "<p>" + affGeneral.AlffichageCalaculette.join('') + "</p>";
@@ -1129,7 +1182,7 @@ function gererTouches(event) {
                         if (sessionStorage["memoireStockage"]) {
                             chiffreMemoSecelction(0);
                             let mMois = (Number(chiffreMemo)) - (Number(affGeneral.AlffichageCTompontResulta.join('')));
-                            console.log(mMois, Number(chiffreMemo), (Number(affGeneral.AlffichageCTompontResulta.join(''))));
+                            // console.log(mMois, Number(chiffreMemo), (Number(affGeneral.AlffichageCTompontResulta.join(''))));
                             affGeneral.memo.splice(0, 1, "<div class='memodefaulElement' data-index-number=''><p>" + mMois + "</p><div class='memodefaulElementButoon'><div class='memo MC' tabindex='10'><p>MC</p></div>   <div class= ' memo MP' tabindex='12'><p>M+</p></div><div class='memo MM' tabindex='13'><p>M-</p></div></div></div>");
                             sessionStorage.setItem('memoireStockage', affGeneral.memo);
                             memoire();
